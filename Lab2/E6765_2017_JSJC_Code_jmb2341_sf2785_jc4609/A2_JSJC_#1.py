@@ -23,7 +23,7 @@ import urllib3
 urllib3.disable_warnings()
 
 # initialize database domain
-domain = 'https://iot-e6765-jsjc.firebaseio.com/''
+domain = 'https://iot-e6765-jsjc.firebaseio.com/'
 
 # Add domain for firebase database
 firebase = firebase.FirebaseApplication(domain,None)

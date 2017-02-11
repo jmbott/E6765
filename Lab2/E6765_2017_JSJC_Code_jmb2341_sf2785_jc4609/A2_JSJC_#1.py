@@ -52,7 +52,7 @@ if __name__ == '__main__':
     parser.add_argument('--read', action='store_true',
         help='Reads database and returns a JSON object')
     parser.add_argument('--post', metavar='<data>',
-        nargs=1, help='Posts data to firebase')
+        type=dict, nargs=1, help='Posts data to firebase')
     args = parser.parse_args()
 
     if args.read:

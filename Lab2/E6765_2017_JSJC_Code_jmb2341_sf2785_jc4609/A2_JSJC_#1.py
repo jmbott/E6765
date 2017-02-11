@@ -11,8 +11,11 @@
 from firebase import firebase
 import json as simplejson
 
+# initialize database domain
+domain = https://iot-e6765-jsjc.firebaseio.com/
+
 # Add domain for firebase database
-firebase = firebase.FirebaseApplication('https://iot-e6765-jsjc.firebaseio.com/',None)
+firebase = firebase.FirebaseApplication('domain',None)
 
 def read_data():
     try:

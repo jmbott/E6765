@@ -12,6 +12,8 @@
 #
 # To post to the database
 # > python A2_JSJC_#1.py --post <data>
+# ex:
+# > python A2_JSJC_#1.py --post
 #
 
 from firebase import firebase
@@ -19,6 +21,7 @@ import json
 import argparse
 
 # disable warnings from old python version
+# REF: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
 import requests.packages.urllib3 as urllib3
 urllib3.disable_warnings()
 
@@ -49,7 +52,7 @@ if __name__ == '__main__':
     parser.add_argument('--read', action='store_true',
         help='Reads database and returns a JSON object')
     parser.add_argument('--post', metavar='<data>',
-        type=str, nargs=1, help='Posts data to firebase')
+        nargs=1, help='Posts data to firebase')
     args = parser.parse_args()
 
     if args.read:

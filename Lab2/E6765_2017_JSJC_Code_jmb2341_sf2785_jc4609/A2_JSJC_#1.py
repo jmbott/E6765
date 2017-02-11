@@ -7,29 +7,40 @@
 # which involves you posting data to the Firebase.
 # You should be able to work with the code provided.
 #
+# To read the database
+# > python A2_JSJC_#1.py --read
+#
+# To post to the database
+# > python A2_JSJC_#1.py --post <data>
+#
 
 from firebase import firebase
-import json as simplejson
+import json
+import argparse
+
+# disable warnings from old python version
+import urllib3
+urllib3.disable_warnings()
 
 # initialize database domain
-domain = https://iot-e6765-jsjc.firebaseio.com/
+domain = 'https://iot-e6765-jsjc.firebaseio.com/''
 
 # Add domain for firebase database
-firebase = firebase.FirebaseApplication('domain',None)
+firebase = firebase.FirebaseApplication(domain,None)
 
 def read_data():
     try:
         result  = firebase.get('',None)
-        print result
+        return result
     except KeyboardInterrupt:
         exit
 
 def post_data(data):
     try:
-        # d = simplejson.dumps(data)
+        # d = json.dumps(data)
         # print d
         post = firebase.post('',data)
-        print post
+        return post
     except KeyboardInterrupt:
         exit
 
@@ -37,7 +48,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Posts or reads/retrieves data from Firebase')
     parser.add_argument('--read', action='store_true',
         help='Reads database and returns a JSON object')
-    parser.add_argument('--post', metavar='data',
+    parser.add_argument('--post', metavar='<data>',
         type=str, nargs=1, help='Posts data to firebase')
     args = parser.parse_args()
 

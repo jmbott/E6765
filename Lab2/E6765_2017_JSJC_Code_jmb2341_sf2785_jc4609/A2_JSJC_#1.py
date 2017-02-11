@@ -19,7 +19,7 @@ import json
 import argparse
 
 # disable warnings from old python version
-import urllib3
+import requests.packages.urllib3 as urllib3
 urllib3.disable_warnings()
 
 # initialize database domain

@@ -11,6 +11,7 @@
 import mraa
 import time
 import pyupm_i2clcd as lcd
+import math 
 
 # initialize switch variable
 switch_pin_number=8
@@ -33,15 +34,18 @@ myLcd.setColor(255, 255, 0)
 print "Press Ctrl+C to escape..."
 try:
         while (1):
-                if (switch.read()):     # check if switch pressed
+                if (switch.read()):
+                # check if switch pressed
                 # Read the temperature, printing both the Celsius and
                 # equivalent Fahrenheit temperature
-			            temp = tempSensor.read()
+			temp = tempSensor.read()
                         # ADC has output range 0 to 1023
                         # Temp sensor works from -40C to 125C,
-                        # 165 degree range offset by 40 degrees C
-                        # 1024/165 = 6.2
-                        celsius = temp/6.2 - 40;
+                        # 165 degree range ofset by 40 degrees C
+                        R = 1023.0/temp - 1.0
+                        R = 100000.0*R
+			# thermister B=4275
+                        celsius = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
                         fahrenheit = celsius * 9.0/5.0 + 32.0;
                         # Print it in the console
                         print "%d degrees C, or %d degrees F" \
@@ -49,7 +53,7 @@ try:
                         myLcd.clear()        # clear
                         myLcd.setCursor(0,0) # zero the cursor
                         myLcd.write("%d degrees C" % (celsius))
-			            time.sleep(1)        # pause
+			time.sleep(1)        # pause
                         myLcd.clear()        # clear
                         myLcd.setCursor(0,0) # zero the cursor
                         myLcd.write("%d degrees F" % (fahrenheit))

@@ -1,5 +1,5 @@
 #
-# IOT E6756 Lab Assignment 1
+# IOT E6756 Lab Assignment 2
 #
 # Group: JSJC - Jack Bott, Jingshi Chen, and Shuwei Feng
 #

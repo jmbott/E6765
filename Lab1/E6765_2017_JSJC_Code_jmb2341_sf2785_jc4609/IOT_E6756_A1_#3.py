@@ -11,7 +11,7 @@
 import mraa
 import time
 import pyupm_i2clcd as lcd
-import math 
+import math
 
 # initialize switch variable
 switch_pin_number=8
@@ -44,7 +44,7 @@ try:
                         # 165 degree range ofset by 40 degrees C
                         R = 1023.0/temp - 1.0
                         R = 100000.0*R
-			# thermister B=4275
+			            # thermister B=4275
                         celsius = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
                         fahrenheit = celsius * 9.0/5.0 + 32.0;
                         # Print it in the console
@@ -53,7 +53,7 @@ try:
                         myLcd.clear()        # clear
                         myLcd.setCursor(0,0) # zero the cursor
                         myLcd.write("%d degrees C" % (celsius))
-			time.sleep(1)        # pause
+			            time.sleep(1)        # pause
                         myLcd.clear()        # clear
                         myLcd.setCursor(0,0) # zero the cursor
                         myLcd.write("%d degrees F" % (fahrenheit))

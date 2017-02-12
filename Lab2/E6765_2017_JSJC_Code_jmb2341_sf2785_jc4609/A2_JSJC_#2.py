@@ -16,12 +16,13 @@ import json
 import argparse
 import ast
 import time
+from boto.dynamodb2.table import Table
+from boto.dynamodb2.fields import HashKey
 
 # AWS Account Information
 ACCOUNT_ID = '811222862937'
 IDENTITY_POOL_ID = 'us-east-1:366af791-82c4-490a-8b3e-157a7b007ba2'
 ROLE_ARN = 'arn:aws:iam::811222862937:role/Cognito_edisonDemoKinesisUnauth_Role'
-DYNAMODB_TABLE_NAME = 'edisonDemoDynamo'
 
 # Use cognito to get an identity.
 cognito = boto.connect_cognito_identity()
@@ -39,12 +40,28 @@ client_dynamo = boto.dynamodb2.connect_to_region(
     aws_secret_access_key=assumedRoleObject.credentials.secret_key,
     security_token=assumedRoleObject.credentials.session_token)
 
-from boto.dynamodb2.table import Table
-table_dynamo = Table(DYNAMODB_TABLE_NAME, connection=client_dynamo)
+# Create the DynamoDB table.
+def create_table(name,schema_val):
+    try:
+        DYNAMODB_TABLE_NAME = str(name)
+        table = Table.create(DYNAMODB_TABLE_NAME, schema=[HashKey(str(schema_val))], connection=client_dynamo)
+        print 'writing...'
+        time.sleep(12)
+        return True
+    except KeyboardInterrupt:
+        exit
 
-# Creating table
-users = Table.create('users', schema=[HashKey('username')], connection=client_dynamo)
-time.sleep(12)
+# Print table contents
+def print_table(name):
+    try:
+        DYNAMODB_TABLE_NAME = str(name)
+        table = Table(DYNAMODB_TABLE_NAME)
+        return table
+    except KeyboardInterrupt:
+        exit
+
+
+
 
  ################
 """

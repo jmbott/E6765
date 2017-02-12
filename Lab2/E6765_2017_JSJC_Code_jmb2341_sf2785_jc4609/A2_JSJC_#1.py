@@ -56,7 +56,7 @@ def post_data(path,data):
     except KeyboardInterrupt:
         exit
 
-def delete_data(path, None):
+def delete_data(path):
     try:
         firebase.delete(path, None)
         return True

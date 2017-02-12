@@ -11,14 +11,16 @@
 # > python A2_JSJC_#1.py --read
 #
 # To post to the database
-# > python A2_JSJC_#1.py --post <data>
+# > python A2_JSJC_#1.py --post <data string of dict>
 # ex:
-# > python A2_JSJC_#1.py --post
+# > python A2_JSJC_#1.py --post '{"Edison":10}'
+# > python A2_JSJC_#1.py --post '{"Edison":10, "Name":"anon", "UNI":"anon1234"}'
 #
 
 from firebase import firebase
 import json
 import argparse
+import ast
 
 # disable warnings from old python version
 # REF: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
@@ -40,8 +42,8 @@ def read_data():
 
 def post_data(data):
     try:
-        # d = json.dumps(data)
-        # print d
+        # d = json.dumps(data) # for debug
+        # print d # for debug
         post = firebase.post('',data)
         return post
     except KeyboardInterrupt:
@@ -51,14 +53,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Posts or reads/retrieves data from Firebase')
     parser.add_argument('--read', action='store_true',
         help='Reads database and returns a JSON object')
-    parser.add_argument('--post', metavar='<data>',
-        type=dict, nargs=1, help='Posts data to firebase')
+    parser.add_argument('--post', metavar='str(dict(data))',
+        type=str, nargs=1, help='Posts data to firebase, must be string')
     args = parser.parse_args()
 
     if args.read:
         out = read_data()
     elif args.post:
-        data = args.post[0]
+        p = args.post[0]
+        # print(p) # for debug
+        data = ast.literal_eval(p)
         out = post_data(data)
     else:
         out = read_data()

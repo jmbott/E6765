@@ -17,7 +17,7 @@ import argparse
 import ast
 import time
 from boto.dynamodb2.table import Table
-from boto.dynamodb2.fields import HashKey
+from boto.dynamodb2.fields import HashKey, RangeKey
 
 # AWS Account Information
 ACCOUNT_ID = '811222862937'
@@ -92,22 +92,67 @@ def create_item(name, item):
 # Add prescribed name and UNI
 def name_uni_item(name,CUID):
     try:
+        # inputs must be strings
         create_item('AssignmentTwo',{'name':name, 'CUID':CUID})
         return True
     except KeyboardInterrupt:
         exit
 
-
-# Update an item (in progress)
-def update_table(name, item):
-    # input must be string
+# Describe table
+def desc_table(name):
+    # inputs must be strings
     try:
-        table = Table(name)
-        item
+        table = Table(name, connection=client_dynamo)
+        out = table.describe()
+        print json.dumps(out, indent=4, sort_keys=True)
+        return out
+    except KeyboardInterrupt:
+        exit
+
+# View all entries in A2 table
+def name_uni_list():
+    try:
+        table = Table('AssignmentTwo', connection=client_dynamo)
+        result = table.scan()
+        for n in result:
+            print '{0:1} : {1:1}'.format(n['name'], n['CUID'])
+        return
+    except KeyboardInterrupt:
+        exit
+
+# Search by CUID in A2 table
+def search_CUID(uni):
+    # inputs must be strings
+    try:
+        table = Table('AssignmentTwo', connection=client_dynamo)
+        result = table.scan(CUID__eq=uni)
+        for n in result:
+            print n['name']
+        return
+    except KeyboardInterrupt:
+        exit
+
+# Search by name in A2 table
+def search_name(name):
+    # inputs must be strings
+    try:
+        table = Table('AssignmentTwo', connection=client_dynamo)
+        result = table.query_2(name__eq=name)
+        for n in result:
+            print n['CUID']
+        return
     except KeyboardInterrupt:
         exit
 
 
+# # Update an item (in progress)
+# def update_table(name, item):
+#     # input must be string
+#     try:
+#         table = Table(name)
+#         item
+#     except KeyboardInterrupt:
+#         exit
 
  ################
 """

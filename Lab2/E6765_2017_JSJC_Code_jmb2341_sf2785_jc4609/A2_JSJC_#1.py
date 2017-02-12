@@ -11,10 +11,17 @@
 # > python A2_JSJC_#1.py --read
 #
 # To post to the database
-# > python A2_JSJC_#1.py --post <data string of dict>
-# ex:
-# > python A2_JSJC_#1.py --post '{"Edison":10}'
-# > python A2_JSJC_#1.py --post '{"Edison":10, "Name":"anon", "UNI":"anon1234"}'
+# > python A2_JSJC_#1.py --post <path string> <data string of dict>
+# > python A2_JSJC_#1.py --post 'path' '{'identifier':'value'}'
+# Note: empty path string forms unique identifier
+# ex1:
+# > python A2_JSJC_#1.py --post '' '{"Edison":10}'
+# ex2:
+# > python A2_JSJC_#1.py --post '/user' '{"Edison":10, "Name":"anon", "UNI":"anon1234"}'
+#
+# To delete from the database
+# > python A2_JSJC_#1.py --delete <path string> <data string of dict>
+# > python A2_JSJC_#1.py --delete 'path' '{'identifier':'value'}'
 #
 
 from firebase import firebase
@@ -54,13 +61,13 @@ def delete_data(path,data):
         exit
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Posts or reads/retrieves data from Firebase')
+    parser = argparse.ArgumentParser(description='posts or reads/retrieves data from Firebase')
     parser.add_argument('--read', action='store_true',
-        help='Reads database and returns a JSON object')
+        help='reads database and returns a JSON object')
     parser.add_argument('--post', metavar=('str(path)', 'str(dict(data))'),
-        type=str, nargs=2, help='Posts data to firebase, must be strings')
+        type=str, nargs=2, help='posts data to Firebase, must be strings')
     parser.add_argument('--delete', metavar=('str(path)', 'str(dict(data))'),
-        type=str, nargs=2, help='Removes data from firebase, must be strings')
+        type=str, nargs=2, help='removes data from Firebase, must be strings')
     args = parser.parse_args()
 
     if args.read:
@@ -69,13 +76,13 @@ if __name__ == '__main__':
         path = args.post[0]
         d = args.post[1]
         # print(d) # for debug
-        data = ast.literal_eval(p)
+        data = ast.literal_eval(d)
         out = post_data(path,data)
     elif args.delete:
         path = args.delete[0]
         d = args.delete[1]
         # print(d) # for debug
-        data = ast.literal_eval(p)
+        data = ast.literal_eval(d)
         out = delete_data(path,data)
     else:
         out = read_data()

@@ -41,11 +41,19 @@ client_dynamo = boto.dynamodb2.connect_to_region(
     security_token=assumedRoleObject.credentials.session_token)
 
 # Create the DynamoDB table.
-def create_table(name,schema_val):
+def create_table(name,hashkey,rangekey):
     try:
-        table = Table.create(name, schema=[HashKey(str(schema_val))], connection=client_dynamo)
+        table = Table.create(name, schema=[HashKey(hashkey),RangeKey(rangekey)], connection=client_dynamo)
         print 'writing...'
         time.sleep(12)
+        return True
+    except KeyboardInterrupt:
+        exit
+
+# Creates table with name and uni schema
+def name_uni_table():
+    try:
+        create_table('AssignmentTwo','name','CUID')
         return True
     except KeyboardInterrupt:
         exit
@@ -70,7 +78,7 @@ def count_table(name):
     except KeyboardInterrupt:
         exit
 
-# Create the DynamoDB item
+# Create the DynamoDB item.
 def create_item(name, item):
     # name must be string
     # item must be dict
@@ -81,7 +89,16 @@ def create_item(name, item):
     except KeyboardInterrupt:
         exit
 
-# Update an item
+# Add prescribed name and UNI
+def name_uni_item(name,CUID):
+    try:
+        create_item('AssignmentTwo',{'name':name, 'CUID':CUID})
+        return True
+    except KeyboardInterrupt:
+        exit
+
+
+# Update an item (in progress)
 def update_table(name, item):
     # input must be string
     try:

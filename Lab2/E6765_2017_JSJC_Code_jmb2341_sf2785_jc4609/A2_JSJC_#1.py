@@ -40,12 +40,16 @@ def read_data():
     except KeyboardInterrupt:
         exit
 
-def post_data(data):
+def post_data(path,data):
     try:
-        # d = json.dumps(data) # for debug
-        # print d # for debug
-        post = firebase.post('',data)
+        post = firebase.post(path,data)
         return post
+    except KeyboardInterrupt:
+        exit
+
+def delete_data(path,data):
+    try:
+        firebase.delete(path,data)
     except KeyboardInterrupt:
         exit
 
@@ -53,17 +57,26 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Posts or reads/retrieves data from Firebase')
     parser.add_argument('--read', action='store_true',
         help='Reads database and returns a JSON object')
-    parser.add_argument('--post', metavar='str(dict(data))',
-        type=str, nargs=1, help='Posts data to firebase, must be string')
+    parser.add_argument('--post', metavar=('str(path)', 'str(dict(data))'),
+        type=str, nargs=2, help='Posts data to firebase, must be strings')
+    parser.add_argument('--delete', metavar=('str(path)', 'str(dict(data))'),
+        type=str, nargs=2, help='Removes data from firebase, must be strings')
     args = parser.parse_args()
 
     if args.read:
         out = read_data()
     elif args.post:
-        p = args.post[0]
-        # print(p) # for debug
+        path = args.post[0]
+        d = args.post[1]
+        # print(d) # for debug
         data = ast.literal_eval(p)
-        out = post_data(data)
+        out = post_data(path,data)
+    elif args.delete:
+        path = args.delete[0]
+        d = args.delete[1]
+        # print(d) # for debug
+        data = ast.literal_eval(p)
+        out = delete_data(path,data)
     else:
         out = read_data()
     print(json.dumps(out))

@@ -43,23 +43,52 @@ client_dynamo = boto.dynamodb2.connect_to_region(
 # Create the DynamoDB table.
 def create_table(name,schema_val):
     try:
-        DYNAMODB_TABLE_NAME = str(name)
-        table = Table.create(DYNAMODB_TABLE_NAME, schema=[HashKey(str(schema_val))], connection=client_dynamo)
+        table = Table.create(name, schema=[HashKey(str(schema_val))], connection=client_dynamo)
         print 'writing...'
         time.sleep(12)
         return True
     except KeyboardInterrupt:
         exit
 
-# Print table contents
-def print_table(name):
+# Delete a DynamoDB table.
+def delete_table(name):
+    # input must be string
     try:
-        DYNAMODB_TABLE_NAME = str(name)
-        table = Table(DYNAMODB_TABLE_NAME)
-        return table
+        table = Table(name, connection=client_dynamo)
+        table.delete()
+        return
     except KeyboardInterrupt:
         exit
 
+# Count items in table.
+def count_table(name):
+    # input must be string, 6 hours delayed
+    try:
+        table = Table(name, connection=client_dynamo)
+        count = table.count()
+        return count
+    except KeyboardInterrupt:
+        exit
+
+# Create the DynamoDB item
+def create_item(name, item):
+    # name must be string
+    # item must be dict
+    try:
+        table = Table(name, connection=client_dynamo)
+        table.put_item(data=item)
+        return True
+    except KeyboardInterrupt:
+        exit
+
+# Update an item
+def update_table(name, item):
+    # input must be string
+    try:
+        table = Table(name)
+        item
+    except KeyboardInterrupt:
+        exit
 
 
 

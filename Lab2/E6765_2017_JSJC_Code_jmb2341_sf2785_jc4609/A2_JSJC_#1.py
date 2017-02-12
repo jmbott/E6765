@@ -13,15 +13,17 @@
 # To post to the database
 # > python A2_JSJC_#1.py --post <path string> <data string of dict>
 # > python A2_JSJC_#1.py --post 'path' '{'identifier':'value'}'
-# Note: empty path string forms unique identifier
+# Note: empty path string denotes top directory
 # ex1:
 # > python A2_JSJC_#1.py --post '' '{"Edison":10}'
 # ex2:
-# > python A2_JSJC_#1.py --post '/user' '{"Edison":10, "Name":"anon", "UNI":"anon1234"}'
+# > python A2_JSJC_#1.py --post '/user/1' '{"Edison":10, "Name":"anon", "UNI":"anon1234"}'
 #
 # To delete from the database
-# > python A2_JSJC_#1.py --delete <path string> <data string of dict>
-# > python A2_JSJC_#1.py --delete 'path' '{'identifier':'value'}'
+# > python A2_JSJC_#1.py --delete <path string>
+# > python A2_JSJC_#1.py --delete 'path'
+# ex1:
+# > python A2_JSJC_#1.py --delete '/user/1'
 #
 
 from firebase import firebase
@@ -54,9 +56,9 @@ def post_data(path,data):
     except KeyboardInterrupt:
         exit
 
-def delete_data(path,data):
+def delete_data(path):
     try:
-        firebase.delete(path,data)
+        firebase.delete(path)
     except KeyboardInterrupt:
         exit
 
@@ -66,8 +68,8 @@ if __name__ == '__main__':
         help='reads database and returns a JSON object')
     parser.add_argument('--post', metavar=('str(path)', 'str(dict(data))'),
         type=str, nargs=2, help='posts data to Firebase, must be strings')
-    parser.add_argument('--delete', metavar=('str(path)', 'str(dict(data))'),
-        type=str, nargs=2, help='removes data from Firebase, must be strings')
+    parser.add_argument('--delete', metavar=('str(path)'),
+        type=str, nargs=1, help='removes data from Firebase, must be string')
     args = parser.parse_args()
 
     if args.read:
@@ -80,10 +82,7 @@ if __name__ == '__main__':
         out = post_data(path,data)
     elif args.delete:
         path = args.delete[0]
-        d = args.delete[1]
-        # print(d) # for debug
-        data = ast.literal_eval(d)
-        out = delete_data(path,data)
+        out = delete_data(path)
     else:
         out = read_data()
     print(json.dumps(out))

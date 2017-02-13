@@ -68,6 +68,16 @@ def delete_table(name):
     except KeyboardInterrupt:
         exit
 
+# Delete table with name and uni schema
+def name_uni_delete_table():
+    # input must be string
+    try:
+        table = Table('AssignmentTwo', connection=client_dynamo)
+        table.delete()
+        return
+    except KeyboardInterrupt:
+        exit
+
 # Count items in table.
 def count_table(name):
     # input must be string, 6 hours delayed
@@ -164,6 +174,7 @@ menu['5']="Remove Item from Database"
 menu['6']="Search by Name"
 menu['7']="Search by CUID"
 menu['8']="Exit"
+
 while True:
     options=menu.keys()
     options.sort()
@@ -172,29 +183,30 @@ while True:
 
     selection=raw_input("Please Select:")
     print ""
-    if selection =='1':
-        print "create database"
+    if selection =='1':      # create database
+        name_uni_table()
         print ""
-    elif selection == '2':
-        print "delete database"
+    elif selection == '2':      # delete database
+        name_uni_delete_table()
         print ""
-    elif selection == '3':
-        print "list items"
+    elif selection == '3':      # list items
+        name_uni_list()
         print ""
-    elif selection == '4':
-        print "add item"
+    elif selection == '4':      # add item
+        name=raw_input("What name do you want to add?")
+        CUID=raw_input("What uni do you want to add?")
+        name_uni_item(name,CUID)
         print ""
-    elif selection == '5':
+    elif selection == '5':      # remove item
         print "remove item"
         print ""
-    elif selection == '6':
+    elif selection == '6':      # search by name
         print "search by name"
         print ""
-    elif selection == '7':
+    elif selection == '7':      # search by CUID
         print "search by CUID"
         print ""
-    elif selection == '8':
-        print ""
+    elif selection == '8':      # exit
         break
     else:
         print "Unknown Option Selected!"

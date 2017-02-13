@@ -225,13 +225,16 @@ while True:
         print ""
     elif selection == '6':      # search by name
         name=raw_input("What name do you want to search for? ")
+        print ""
         search_name(name)
         print ""
     elif selection == '7':      # search by CUID
         uni=raw_input("What CUID do you want to search for? ")
+        print ""
         search_CUID(uni)
         print ""
     elif selection == '8':      # exit
         break
     else:
         print "Unknown Option Selected!"
+        print ""

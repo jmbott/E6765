@@ -57,6 +57,9 @@ def name_uni_table():
         return True
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error"
+        return False
 
 # Delete a DynamoDB table.
 def delete_table(name):
@@ -77,6 +80,9 @@ def name_uni_delete_table():
         return
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error"
+        return False
 
 # Count items in table.
 def count_table(name):
@@ -98,8 +104,6 @@ def create_item(name, item):
         return True
     except KeyboardInterrupt:
         exit
-    except:
-        return False
 
 # Add prescribed name and UNI
 def name_uni_item(name,CUID):
@@ -109,6 +113,9 @@ def name_uni_item(name,CUID):
         return True
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error"
+        return False
 
 # Delete DynamoDB item for A2
 def name_uni_delete_item(name, uni):
@@ -120,6 +127,9 @@ def name_uni_delete_item(name, uni):
         return True
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error"
+        return False
 
 # Describe table
 def desc_table(name):
@@ -143,6 +153,7 @@ def name_uni_list():
     except KeyboardInterrupt:
         exit
     except:
+        print "Error"
         return False
 
 # Search by CUID in A2 table
@@ -156,6 +167,9 @@ def search_CUID(uni):
         return
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error"
+        return False
 
 # Search by name in A2 table
 def search_name(name):
@@ -168,6 +182,9 @@ def search_name(name):
         return
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error"
+        return False
 
 menu = {}
 menu['1']="Create Database"

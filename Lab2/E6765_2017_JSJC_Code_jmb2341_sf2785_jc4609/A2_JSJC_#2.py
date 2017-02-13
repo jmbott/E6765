@@ -98,23 +98,25 @@ def create_item(name, item):
         return True
     except KeyboardInterrupt:
         exit
-
-# Delete DynamoDB item for A2
-def name_uni_delete_item(tbl, name, uni):
-    # name must be string
-    # item must be dict
-    try:
-        table = Table(tbl, connection=client_dynamo)
-        table.delete_item(name=name, CUID=uni)
-        return True
-    except KeyboardInterrupt:
-        exit
+    except:
+        return False
 
 # Add prescribed name and UNI
 def name_uni_item(name,CUID):
     try:
         # inputs must be strings
         create_item('AssignmentTwo',{'name':name, 'CUID':CUID})
+        return True
+    except KeyboardInterrupt:
+        exit
+
+# Delete DynamoDB item for A2
+def name_uni_delete_item(name, uni):
+    # name must be string
+    # item must be dict
+    try:
+        table = Table('AssignmentTwo', connection=client_dynamo)
+        table.delete_item(name=name, CUID=uni)
         return True
     except KeyboardInterrupt:
         exit
@@ -140,6 +142,8 @@ def name_uni_list():
         return
     except KeyboardInterrupt:
         exit
+    except:
+        return False
 
 # Search by CUID in A2 table
 def search_CUID(uni):
@@ -193,18 +197,22 @@ while True:
         name_uni_list()
         print ""
     elif selection == '4':      # add item
-        name=raw_input("What name do you want to add?")
-        CUID=raw_input("What uni do you want to add?")
+        name=raw_input("What name do you want to add? ")
+        CUID=raw_input("What uni do you want to add? ")
         name_uni_item(name,CUID)
         print ""
     elif selection == '5':      # remove item
-        print "remove item"
+        name=raw_input("What name do you want to remove? ")
+        uni=raw_input("What corresponding uni do you want to remove? ")
+        name_uni_delete_item(name, uni)
         print ""
     elif selection == '6':      # search by name
-        print "search by name"
+        name=raw_input("What name do you want to search for? ")
+        search_name(name)
         print ""
     elif selection == '7':      # search by CUID
-        print "search by CUID"
+        uni=raw_input("What CUID do you want to search for? ")
+        search_CUID(uni)
         print ""
     elif selection == '8':      # exit
         break

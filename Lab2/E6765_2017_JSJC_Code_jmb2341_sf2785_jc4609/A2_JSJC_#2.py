@@ -171,21 +171,30 @@ while True:
         print entry, menu[entry]
 
     selection=raw_input("Please Select:")
+    print ""
     if selection =='1':
         print "create database"
+        print ""
     elif selection == '2':
         print "delete database"
+        print ""
     elif selection == '3':
         print "list items"
+        print ""
     elif selection == '4':
         print "add item"
+        print ""
     elif selection == '5':
         print "remove item"
+        print ""
     elif selection == '6':
         print "search by name"
+        print ""
     elif selection == '7':
         print "search by CUID"
+        print ""
     elif selection == '8':
+        print ""
         break
     else:
         print "Unknown Option Selected!"

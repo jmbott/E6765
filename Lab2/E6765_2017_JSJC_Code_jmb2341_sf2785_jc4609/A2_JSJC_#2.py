@@ -78,13 +78,24 @@ def count_table(name):
     except KeyboardInterrupt:
         exit
 
-# Create the DynamoDB item.
+# Create DynamoDB item.
 def create_item(name, item):
     # name must be string
     # item must be dict
     try:
         table = Table(name, connection=client_dynamo)
         table.put_item(data=item)
+        return True
+    except KeyboardInterrupt:
+        exit
+
+# Delete DynamoDB item for A2
+def name_uni_delete_item(tbl, name, uni):
+    # name must be string
+    # item must be dict
+    try:
+        table = Table(tbl, connection=client_dynamo)
+        table.delete_item(name=name, CUID=uni)
         return True
     except KeyboardInterrupt:
         exit

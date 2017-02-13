@@ -155,62 +155,37 @@ def search_name(name):
     except KeyboardInterrupt:
         exit
 
+menu = {}
+menu['1']="Create Database"
+menu['2']="Delete Database"
+menu['3']="List Items"
+menu['4']="Add Item to Database"
+menu['5']="Remove Item from Database"
+menu['6']="Search by Name"
+menu['7']="Search by CUID"
+menu['8']="Exit"
+while True:
+    options=menu.keys()
+    options.sort()
+    for entry in options:
+        print entry, menu[entry]
 
-# # Update an item (in progress)
-# def update_table(name, item):
-#     # input must be string
-#     try:
-#         table = Table(name)
-#         item
-#     except KeyboardInterrupt:
-#         exit
-
- ################
-"""
-
-def read_data():
-    try:
-        result  = firebase.get('',None)
-        return result
-    except KeyboardInterrupt:
-        exit
-
-def post_data(path,data):
-    try:
-        post = firebase.post(path,data)
-        return post
-    except KeyboardInterrupt:
-        exit
-
-def delete_data(path):
-    try:
-        firebase.delete(path, None)
-        return True
-    except KeyboardInterrupt:
-        exit
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='posts or reads/retrieves data from Firebase')
-    parser.add_argument('--read', action='store_true',
-        help='reads database and returns a JSON object')
-    parser.add_argument('--post', metavar=('str(path)', 'str(dict(data))'),
-        type=str, nargs=2, help='posts data to Firebase, must be strings')
-    parser.add_argument('--delete', metavar=('str(path)'),
-        type=str, nargs=1, help='removes data from Firebase, must be string')
-    args = parser.parse_args()
-
-    if args.read:
-        out = read_data()
-    elif args.post:
-        path = args.post[0]
-        d = args.post[1]
-        # print(d) # for debug
-        data = ast.literal_eval(d)
-        out = post_data(path,data)
-    elif args.delete:
-        path = args.delete[0]
-        out = delete_data(path)
+    selection=raw_input("Please Select:")
+    if selection =='1':
+        print "create database"
+    elif selection == '2':
+        print "delete database"
+    elif selection == '3':
+        print "list items"
+    elif selection == '4':
+        print "add item"
+    elif selection == '5':
+        print "remove item"
+    elif selection == '6':
+        print "search by name"
+    elif selection == '7':
+        print "search by CUID"
+    elif selection == '8':
+        break
     else:
-        out = read_data()
-    print(json.dumps(out))
-"""
+        print "Unknown Option Selected!"

@@ -38,7 +38,7 @@ try:
                 # check if switch pressed
                 # Read the temperature, printing both the Celsius and
                 # equivalent Fahrenheit temperature
-			temp = tempSensor.read()
+			            temp = tempSensor.read()
                         # ADC has output range 0 to 1023
                         # Temp sensor works from -40C to 125C,
                         # 165 degree range ofset by 40 degrees C

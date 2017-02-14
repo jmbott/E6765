@@ -68,6 +68,7 @@ client_kinesis = boto.connect_kinesis(
     aws_access_key_id=assumedRoleObject.credentials.access_key,
     aws_secret_access_key=assumedRoleObject.credentials.secret_key,
     security_token=assumedRoleObject.credentials.session_token)
+KINESIS_STREAM_NAME = 'temp_stream'
 
 # Initialize variables
 a = 0
@@ -168,4 +169,3 @@ except KeyboardInterrupt:
     exit
 except:
     print "Error"
-    return False

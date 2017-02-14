@@ -146,11 +146,11 @@ try:
             celsius = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
             # Convert to F
             fahrenheit = celsius * 9.0/5.0 + 32.0;
-            # Print it in the console
-            print "%d degrees C, or %d degrees F" \
-            % (celsius, fahrenheit)
             # Get current time
             current_time = str(datetime.now())
+            # Print it in the console
+            print "%d :, %d degrees C, %d degrees F, %d time" \
+            % (i, celsius, fahrenheit, current_time)
             # Post temperature to DynamoDB
             d = {
                 'measurement-iteration': '%d'%i,
@@ -178,11 +178,11 @@ try:
             celsius = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
             # Convert to F
             fahrenheit = celsius * 9.0/5.0 + 32.0;
-            # Print it in the console
-            print "%d degrees C, or %d degrees F" \
-            % (celsius, fahrenheit)
             # Get current time
             current_time = str(datetime.now())
+            # Print it in the console
+            print "%d :, %d degrees C, %d degrees F, %d time" \
+            % (i, celsius, fahrenheit, current_time)
             # Post to Kinesis
             package = (j,celsius,current_time)
             client_kinesis.put_record(KINESIS_STREAM_NAME, json.dumps(package), "partitionkey")

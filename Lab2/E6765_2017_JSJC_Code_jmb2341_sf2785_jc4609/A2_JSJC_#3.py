@@ -149,7 +149,7 @@ try:
             # Get current time
             current_time = str(datetime.now())
             # Print it in the console
-            print "%d , %d degrees C, %d degrees F, %s o'clock" \
+            print "DynamoDB: %d , %d degrees C, %d degrees F, %s o'clock" \
             % (i, celsius, fahrenheit, current_time)
             # Post temperature to DynamoDB
             d = {
@@ -181,8 +181,8 @@ try:
             # Get current time
             current_time = str(datetime.now())
             # Print it in the console
-            print "%d , %d degrees C, %d degrees F, %s o'clock" \
-            % (i, celsius, fahrenheit, current_time)
+            print "Kinesis: %d , %d degrees C, %d degrees F, %s o'clock" \
+            % (j, celsius, fahrenheit, current_time)
             # Post to Kinesis
             package = (j,celsius,current_time)
             client_kinesis.put_record(KINESIS_STREAM_NAME, json.dumps(package), "partitionkey")

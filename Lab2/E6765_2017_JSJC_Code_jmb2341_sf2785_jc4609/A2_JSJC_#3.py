@@ -115,10 +115,12 @@ def create_item(name, item):
         print "Error in create_item()"
         return False
 
+# delete old table and create new one if (no old then error)
+delete_table('temp_stream')
+create_table('temp_stream','measurement-iteration','temp')
+
 print "Press Ctrl+C to escape..."
 try:
-    delete_table('temp_stream')
-    create_table('temp_stream','measurement-iteration','temp')
     while (1):
         if (switch.read()):
             a = a+1

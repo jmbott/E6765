@@ -81,6 +81,8 @@ def delete_table(name):
     try:
         table = Table(name, connection=client_dynamo)
         table.delete()
+        print 'waiting for deletion...'
+        time.sleep(12)
         return
     except KeyboardInterrupt:
         exit

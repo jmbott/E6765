@@ -75,6 +75,19 @@ a = 0
 i = 1
 j = 1
 
+# Delete a DynamoDB table.
+def delete_table(name):
+    # input must be string
+    try:
+        table = Table(name, connection=client_dynamo)
+        table.delete()
+        return
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Error in delete_table()"
+        return False
+
 # Create the DynamoDB table.
 def create_table(name,hashkey,rangekey):
     try:
@@ -84,6 +97,9 @@ def create_table(name,hashkey,rangekey):
         return True
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error in create_table()"
+        return False
 
 # Create DynamoDB item.
 def create_item(name, item):
@@ -95,9 +111,13 @@ def create_item(name, item):
         return True
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error in create_item()"
+        return False
 
 print "Press Ctrl+C to escape..."
 try:
+    delete_table('temp_stream')
     create_table('temp_stream','measurement-iteration','temp')
     while (1):
         if (switch.read()):
@@ -168,4 +188,4 @@ try:
 except KeyboardInterrupt:
     exit
 except:
-    print "Error"
+    print "Error: Main Loop"

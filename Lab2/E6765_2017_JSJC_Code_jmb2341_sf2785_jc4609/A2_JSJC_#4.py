@@ -8,7 +8,9 @@
 # temperature in Celsius on the LCD screen.
 #
 # Usage.
-# > A2_JSJC_#4.py BLUETOOTH_ADR
+# > python A2_JSJC_#4.py BLUETOOTH_ADR
+# ex:
+# > python A2_JSJC_#4.py 00:10:18:01:1B:B9
 #
 
 import json

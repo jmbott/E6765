@@ -14,14 +14,14 @@
 
 import boto
 import boto.dynamodb2
-import json
-import argparse
-import ast
-import time
 from boto.dynamodb2.table import Table
 from boto.dynamodb2.fields import HashKey, RangeKey
-import mraa
+from boto import kinesis
+from datetime import datetime
 import pyupm_i2clcd as lcd
+import json
+import time
+import mraa
 import math
 
 # initialize switch variable
@@ -63,6 +63,17 @@ client_dynamo = boto.dynamodb2.connect_to_region(
     aws_secret_access_key=assumedRoleObject.credentials.secret_key,
     security_token=assumedRoleObject.credentials.session_token)
 
+# Prepare Kinesis client
+client_kinesis = boto.connect_kinesis(
+    aws_access_key_id=assumedRoleObject.credentials.access_key,
+    aws_secret_access_key=assumedRoleObject.credentials.secret_key,
+    security_token=assumedRoleObject.credentials.session_token)
+
+# Initialize variables
+a = 0
+i = 1
+j = 1
+
 # Create the DynamoDB table.
 def create_table(name,hashkey,rangekey):
     try:
@@ -86,70 +97,72 @@ def create_item(name, item):
 
 print "Press Ctrl+C to escape..."
 try:
-    create_table('temp_stream','num','temp_c','timestamp')
+    create_table('temp_stream','measurement-iteration','temp')
     while (1):
-        # current mode of operation
-        myLcd.clear()        # clear
-        myLcd.setCursor(0,0) # zero the cursor
-        myLcd.write("Writing to Database...")
-        # stream temperature readings from your temperature sensor
-        # to your cloud DynamoDB database
+        if (switch.read()):
+            a = a+1
+            time.sleep(0.25)
+        if  a%2==0:
+            # current mode of operation
+            myLcd.clear()        # clear
+            myLcd.setCursor(0,0) # zero the cursor
+            myLcd.write("DynamoDB")
+            # stream temperature readings from your temperature sensor
+            # to your cloud DynamoDB database
 
-        # Read temperature here in celsius
-        temp = tempSensor.read()
-        # ADC has output range 0 to 1023
-        # Temp sensor works from -40C to 125C,
-        # 165 degree range ofset by 40 degrees C
-        R = 1023.0/temp - 1.0
-        R = 100000.0*R
-        # thermister B=4275
-        c = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
+            # Read temperature here in celsius
+            temp = tempSensor.read()
+            # ADC has output range 0 to 1023
+            # Temp sensor works from -40C to 125C,
+            # 165 degree range ofset by 40 degrees C
+            R = 1023.0/temp - 1.0
+            R = 100000.0*R
+            # thermister B=4275
+            celsius = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
+            # Convert to F
+            fahrenheit = celsius * 9.0/5.0 + 32.0;
+            # Print it in the console
+            print "%d degrees C, or %d degrees F" \
+            % (celsius, fahrenheit)
+            # Get current time
+            current_time = str(datetime.now())
+            # Post temperature to DynamoDB
+            d = {
+                'measurement-iteration': '%d'%i,
+                'temp': '%s'%celsius,
+                'timestamp': '%s'%current_time,
+            }
+            create_item('temp_stream', d)
+            i =  i + 1
+            time.sleep(0.1)
 
-        # number of readings: n
+        if  a%2==1:
+            # current mode of operation
+            myLcd.clear()        # clear
+            myLcd.setCursor(0,0) # zero the cursor
+            myLcd.write("Kinesis Stream")
 
-        # timestamp of reading: t
-
-        # Convert to F
-        f = c * 9.0/5.0 + 32.0;
-        # Print it in the console
-        print "%d degrees C, or %d degrees F" \
-        % (celsius, fahrenheit)
-        # Post temperature to DynamoDB
-        create_item('temp_stream',{'num':n, 'temp_c':c, 'timestamp':t})
-
-
-        if (switch.read()):      # check if switch pressed
-        # If so shift to using the Amazon Kinesis service
-            while (1):
-                # current mode of operation
-                myLcd.clear()        # clear
-                myLcd.setCursor(0,0) # zero the cursor
-                myLcd.write("Using Amazon Kinesis...")
-
-                # Read temperature here in celsius
-                temp = tempSensor.read()
-                # ADC has output range 0 to 1023
-                # Temp sensor works from -40C to 125C,
-                # 165 degree range ofset by 40 degrees C
-                R = 1023.0/temp - 1.0
-                R = 100000.0*R
-                # thermister B=4275
-                c = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
-
-                # number of readings: n
-
-                # timestamp of reading: t
-
-                # Convert to F
-                f = c * 9.0/5.0 + 32.0;
-                # Print it in the console
-                print "%d degrees C, or %d degrees F" \
-                % (celsius, fahrenheit)
-                # Post to Kinesis
-
-                if (switch.read()):      # check if switch pressed
-                    return
-
+            # Read temperature here in celsius
+            temp = tempSensor.read()
+            # ADC has output range 0 to 1023
+            # Temp sensor works from -40C to 125C,
+            # 165 degree range ofset by 40 degrees C
+            R = 1023.0/temp - 1.0
+            R = 100000.0*R
+            # thermister B=4275
+            celsius = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
+            # Convert to F
+            fahrenheit = celsius * 9.0/5.0 + 32.0;
+            # Print it in the console
+            print "%d degrees C, or %d degrees F" \
+            % (celsius, fahrenheit)
+            # Get current time
+            current_time = str(datetime.now())
+            # Post to Kinesis
+            package = (j,celsius,current_time)
+            client_kinesis.put_record(KINESIS_STREAM_NAME, json.dumps(package), "partitionkey")
+            j =  j + 1
+            time.sleep(0.1)
 
 except KeyboardInterrupt:
     exit

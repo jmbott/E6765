@@ -67,7 +67,7 @@ client_kinesis = boto.connect_kinesis(
     aws_access_key_id=assumedRoleObject.credentials.access_key,
     aws_secret_access_key=assumedRoleObject.credentials.secret_key,
     security_token=assumedRoleObject.credentials.session_token)
-a = 0    
+a = 0
 i = 1
 j = 1
 print "Press Ctrl+C to escape..."
@@ -76,7 +76,7 @@ try:
         if (switch.read()):
             a = a+1
             time.sleep(0.25)
-        if  a%2==0:  
+        if  a%2==0:
             myLcd.clear()        # clear
             myLcd.setCursor(0,0) # zero the cursor
             myLcd.write("DynamoDB")
@@ -84,17 +84,17 @@ try:
             R = 1023.0/temp - 1.0
             R = 100000.0*R
             celsius = 1.0/(math.log10(R/100000.0)/4275+1/298.15)-273.15
-            current_time = str(datetime.now()) 
+            current_time = str(datetime.now())
             table_dynamo.put_item({
                 'temp': '%s'%celsius,
                 'timestamp': '%s'%current_time,
                 'measurement-iteration': '%d'%i,
             })
-            
+
             i =  i + 1
             time.sleep(0.1)
-            
-        if  a%2==1:  
+
+        if  a%2==1:
             myLcd.clear()        # clear
             myLcd.setCursor(0,0) # zero the cursor
             myLcd.write("Kinesis Stream")
@@ -107,6 +107,6 @@ try:
             j =  j + 1
             client_kinesis.put_record(KINESIS_STREAM_NAME, json.dumps(package), "partitionkey")
             time.sleep(0.1)
-                      
+
 except KeyboardInterrupt:
     exit

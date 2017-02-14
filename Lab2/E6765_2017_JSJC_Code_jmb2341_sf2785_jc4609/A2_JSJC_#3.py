@@ -149,7 +149,7 @@ try:
             # Get current time
             current_time = str(datetime.now())
             # Print it in the console
-            print "%d :, %d degrees C, %d degrees F, %d time" \
+            print "%d , %d degrees C, %d degrees F, %s o'clock" \
             % (i, celsius, fahrenheit, current_time)
             # Post temperature to DynamoDB
             d = {
@@ -181,7 +181,7 @@ try:
             # Get current time
             current_time = str(datetime.now())
             # Print it in the console
-            print "%d :, %d degrees C, %d degrees F, %d time" \
+            print "%d , %d degrees C, %d degrees F, %s o'clock" \
             % (i, celsius, fahrenheit, current_time)
             # Post to Kinesis
             package = (j,celsius,current_time)

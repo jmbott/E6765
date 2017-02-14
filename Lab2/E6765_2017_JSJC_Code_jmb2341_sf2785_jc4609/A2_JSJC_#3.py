@@ -192,4 +192,4 @@ try:
 except KeyboardInterrupt:
     exit
 except:
-    print "Error: Main Loop"
+    print "Error in Main Loop"

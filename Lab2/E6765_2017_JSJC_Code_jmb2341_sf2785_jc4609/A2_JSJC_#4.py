@@ -39,5 +39,4 @@ try:
 except KeyboardInterrupt:
     exit
 except:
-    print "Error"
-    return False
+    print "Error in Main Loop"

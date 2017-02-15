@@ -8,7 +8,9 @@
 # temperature in Celsius on the LCD screen.
 #
 # Usage.
-# > A2_JSJC_#4.py BLUETOOTH_ADR
+# > python A2_JSJC_#4.py BLUETOOTH_ADR
+# ex:
+# > python A2_JSJC_#4.py 00:10:18:01:1B:B9
 #
 
 import json
@@ -48,7 +50,7 @@ try:
     last_time = datetime.datetime.now().second
     # initial temperature
     t = 230
-    
+
     while (1):
         # setup bluetooth temp sensor
         tool.sendline('char-write-req 0x2b 0x01')
@@ -71,7 +73,7 @@ try:
             t = floatfromhex(rval[7]+rval[6])
             #print "t",t
         if (now >= last_time + 3) | (last_time >= now +3):
-            last_time = now 
+            last_time = now
             celsius = float(t/10.0)
             #print celsius
             # Convert to F

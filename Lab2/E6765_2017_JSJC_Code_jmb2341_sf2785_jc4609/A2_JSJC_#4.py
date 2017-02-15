@@ -8,9 +8,7 @@
 # temperature in Celsius on the LCD screen.
 #
 # Usage.
-# > python A2_JSJC_#4.py BLUETOOTH_ADR
-# ex:
-# > python A2_JSJC_#4.py 00:10:18:01:1B:B9
+# > A2_JSJC_#4.py BLUETOOTH_ADR
 #
 
 import json
@@ -19,6 +17,7 @@ import mraa
 import pyupm_i2clcd as lcd
 import pexpect
 import sys
+import datetime
 
 # Initialize Jhd1313m1 at 0x3E (LCD_ADDRESS) and 0x62 (RGB_ADDRESS)
 myLcd = lcd.Jhd1313m1(0, 0x3E, 0x62)
@@ -46,6 +45,10 @@ try:
     print ""
     print "Connected!"
 
+    last_time = datetime.datetime.now().second
+    # initial temperature
+    t = 230
+    
     while (1):
         # setup bluetooth temp sensor
         tool.sendline('char-write-req 0x2b 0x01')
@@ -55,21 +58,30 @@ try:
         tool.sendline('char-read-hnd 0x2a')
         tool.expect('descriptor: .*')
         rval = tool.after.split()
+        #print "loop"
+        #print rval
+        now = datetime.datetime.now().second
+        #print last_time
+        #print now
+
         if rval[1] == '34':
             #print rval[6] # 6th byte
             #print rval[7] # 7th byte
             # convert to hex
-            t1 = floatfromhex(rval[6])
-            t2 = floatfromhex(rval[7])
-            celsius = (t1 + t2)/10
+            t = floatfromhex(rval[7]+rval[6])
+            #print "t",t
+        if (now >= last_time + 3) | (last_time >= now +3):
+            last_time = now 
+            celsius = float(t/10.0)
+            #print celsius
             # Convert to F
             fahrenheit = celsius * 9.0/5.0 + 32.0;
             # Print it in the console
-            print "%d degrees C, or %d degrees F" \
+            print "%.1f degrees C, or %.1f degrees F" \
             % (celsius, fahrenheit)
             myLcd.clear()        # clear
             myLcd.setCursor(0,0) # zero the cursor
-            myLcd.write("%d degrees C" % (celsius))
+            myLcd.write("%.1f degrees C" % (celsius))
 
 except KeyboardInterrupt:
     exit

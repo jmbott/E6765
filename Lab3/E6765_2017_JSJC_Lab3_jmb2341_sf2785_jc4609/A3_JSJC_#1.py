@@ -60,33 +60,32 @@ class mtaUpdates(object):
         except (urllib2.URLError, google.protobuf.message.DecodeError) as e:
             print "Error while connecting to mta server " +str(e)
 
-    ########################################################################
-    ####### Run code above this point to validate your connection ##########
-    ########################################################################
+        ########################################################################
+        ####### Run code above this point to validate your connection ##########
+        ########################################################################
 
-    ## The MTA feed gives entities which give information regarding,
-    ## vehicle status, trip_update information & alerts
+        ## The MTA feed gives entities which give information regarding,
+        ## vehicle status, trip_update information & alerts
 
-    timestamp = feed.header.timestamp
-    nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
+        timestamp = feed.header.timestamp
+        nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
 
-    for entity in feed.entity:
-        # Trip update represents a change in timetable
-        if entity.trip_update and entity.trip_update.trip.trip_id:
-            update = tripupdate.tripupdate()
+        for entity in feed.entity:
+            # Trip update represents a change in timetable
+            if entity.trip_update and entity.trip_update.trip.trip_id:
+                update = tripupdate.tripupdate()
 
-            ##### INSERT TRIPUPDATE CODE HERE ####
+                ##### INSERT TRIPUPDATE CODE HERE ####
 
-        if entity.vehicle and entity.vehicle.trip.trip_id:
-            v = vehicle.vehicle()
+            if entity.vehicle and entity.vehicle.trip.trip_id:
+                v = vehicle.vehicle()
 
-            ##### INSERT VEHICLE CODE HERE #####
+                ##### INSERT VEHICLE CODE HERE #####
 
-        if entity.alert:
-            a = alert.alert()
+            if entity.alert:
+                a = alert.alert()
 
-            #### INSERT ALERT CODE HERE #####
+                #### INSERT ALERT CODE HERE #####
 
         return self.tripUpdates
-
-    # END OF getTripUpdates method
+        # END OF getTripUpdates method

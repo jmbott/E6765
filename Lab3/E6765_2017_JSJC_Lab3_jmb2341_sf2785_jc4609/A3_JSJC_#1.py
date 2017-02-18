@@ -87,5 +87,6 @@ class mtaUpdates(object):
 
                 #### INSERT ALERT CODE HERE #####
 
+        print self.a
         return self.tripUpdates
         # END OF getTripUpdates method

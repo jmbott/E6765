@@ -66,7 +66,7 @@ class mtaUpdates(object):
 		##### INSERT VEHICLE CODE HERE #####
 
 	    if entity.alert:
-                a = alert.alert()=
+                a = alert.alert()
 
                 #### INSERT ALERT CODE HERE #####
 

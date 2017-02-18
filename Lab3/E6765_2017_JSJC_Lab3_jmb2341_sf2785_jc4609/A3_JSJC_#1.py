@@ -33,7 +33,7 @@ class mtaUpdates(object):
     MTA_FEED = 'http://datamine.mta.info/mta_esi.php?feed_id='
 
     # Initialize train ID
-    TRAIN = 1
+    TRAIN = "1"
 
     # Reading from the key file (you may need to change file path).
     with open('./key.txt', 'rb') as keyfile:

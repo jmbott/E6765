@@ -78,7 +78,7 @@ class mtaUpdates(object):
 		    ##### INSERT TRIPUPDATE CODE HERE ####
 
 	    if entity.vehicle and entity.vehicle.trip.trip_id:
-	    	v = vehicle.vehicle()
+            v = vehicle.vehicle()
 
 		    ##### INSERT VEHICLE CODE HERE #####
 

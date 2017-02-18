@@ -37,8 +37,8 @@ class mtaUpdates(object):
 
     # Reading from the key file (you may need to change file path).
     with open('./key.txt', 'rb') as keyfile:
-            APIKEY = keyfile.read().rstrip('\n')
-            keyfile.close()
+        APIKEY = keyfile.read().rstrip('\n')
+        keyfile.close()
 
     FEED_URL = MTA_FEED + TRAIN + '&key=' + APIKEY
 
@@ -67,26 +67,26 @@ class mtaUpdates(object):
     ## The MTA feed gives entities which give information regarding,
     ## vehicle status, trip_update information & alerts
 
-	timestamp = feed.header.timestamp
-        nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
+    timestamp = feed.header.timestamp
+    nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
 
-	for entity in feed.entity:
-	    # Trip update represents a change in timetable
+    for entity in feed.entity:
+        # Trip update represents a change in timetable
         if entity.trip_update and entity.trip_update.trip.trip_id:
             update = tripupdate.tripupdate()
 
-		    ##### INSERT TRIPUPDATE CODE HERE ####
+            ##### INSERT TRIPUPDATE CODE HERE ####
 
         if entity.vehicle and entity.vehicle.trip.trip_id:
             v = vehicle.vehicle()
 
-		    ##### INSERT VEHICLE CODE HERE #####
+            ##### INSERT VEHICLE CODE HERE #####
 
         if entity.alert:
             a = alert.alert()
 
             #### INSERT ALERT CODE HERE #####
 
-	return self.tripUpdates
+    return self.tripUpdates
 
     # END OF getTripUpdates method

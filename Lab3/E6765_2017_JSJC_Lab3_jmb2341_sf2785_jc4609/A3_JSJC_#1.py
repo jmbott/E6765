@@ -51,6 +51,8 @@ class mtaUpdates(object):
 
     # Method to get trip updates from mta real time feed
     def getTripUpdates(self):
+        ## Using the gtfs_realtime_pb2 file created by the
+        ## proto compiler, we view the feed using the method below.
         feed = gtfs_realtime_pb2.FeedMessage()
         try:
             with contextlib.closing(urllib2.urlopen(self.FEED_URL)) as response:
@@ -58,6 +60,12 @@ class mtaUpdates(object):
         except (urllib2.URLError, google.protobuf.message.DecodeError) as e:
             print "Error while connecting to mta server " +str(e)
 
+    ########################################################################
+    ####### Run code above this point to validate your connection ##########
+    ########################################################################
+
+    ## The MTA feed gives entities which give information regarding,
+    ## vehicle status, trip_update information & alerts
 
 	timestamp = feed.header.timestamp
         nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
@@ -65,19 +73,19 @@ class mtaUpdates(object):
 	for entity in feed.entity:
 	    # Trip update represents a change in timetable
 	    if entity.trip_update and entity.trip_update.trip.trip_id:
-		update = tripupdate.tripupdate()
+		    update = tripupdate.tripupdate()
 
-		##### INSERT TRIPUPDATE CODE HERE ####
+		    ##### INSERT TRIPUPDATE CODE HERE ####
 
 	    if entity.vehicle and entity.vehicle.trip.trip_id:
 	    	v = vehicle.vehicle()
 
-		##### INSERT VEHICLE CODE HERE #####
+		    ##### INSERT VEHICLE CODE HERE #####
 
 	    if entity.alert:
-                a = alert.alert()
+            a = alert.alert()
 
-                #### INSERT ALERT CODE HERE #####
+            #### INSERT ALERT CODE HERE #####
 
 	return self.tripUpdates
 

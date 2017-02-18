@@ -20,6 +20,7 @@ from collections import OrderedDict
 from pytz import timezone
 import gtfs_realtime_pb2
 import google.protobuf
+import sys
 
 import vehicle,alert,tripupdate
 
@@ -28,23 +29,31 @@ class mtaUpdates(object):
     # Do not change Timezone
     TIMEZONE = timezone('America/New_York')
 
-    # feed url depends on the routes to which you want updates
-    # here we are using feed 1 , which has lines 1,2,3,4,5,6,S
-    # While initializing we can read the API Key and add it to the url
-    feedurl = 'http://datamine.mta.info/mta_esi.php?feed_id=1&key='
+    # Note that Feed_ID=1 applies to the 1,2,3,4,5,6 & Grand Central Shuttle
+    MTA_FEED = 'http://datamine.mta.info/mta_esi.php?feed_id='
+
+    # Initialize train ID
+    TRAIN = 1
+
+    # Reading from the key file (you may need to change file path).
+    with open('./key.txt', 'rb') as keyfile:
+            APIKEY = keyfile.read().rstrip('\n')
+            keyfile.close()
+
+    FEED_URL = MTA_FEED + TRAIN + '&key=' + APIKEY
 
     VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
     tripUpdates = []
     alerts = []
 
     def __init__(self,apikey):
-        self.feedurl = self.feedurl + apikey
+        self.FEED_URL = self.MTA_FEED + self.TRAIN + '&key=' + self.APIKEY
 
     # Method to get trip updates from mta real time feed
     def getTripUpdates(self):
         feed = gtfs_realtime_pb2.FeedMessage()
         try:
-            with contextlib.closing(urllib2.urlopen(self.feedurl)) as response:
+            with contextlib.closing(urllib2.urlopen(self.FEED_URL)) as response:
                 d = feed.ParseFromString(response.read())
         except (urllib2.URLError, google.protobuf.message.DecodeError) as e:
             print "Error while connecting to mta server " +str(e)

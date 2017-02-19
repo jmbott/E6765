@@ -90,7 +90,7 @@ class mtaUpdates(object):
         return self.tripUpdates
         # END OF getTripUpdates method
 
-while true:
+while True:
 
     TRAIN=raw_input("What train are you taking? ")
     REQUEST=raw_input("trip_update, vehicle, or alert? ")

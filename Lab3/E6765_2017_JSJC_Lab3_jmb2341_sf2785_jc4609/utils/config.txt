@@ -1,0 +1,3 @@
+811222862937
+us-east-1:366af791-82c4-490a-8b3e-157a7b007ba2
+arn:aws:iam::811222862937:role/Cognito_edisonDemoKinesisUnauth_Role

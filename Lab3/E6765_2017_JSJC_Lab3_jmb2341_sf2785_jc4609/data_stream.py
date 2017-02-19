@@ -10,7 +10,7 @@ TRAIN = str(1)
 MTA_FEED = 'http://datamine.mta.info/mta_esi.php?feed_id='
 
 ## Reading from the key file (you may need to change file path).
-with open('./key.txt', 'rb') as keyfile:
+with open('./utils/key.txt', 'rb') as keyfile:
         APIKEY = keyfile.read().rstrip('\n')
         keyfile.close()
 

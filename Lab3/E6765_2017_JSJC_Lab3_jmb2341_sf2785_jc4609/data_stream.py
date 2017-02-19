@@ -4,7 +4,7 @@ import urllib,urllib2
 import sys
 import google.protobuf
 
-TRAIN = str(1)
+FEED = str(1)
 
 ## Note that Feed_ID=1 applies to the 1,2,3,4,5,6 & Grand Central Shuttle
 MTA_FEED = 'http://datamine.mta.info/mta_esi.php?feed_id='
@@ -14,7 +14,7 @@ with open('./utils/key.txt', 'rb') as keyfile:
         APIKEY = keyfile.read().rstrip('\n')
         keyfile.close()
 
-FEED_URL = MTA_FEED + TRAIN + '&key=' + APIKEY
+FEED_URL = MTA_FEED + FEED + '&key=' + APIKEY
 
 ## Using the gtfs_realtime_pb2 file created by the
 ## proto compiler, we view the feed using the method below.

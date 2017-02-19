@@ -37,9 +37,9 @@ class mtaUpdates:
         APIKEY = keyfile.read().rstrip('\n')
         keyfile.close()
 
-    def __init__(self, TRAIN):
-        self.TRAIN = str(TRAIN)
-        self.FEED_URL = self.MTA_FEED + self.TRAIN + '&key=' + self.APIKEY
+    def __init__(self, FEED=1):
+        self.FEED = str(FEED)
+        self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
         self.updates = []
         self.vehicle = []
         self.alerts = []
@@ -73,22 +73,6 @@ class mtaUpdates:
         for entity in feed.entity:
             # Trip update represents a change in timetable
 
-
-            #if entity.trip_update and entity.trip_update.trip.trip_id:
-            #    update = entity
-            #    #update = tripupdate.tripupdate()
-            #    ##### INSERT TRIPUPDATE CODE HERE ####
-            #
-            #if entity.vehicle and entity.vehicle.trip.trip_id:
-            #    v = entity
-            #    #v = vehicle.vehicle()
-            #    ##### INSERT VEHICLE CODE HERE #####
-            #
-            #if entity.alert:
-            #    a = entity
-            #    #a = alert.alert()
-            #    #### INSERT ALERT CODE HERE #####
-
             if entity.HasField('trip_update'):
                 self.trip_ctr = self.trip_ctr + 1
                 self.updates.append(entity)
@@ -100,25 +84,27 @@ class mtaUpdates:
             if entity.HasField('alert'):
                 self.alert_ctr = self.alert_ctr + 1
                 self.alerts.append(entity)
-
-        if REQUEST == 'u':
-            print self.updates
-            print "Trip Updates: ", self.trip_ctr
-        if REQUEST == 'v':
-            print self.vehicle
-            print "Vehicle Position Updates: ", self.vehicle_ctr
-        if REQUEST == 'a':
-            print self.alerts
-            print "Alerts: ", self.alert_ctr
+        try:
+            if REQUEST == 'u':
+                print self.updates
+                print "Trip Updates: ", self.trip_ctr
+            if REQUEST == 'v':
+                print self.vehicle
+                print "Vehicle Position Updates: ", self.vehicle_ctr
+            if REQUEST == 'a':
+                print self.alerts
+                print "Alerts: ", self.alert_ctr
+        except:
+            print "Request Error"
 
         #return self.tripUpdates
         # END OF getTripUpdates method
 
 print "Press Ctrl+C to escape..."
 try:
-    TRAIN=raw_input("What train are you taking? ")
+    FEED=raw_input("What feed do you want? ")
     REQUEST=raw_input("update: type u, vehicle: type v, or alert: type a? ")
-    mtaUpdates(TRAIN).getTripUpdates(REQUEST)
+    mtaUpdates(FEED).getTripUpdates(REQUEST)
 except KeyboardInterrupt:
     exit
 except:

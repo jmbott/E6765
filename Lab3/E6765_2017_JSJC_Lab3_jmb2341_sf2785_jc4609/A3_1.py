@@ -110,8 +110,6 @@ class mtaUpdates:
         if REQUEST == 'a':
             print self.alerts
             print "Alerts: ", self.alert_ctr
-        else:
-            print "Try Again"
 
         #return self.tripUpdates
         # END OF getTripUpdates method
@@ -119,7 +117,7 @@ class mtaUpdates:
 print "Press Ctrl+C to escape..."
 try:
     TRAIN=raw_input("What train are you taking? ")
-    REQUEST=raw_input("update: type 'u', vehicle: type 'v', or alert: type 'a'? ")
+    REQUEST=raw_input("update: type u, vehicle: type v, or alert: type a? ")
     mtaUpdates(TRAIN).getTripUpdates(REQUEST)
 except KeyboardInterrupt:
     exit

@@ -14,7 +14,7 @@ with open('./key.txt', 'rb') as keyfile:
         APIKEY = keyfile.read().rstrip('\n')
         keyfile.close()
 
-FEED_URL = MTA_FEED + TRAIN + '&key=' APIKEY
+FEED_URL = MTA_FEED + TRAIN + '&key=' + APIKEY
 
 ## Using the gtfs_realtime_pb2 file created by the
 ## proto compiler, we view the feed using the method below.

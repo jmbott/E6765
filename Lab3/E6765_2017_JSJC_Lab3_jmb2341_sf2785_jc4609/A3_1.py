@@ -39,7 +39,7 @@ class mtaUpdates:
 
     def __init__(self, TRAIN):
         self.TRAIN = TRAIN
-        self.FEED_URL = MTA_FEED + self.TRAIN + '&key=' + APIKEY
+        self.FEED_URL = self.MTA_FEED + self.TRAIN + '&key=' + self.APIKEY
         self.updates = []
         self.vehicle = []
         self.alerts = []
@@ -65,7 +65,7 @@ class mtaUpdates:
         ## vehicle status, trip_update information & alerts
 
         self.timestamp = feed.header.timestamp
-        self.nytime = datetime.fromtimestamp(self.timestamp,TIMEZONE)
+        self.nytime = datetime.fromtimestamp(self.timestamp,self.TIMEZONE)
         # nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
 
         self.vehicle_ctr, self.alert_ctr, self.trip_ctr = 0,0,0

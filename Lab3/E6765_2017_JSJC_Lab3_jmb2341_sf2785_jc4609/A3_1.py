@@ -1,5 +1,5 @@
 #
-# IOT E6756 Lab Assignment 2
+# IOT E6756 Lab Assignment 3
 #
 # Group: JSJC - Jack Bott, Jingshi Chen, and Shuwei Feng
 #
@@ -50,7 +50,7 @@ class mtaUpdates(object):
     #    self.FEED_URL = self.MTA_FEED + self.TRAIN + '&key=' + self.APIKEY
 
     # Method to get trip updates from mta real time feed
-    def getTripUpdates(self):
+    def getTripUpdates(self, TRAIN, REQUEST):
         ## Using the gtfs_realtime_pb2 file created by the
         ## proto compiler, we view the feed using the method below.
         feed = gtfs_realtime_pb2.FeedMessage()
@@ -72,21 +72,26 @@ class mtaUpdates(object):
 
         for entity in feed.entity:
             # Trip update represents a change in timetable
-            if entity.trip_update and entity.trip_update.trip.trip_id:
+            if entity.trip_update and entity.trip_update.trip.trip_id and REQUEST == update:
                 update = entity
 
                 ##### INSERT TRIPUPDATE CODE HERE ####
 
-            if entity.vehicle and entity.vehicle.trip.trip_id:
+            if entity.vehicle and entity.vehicle.trip.trip_id and REQUEST == vehicle:
                 v = entity
 
                 ##### INSERT VEHICLE CODE HERE #####
 
-            if entity.alert:
+            if entity.alert and REQUEST == alert:
                 a = entity
 
                 #### INSERT ALERT CODE HERE #####
 
-        print self.a
         return self.tripUpdates
         # END OF getTripUpdates method
+
+while true:
+
+    TRAIN=raw_input("What train are you taking? ")
+    REQUEST=raw_input("trip_update, vehicle, or alert? ")
+    name_uni_item(self,TRAIN,REQUEST)

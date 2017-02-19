@@ -94,4 +94,4 @@ while True:
 
     TRAIN=raw_input("What train are you taking? ")
     REQUEST=raw_input("trip_update, vehicle, or alert? ")
-    name_uni_item(self,TRAIN,REQUEST)
+    getTripUpdates(self,TRAIN,REQUEST)

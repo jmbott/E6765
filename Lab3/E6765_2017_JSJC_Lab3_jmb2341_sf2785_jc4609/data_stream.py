@@ -4,9 +4,11 @@ import urllib,urllib2
 import sys
 import google.protobuf
 
+## Note that Feed_ID=1 applies to the 1,2,3,4,5,6 & Grand Central Shuttle
+## Feed_ID=2 is the beta for N,Q,R,W lines
+## http://datamine.mta.info/list-of-feeds
 FEED = str(1)
 
-## Note that Feed_ID=1 applies to the 1,2,3,4,5,6 & Grand Central Shuttle
 MTA_FEED = 'http://datamine.mta.info/mta_esi.php?feed_id='
 
 ## Reading from the key file (you may need to change file path).

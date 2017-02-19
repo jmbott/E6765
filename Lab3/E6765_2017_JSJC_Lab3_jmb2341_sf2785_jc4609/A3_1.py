@@ -101,13 +101,13 @@ class mtaUpdates:
                 self.alert_ctr = self.alert_ctr + 1
                 self.alerts.append(entity)
 
-        if REQUEST == u:
+        if REQUEST == 'u':
             print self.updates
             print "Trip Updates: ", self.trip_ctr
-        if REQUEST == v:
+        if REQUEST == 'v':
             print self.vehicle
             print "Vehicle Position Updates: ", self.vehicle_ctr
-        if REQUEST == a:
+        if REQUEST == 'a':
             print self.alerts
             print "Alerts: ", self.alert_ctr
         else:
@@ -119,7 +119,7 @@ class mtaUpdates:
 print "Press Ctrl+C to escape..."
 try:
     TRAIN=raw_input("What train are you taking? ")
-    REQUEST=raw_input("update (u), vehicle (v), or alert (a)? ")
+    REQUEST=raw_input("update: type 'u', vehicle: type 'v', or alert: type 'a'? ")
     mtaUpdates(TRAIN).getTripUpdates(REQUEST)
 except KeyboardInterrupt:
     exit

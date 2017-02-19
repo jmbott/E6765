@@ -18,13 +18,13 @@ from datetime import datetime
 from collections import OrderedDict
 
 from pytz import timezone
-import gtfs_realtime_pb2
+from protos import gtfs_realtime_pb2
 import google.protobuf
 import sys
 
-import vehicle,alert,tripupdate
+from utils import vehicle,alert,tripupdate
 
-class mtaUpdates(object):
+class mtaUpdates:
 
     # Do not change Timezone
     TIMEZONE = timezone('America/New_York')
@@ -32,25 +32,22 @@ class mtaUpdates(object):
     # Note that Feed_ID=1 applies to the 1,2,3,4,5,6 & Grand Central Shuttle
     MTA_FEED = 'http://datamine.mta.info/mta_esi.php?feed_id='
 
-    # Initialize train ID
-    TRAIN = "1"
-
     # Reading from the key file (you may need to change file path).
-    with open('./key.txt', 'rb') as keyfile:
+    with open('./utils/key.txt', 'rb') as keyfile:
         APIKEY = keyfile.read().rstrip('\n')
         keyfile.close()
 
-    FEED_URL = MTA_FEED + TRAIN + '&key=' + APIKEY
+    def __init__(self, TRAIN):
+        self.TRAIN = TRAIN
+        self.FEED_URL = MTA_FEED + self.TRAIN + '&key=' + APIKEY
+        self.updates = []
+        self.vehicle = []
+        self.alerts = []
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
-    #tripUpdates = []
-    #alerts = []
-
-    #def __init__(self,apikey):
-    #    self.FEED_URL = self.MTA_FEED + self.TRAIN + '&key=' + self.APIKEY
 
     # Method to get trip updates from mta real time feed
-    def getTripUpdates(TRAIN, REQUEST):
+    def getTripUpdates(self, REQUEST):
         ## Using the gtfs_realtime_pb2 file created by the
         ## proto compiler, we view the feed using the method below.
         feed = gtfs_realtime_pb2.FeedMessage()
@@ -67,49 +64,52 @@ class mtaUpdates(object):
         ## The MTA feed gives entities which give information regarding,
         ## vehicle status, trip_update information & alerts
 
-        timestamp = feed.header.timestamp
-        nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
+        self.timestamp = feed.header.timestamp
+        self.nytime = datetime.fromtimestamp(self.timestamp,TIMEZONE)
+        # nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
 
-        update, vehicle, alert = "", "", ""
-        u, v, a, = [], [], []
-        vehicle_ctr, alert_ctr, trip_ctr=0,0,0
+        self.vehicle_ctr, self.alert_ctr, self.trip_ctr = 0,0,0
 
         for entity in feed.entity:
             # Trip update represents a change in timetable
-            if entity.trip_update and entity.trip_update.trip.trip_id:
-                update = entity
-                #update = tripupdate.tripupdate()
-                ##### INSERT TRIPUPDATE CODE HERE ####
 
-            if entity.vehicle and entity.vehicle.trip.trip_id:
-                v = entity
-                #v = vehicle.vehicle()
-                ##### INSERT VEHICLE CODE HERE #####
 
-            if entity.alert:
-                a = entity
-                #a = alert.alert()
-                #### INSERT ALERT CODE HERE #####
+            #if entity.trip_update and entity.trip_update.trip.trip_id:
+            #    update = entity
+            #    #update = tripupdate.tripupdate()
+            #    ##### INSERT TRIPUPDATE CODE HERE ####
+            #
+            #if entity.vehicle and entity.vehicle.trip.trip_id:
+            #    v = entity
+            #    #v = vehicle.vehicle()
+            #    ##### INSERT VEHICLE CODE HERE #####
+            #
+            #if entity.alert:
+            #    a = entity
+            #    #a = alert.alert()
+            #    #### INSERT ALERT CODE HERE #####
 
             if entity.HasField('trip_update'):
-                #print entity
-                trip_ctr=trip_ctr+1
-            if entity.HasField('alert'):
-                #print entity
-                alert_ctr=alert_ctr+1
-            if entity.HasField('vehicle'):
-                #print entity
-                vehicle_ctr=vehicle_ctr+1
+                self.trip_ctr = self.trip_ctr + 1
+                self.updates.append(entity)
 
-        if REQUEST == 'alert':
-            print a
-            print "Alerts: ",    alert_ctr
-        if REQUEST == 'vehicle':
-            print v
-            print "Vehicle Position Updates: ",vehicle_ctr
+            if entity.HasField('vehicle'):
+                self.vehicle_ctr = self.vehicle_ctr + 1
+                self.vehicle.append(entity)
+
+            if entity.HasField('alert'):
+                self.alert_ctr = self.alert_ctr + 1
+                self.alerts.append(entity)
+
         if REQUEST == 'update':
-            print update
-            print "Trip Updates: ", trip_ctr
+            print self.updates
+            print "Trip Updates: ", self.trip_ctr
+        if REQUEST == 'vehicle':
+            print self.vehicle
+            print "Vehicle Position Updates: ", self.vehicle_ctr
+        if REQUEST == 'alert':
+            print self.alert
+            print "Alerts: ", self.alert_ctr
         else:
             print "Try Again"
 
@@ -120,7 +120,7 @@ print "Press Ctrl+C to escape..."
 try:
     TRAIN=raw_input("What train are you taking? ")
     REQUEST=raw_input("update, vehicle, or alert? ")
-    mtaUpdates().getTripUpdates(TRAIN,REQUEST)
+    mtaUpdates(TRAIN).getTripUpdates(REQUEST)
 except KeyboardInterrupt:
     exit
 except:

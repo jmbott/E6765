@@ -38,7 +38,7 @@ class mtaUpdates:
         keyfile.close()
 
     def __init__(self, TRAIN):
-        self.TRAIN = TRAIN
+        self.TRAIN = str(TRAIN)
         self.FEED_URL = self.MTA_FEED + self.TRAIN + '&key=' + self.APIKEY
         self.updates = []
         self.vehicle = []
@@ -101,14 +101,14 @@ class mtaUpdates:
                 self.alert_ctr = self.alert_ctr + 1
                 self.alerts.append(entity)
 
-        if REQUEST == 'update':
+        if REQUEST == u:
             print self.updates
             print "Trip Updates: ", self.trip_ctr
-        if REQUEST == 'vehicle':
+        if REQUEST == v:
             print self.vehicle
             print "Vehicle Position Updates: ", self.vehicle_ctr
-        if REQUEST == 'alert':
-            print self.alert
+        if REQUEST == a:
+            print self.alerts
             print "Alerts: ", self.alert_ctr
         else:
             print "Try Again"
@@ -119,7 +119,7 @@ class mtaUpdates:
 print "Press Ctrl+C to escape..."
 try:
     TRAIN=raw_input("What train are you taking? ")
-    REQUEST=raw_input("update, vehicle, or alert? ")
+    REQUEST=raw_input("update (u), vehicle (v), or alert (a)? ")
     mtaUpdates(TRAIN).getTripUpdates(REQUEST)
 except KeyboardInterrupt:
     exit

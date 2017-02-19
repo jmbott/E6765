@@ -42,15 +42,15 @@ class mtaUpdates(object):
 
     FEED_URL = MTA_FEED + TRAIN + '&key=' + APIKEY
 
-    VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
-    tripUpdates = []
-    alerts = []
+    #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
+    #tripUpdates = []
+    #alerts = []
 
     #def __init__(self,apikey):
     #    self.FEED_URL = self.MTA_FEED + self.TRAIN + '&key=' + self.APIKEY
 
     # Method to get trip updates from mta real time feed
-    def getTripUpdates(self, TRAIN, REQUEST):
+    def getTripUpdates(TRAIN, REQUEST):
         ## Using the gtfs_realtime_pb2 file created by the
         ## proto compiler, we view the feed using the method below.
         feed = gtfs_realtime_pb2.FeedMessage()
@@ -70,28 +70,58 @@ class mtaUpdates(object):
         timestamp = feed.header.timestamp
         nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
 
+        update, vehicle, alert = "", "", ""
+        u, v, a, = [], [], []
+        vehicle_ctr, alert_ctr, trip_ctr=0,0,0
+
         for entity in feed.entity:
             # Trip update represents a change in timetable
-            if entity.trip_update and entity.trip_update.trip.trip_id and REQUEST == update:
+            if entity.trip_update and entity.trip_update.trip.trip_id:
                 update = entity
-
+                #update = tripupdate.tripupdate()
                 ##### INSERT TRIPUPDATE CODE HERE ####
 
-            if entity.vehicle and entity.vehicle.trip.trip_id and REQUEST == vehicle:
+            if entity.vehicle and entity.vehicle.trip.trip_id:
                 v = entity
-
+                #v = vehicle.vehicle()
                 ##### INSERT VEHICLE CODE HERE #####
 
-            if entity.alert and REQUEST == alert:
+            if entity.alert:
                 a = entity
-
+                #a = alert.alert()
                 #### INSERT ALERT CODE HERE #####
 
-        return self.tripUpdates
+            if entity.HasField('trip_update'):
+                #print entity
+                trip_ctr=trip_ctr+1
+            if entity.HasField('alert'):
+                #print entity
+                alert_ctr=alert_ctr+1
+            if entity.HasField('vehicle'):
+                #print entity
+                vehicle_ctr=vehicle_ctr+1
+
+        if REQUEST == 'alert':
+            print a
+            print "Alerts: ",    alert_ctr
+        if REQUEST == 'vehicle':
+            print v
+            print "Vehicle Position Updates: ",vehicle_ctr
+        if REQUEST == 'update':
+            print update
+            print "Trip Updates: ", trip_ctr
+        else:
+            print "Try Again"
+
+        #return self.tripUpdates
         # END OF getTripUpdates method
 
-while True:
-
+print "Press Ctrl+C to escape..."
+try:
     TRAIN=raw_input("What train are you taking? ")
-    REQUEST=raw_input("trip_update, vehicle, or alert? ")
-    getTripUpdates(self,TRAIN,REQUEST)
+    REQUEST=raw_input("update, vehicle, or alert? ")
+    mtaUpdates().getTripUpdates(TRAIN,REQUEST)
+except KeyboardInterrupt:
+    exit
+except:
+    print "Error"

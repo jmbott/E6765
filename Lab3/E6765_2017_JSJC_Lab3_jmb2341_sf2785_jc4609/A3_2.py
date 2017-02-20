@@ -33,33 +33,85 @@ from utils import tripupdate,vehicle,alert,aws,mtaUpdates
 # *********************************************************************************************
 
 
-
-client_dynamo = aws.getCredentials()
-
 # Create DynamoDB item in existing database
 def create_item(name, item):
     # name must be string
     # item must be dict
     try:
         # Get the service resource.
-        dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-        table = dynamodb.Table(name, connection=client_dynamo)
-        table.put_item(data=item)
+        dynamodb = aws.getResource('dynamodb', 'us-east-1')
+        table = dynamodb.Table(name)
+        table.put_item(Item=item)
         return True
     except KeyboardInterrupt:
         exit
+    except:
+        print "Error in Create Item"
+        return False
+
+# Batch create Items
+def batch_create_item(name, item):
+    try:
+        # Get the service resource.
+        dynamodb = aws.getResource('dynamodb', 'us-east-1')
+        table = dynamodb.Table(name)
+        with table.batch_writer() as batch:
+            batch.put_item(Item=item)
+        return True
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Error in Batch Create"
+        return False
+
+# Delete DynamoDB item in existing database mtaData
+def delete_item(key):
+    # name must be string
+    # item must be dict
+    try:
+        # Get the service resource.
+        dynamodb = aws.getResource('dynamodb', 'us-east-1')
+        table = dynamodb.Table(name)
+        table.delete_item(Key=key)
+        return True
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Error in Delete Item"
+        return False
+
+# Search for timestamps less than input
+def search_timestamp(ts):
+    # inputs must be strings
+    try:
+        # Get the service resource.
+        dynamodb = aws.getResource('dynamodb', 'us-east-1')
+        table = dynamodb.Table(name)
+        result = table.scan(timestamp__lt=ts)
+        for n in result:
+            print n
+            #print n['timestamp']
+        return
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Error in timestamp search"
+        return False
 
 # Initialize begining times for threads
 b1, b2 = 0, 0
 
 def add():
     print threading.currentThread().getName(), 'Starting'
-    time.sleep(2)
+    ts = time.time()
+    item = {"tripId":1, "timestamp":str(ts)}
+    create_item('mtaData', item)
     print threading.currentThread().getName(), 'Exiting'
 
 def clean():
     print threading.currentThread().getName(), 'Starting'
-    time.sleep(3)
+    ts_clean = time.time()
+
     print threading.currentThread().getName(), 'Exiting'
 
 print "Press Ctrl+C to escape..."

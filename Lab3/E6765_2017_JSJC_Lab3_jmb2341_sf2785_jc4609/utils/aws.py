@@ -17,7 +17,7 @@ COGNITO_ID = "EdisonApp"
 
 def getCredentials():
 	# Get AWS account related details
-	with open('./config.txt', 'rb') as configfile:
+	with open('./utils/config.txt', 'rb') as configfile:
 		ACCOUNT_ID,IDENTITY_POOL_ID,ROLE_ARN = configfile.read().splitlines()
 		configfile.close()
 	# Use cognito to get an identity from AWS for the application residing on Edison

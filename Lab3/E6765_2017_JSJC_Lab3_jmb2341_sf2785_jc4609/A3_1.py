@@ -97,7 +97,6 @@ class mtaUpdates:
         except:
             print "Request Error"
 
-        #return self.tripUpdates
         # END OF getTripUpdates method
 
 print "Press Ctrl+C to escape..."

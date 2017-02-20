@@ -14,7 +14,6 @@ import boto3
 
 COGNITO_ID = "EdisonApp"
 
-
 def getCredentials():
 	# Get AWS account related details
 	with open('./utils/config.txt', 'rb') as configfile:

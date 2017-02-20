@@ -25,12 +25,27 @@ from threading import Thread
 import boto3
 from boto3.dynamodb.conditions import Key,Attr
 
-from utils import tripupdate,vehicle,alert,mtaUpdates,aws
+from utils import tripupdate,vehicle,alert,aws
+
+import A3_1
 
 # *********************************************************************************************
 # Program to update dynamodb with latest data from mta feed. It also cleans up stale entried from db
 # Usage python A3_2.py
 # *********************************************************************************************
+
+client_dynamo = aws.getClient()
+
+# Create DynamoDB item.
+def create_item(name, item):
+    # name must be string
+    # item must be dict
+    try:
+        table = Table(name, connection=client_dynamo)
+        table.put_item(data=item)
+        return True
+    except KeyboardInterrupt:
+        exit
 
 # Initialize begining times for threads
 b1, b2 = 0, 0

@@ -117,17 +117,29 @@ b1, b2 = 0, 0
 tmp = 1
 
 def add():
-    print threading.currentThread().getName(), 'Starting'
-    ts = time.time()
-    item = {"tripId":str(tmp), "timestamp":str(ts)}
-    create_item('mtaData', item)
-    print threading.currentThread().getName(), 'Exiting'
+    try:
+        print threading.currentThread().getName(), 'Starting'
+        ts = time.time()
+        item = {"tripId":str(tmp), "timestamp":str(ts)}
+        create_item('mtaData', item)
+        print threading.currentThread().getName(), 'Exiting'
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Error in add function"
+        return False
 
 def clean():
-    print threading.currentThread().getName(), 'Starting'
-    ts_clean = time.time() - 120
-    search_ts_remove_item(ts_clean)
-    print threading.currentThread().getName(), 'Exiting'
+    try:
+        print threading.currentThread().getName(), 'Starting'
+        ts_clean = time.time() - 120
+        search_ts_remove_item(ts_clean)
+        print threading.currentThread().getName(), 'Exiting'
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Error in clean function"
+        return False
 
 print "Press Ctrl+C to escape..."
 try:

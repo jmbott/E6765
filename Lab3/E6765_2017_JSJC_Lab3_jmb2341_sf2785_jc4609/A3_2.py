@@ -66,12 +66,11 @@ def batch_create_item(name, item):
 
 # Delete DynamoDB item in existing database mtaData
 def delete_item(key):
-    # name must be string
     # item must be dict
     try:
         # Get the service resource.
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
-        table = dynamodb.Table(name)
+        table = dynamodb.Table("mtaData")
         table.delete_item(Key=key)
         return True
     except KeyboardInterrupt:
@@ -82,37 +81,53 @@ def delete_item(key):
 
 # Search for timestamps less than input in mtaData
 def search_timestamp(ts):
-    # inputs must be strings
     try:
         # Get the service resource.
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
         table = dynamodb.Table("mtaData")
         response = table.scan(
-            FilterExpression=Attr('timestamp').lt(ts)
+            FilterExpression=Attr('timestamp').lt(str(ts))
         )
         items = response['Items']
-        print(items)
-        return
+        return items
     except KeyboardInterrupt:
         exit
     except:
         print "Error in timestamp search"
         return False
 
+# Search for timestamps less than input in mtaData and remove with key
+def search_ts_remove_item(ts):
+    try:
+        result = search_timestamp(ts)
+        for n in result:
+            id = n['tripId']
+            key = {"tripId":str(id)}
+            delete_item(key)
+        return True
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Error in search/remove by timestamp"
+        return False
+
 # Initialize begining times for threads
 b1, b2 = 0, 0
+
+tmp = 1
 
 def add():
     print threading.currentThread().getName(), 'Starting'
     ts = time.time()
-    item = {"tripId":"1", "timestamp":str(ts)}
+    item = {"tripId":str(tmp), "timestamp":str(ts)}
     create_item('mtaData', item)
+    tmp = tmp + 1
     print threading.currentThread().getName(), 'Exiting'
 
 def clean():
     print threading.currentThread().getName(), 'Starting'
-    ts_clean = time.time()
-
+    ts_clean = time.time() - 120
+    search_ts_remove_item(ts_clean)
     print threading.currentThread().getName(), 'Exiting'
 
 print "Press Ctrl+C to escape..."

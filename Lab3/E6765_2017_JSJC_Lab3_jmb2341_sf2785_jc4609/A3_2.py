@@ -80,17 +80,18 @@ def delete_item(key):
         print "Error in Delete Item"
         return False
 
-# Search for timestamps less than input
+# Search for timestamps less than input in mtaData
 def search_timestamp(ts):
     # inputs must be strings
     try:
         # Get the service resource.
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
-        table = dynamodb.Table(name)
-        result = table.scan(timestamp__lt=ts)
-        for n in result:
-            print n
-            #print n['timestamp']
+        table = dynamodb.Table("mtaData")
+        response = table.scan(
+            FilterExpression=Attr('timestamp').lt(ts)
+        )
+        items = response['Items']
+        print(items)
         return
     except KeyboardInterrupt:
         exit
@@ -104,7 +105,7 @@ b1, b2 = 0, 0
 def add():
     print threading.currentThread().getName(), 'Starting'
     ts = time.time()
-    item = {"tripId":1, "timestamp":str(ts)}
+    item = {"tripId":"1", "timestamp":str(ts)}
     create_item('mtaData', item)
     print threading.currentThread().getName(), 'Exiting'
 

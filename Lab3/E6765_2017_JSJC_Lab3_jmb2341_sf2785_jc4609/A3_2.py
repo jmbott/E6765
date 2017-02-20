@@ -121,7 +121,6 @@ def add():
     ts = time.time()
     item = {"tripId":str(tmp), "timestamp":str(ts)}
     create_item('mtaData', item)
-    tmp = tmp + 1
     print threading.currentThread().getName(), 'Exiting'
 
 def clean():
@@ -144,6 +143,7 @@ try:
             t2= threading.Thread(name='clean old data', target=clean) # Define Threads
             t2.start() # Start thread t2
         if time.time() - b1 > 30:
+            tmp = tmp + 1
             b1 = 0
         if time.time() - b2 > 60:
             b2 = 0

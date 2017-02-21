@@ -14,9 +14,14 @@ class mtaUpdates:
 
     # Do not change Timezone
     TIMEZONE = timezone('America/New_York')
+    print "1"
+    print TIMEZONE
 
     # Note that Feed_ID=1 applies to the 1,2,3,4,5,6 & Grand Central Shuttle
     MTA_FEED = 'http://datamine.mta.info/mta_esi.php?feed_id='
+
+    print "2"
+    print MTA_FEED
 
     # Reading from the key file (you may need to change file path).
     with open('./utils/key.txt', 'rb') as keyfile:
@@ -28,6 +33,12 @@ class mtaUpdates:
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
         self.d = OrderedDict()
 
+    print "3"
+    print self.FEED
+
+    print "4"
+    print self.FEED_URL
+
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
     # Method to get trip updates from mta real time feed
@@ -35,6 +46,9 @@ class mtaUpdates:
         ## Using the gtfs_realtime_pb2 file created by the
         ## proto compiler, we view the feed using the method below.
         feed = gtfs_realtime_pb2.FeedMessage()
+
+        print "5"
+        print feed
         try:
             with contextlib.closing(urllib2.urlopen(self.FEED_URL)) as response:
                 d = feed.ParseFromString(response.read())
@@ -50,6 +64,9 @@ class mtaUpdates:
 
         self.timestamp = feed.header.timestamp
         self.nytime = datetime.fromtimestamp(self.timestamp,self.TIMEZONE)
+
+        print "6"
+        print self.nytime
 
         try:
             for entity in feed.entity:

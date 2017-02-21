@@ -60,25 +60,23 @@ class mtaUpdates:
             dynamodb = aws.getResource('dynamodb', 'us-east-1')
             table = dynamodb.Table("mtaData")
             with table.batch_writer() as batch:
-
-                # Initial Ordered Dict
-                self.D['tripId'] = 'None'
-                self.D['routeId'] = 'None'
-                self.D['startDate'] = 'None'
-                self.D['direction'] = 'None'
-                self.D['currentStopId'] = 'None'
-                self.D['currentStopStatus'] = 'None'
-                self.D['vehicleTimeStamp'] = 'None'
-                self.D['futureStopData'] = 'None'
-                self.D['timestamp'] = str(time.time()) # To clear out
-                
                 for entity in feed.entity:
-
-                    # timeStamp: Feed timestamp [EDIT: This timestamp can be
-                    #  obtained from the mta feed's header message]
-                    self.D['timestamp'] = feed.header.timestamp
-
                     if entity.HasField('vehicle'):
+
+                        # Clear Ordered Dict
+                        self.D['tripId'] = 'None'
+                        self.D['routeId'] = 'None'
+                        self.D['startDate'] = 'None'
+                        self.D['direction'] = 'None'
+                        self.D['currentStopId'] = 'None'
+                        self.D['currentStopStatus'] = 'None'
+                        self.D['vehicleTimeStamp'] = 'None'
+                        self.D['futureStopData'] = 'None'
+                        self.D['timestamp'] = str(time.time())
+
+                        # timeStamp: Feed timestamp [EDIT: This timestamp can be
+                        #  obtained from the mta feed's header message]
+                        self.D['timestamp'] = feed.header.timestamp
 
                         e = entity
 
@@ -106,6 +104,21 @@ class mtaUpdates:
                             print "Batch Create Error 1"
 
                     if entity.HasField('trip_update'):
+
+                        # Clear Ordered Dict
+                        self.D['tripId'] = 'None'
+                        self.D['routeId'] = 'None'
+                        self.D['startDate'] = 'None'
+                        self.D['direction'] = 'None'
+                        self.D['currentStopId'] = 'None'
+                        self.D['currentStopStatus'] = 'None'
+                        self.D['vehicleTimeStamp'] = 'None'
+                        self.D['futureStopData'] = 'None'
+                        self.D['timestamp'] = str(time.time())
+
+                        # timeStamp: Feed timestamp [EDIT: This timestamp can be
+                        #  obtained from the mta feed's header message]
+                        self.D['timestamp'] = feed.header.timestamp
 
                         e = entity
 
@@ -140,17 +153,6 @@ class mtaUpdates:
                             exit
                         except:
                             print "Batch Create Error 2"
-
-                    # Clear Ordered Dict
-                    self.D['tripId'] = 'None'
-                    self.D['routeId'] = 'None'
-                    self.D['startDate'] = 'None'
-                    self.D['direction'] = 'None'
-                    self.D['currentStopId'] = 'None'
-                    self.D['currentStopStatus'] = 'None'
-                    self.D['vehicleTimeStamp'] = 'None'
-                    self.D['futureStopData'] = 'None'
-                    self.D['timestamp'] = str(time.time())
 
         except KeyboardInterrupt:
             exit

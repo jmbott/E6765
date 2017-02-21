@@ -31,6 +31,16 @@ class mtaUpdates:
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
         self.D = OrderedDict()
+        # Clear Ordered Dict
+        self.D['tripId'] = 'None'
+        self.D['routeId'] = 'None'
+        self.D['startDate'] = 'None'
+        self.D['direction'] = 'None'
+        self.D['currentStopId'] = 'None'
+        self.D['currentStopStatus'] = 'None'
+        self.D['vehicleTimeStamp'] = 'None'
+        self.D['futureStopData'] = 'None'
+        self.D['timestamp'] = str(time.time())
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
@@ -62,17 +72,6 @@ class mtaUpdates:
             #with table.batch_writer() as batch:
             for entity in feed.entity:
                 if entity.HasField('vehicle'):
-
-                    # Clear Ordered Dict
-                    self.D['tripId'] = 'None'
-                    self.D['routeId'] = 'None'
-                    self.D['startDate'] = 'None'
-                    self.D['direction'] = 'None'
-                    self.D['currentStopId'] = 'None'
-                    self.D['currentStopStatus'] = 'None'
-                    self.D['vehicleTimeStamp'] = 'None'
-                    self.D['futureStopData'] = 'None'
-                    self.D['timestamp'] = str(time.time())
 
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
                     #  obtained from the mta feed's header message]
@@ -106,17 +105,6 @@ class mtaUpdates:
                         print "Batch Create Error 1"
 
                 if entity.HasField('trip_update'):
-
-                    # Clear Ordered Dict
-                    self.D['tripId'] = 'None'
-                    self.D['routeId'] = 'None'
-                    self.D['startDate'] = 'None'
-                    self.D['direction'] = 'None'
-                    self.D['currentStopId'] = 'None'
-                    self.D['currentStopStatus'] = 'None'
-                    self.D['vehicleTimeStamp'] = 'None'
-                    self.D['futureStopData'] = 'None'
-                    self.D['timestamp'] = str(time.time())
 
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
                     #  obtained from the mta feed's header message]

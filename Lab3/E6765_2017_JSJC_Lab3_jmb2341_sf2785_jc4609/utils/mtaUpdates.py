@@ -32,9 +32,9 @@ class mtaUpdates:
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
         self.d = OrderedDict()
+        print "3"
+        print self.FEED
 
-    print "3"
-    print self.FEED
 
     print "4"
     print self.FEED_URL

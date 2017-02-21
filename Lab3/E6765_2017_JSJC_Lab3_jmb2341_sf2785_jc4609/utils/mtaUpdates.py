@@ -73,6 +73,8 @@ class mtaUpdates:
             for entity in feed.entity:
                 if entity.HasField('vehicle'):
 
+                    self.D = OrderedDict()
+
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
                     #  obtained from the mta feed's header message]
                     self.D['timestamp'] = feed.header.timestamp
@@ -108,6 +110,8 @@ class mtaUpdates:
                     del self.D
 
                 if entity.HasField('trip_update'):
+
+                    self.D = OrderedDict()
 
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
                     #  obtained from the mta feed's header message]

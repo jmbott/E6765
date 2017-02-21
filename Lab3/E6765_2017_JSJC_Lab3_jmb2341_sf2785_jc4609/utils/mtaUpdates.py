@@ -7,7 +7,7 @@ from protos import gtfs_realtime_pb2
 import google.protobuf
 import sys
 
-from utils import vehicle,alert,tripupdate
+#from utils import vehicle,alert,tripupdate
 
 class mtaUpdates:
 
@@ -25,9 +25,7 @@ class mtaUpdates:
     def __init__(self, FEED=1):
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
-        #self.update = tripupdate
-        #self.vehicle = vehicle
-        #self.alert = alert
+        self.d = OrderedDict()
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
@@ -51,101 +49,70 @@ class mtaUpdates:
 
         self.timestamp = feed.header.timestamp
         self.nytime = datetime.fromtimestamp(self.timestamp,self.TIMEZONE)
-        # nytime = datetime.fromtimestamp(timestamp,self.TIMEZONE)
 
-        self.vehicle_ctr, self.alert_ctr, self.trip_ctr = 0,0,0
-
-        for entity in feed.entity:
-            # Trip update represents a change in timetable
-
-            if entity.HasField('trip_update'):
-                print entity.trip_update.trip.trip_id
-                print entity.trip_update.trip.route_id
-                    self.updates.append(entity)
-
-            if entity.HasField('vehicle'):
-                # self.vehicle_ctr = self.vehicle_ctr + 1
-                self.vehicle.append(entity)
-
-            if entity.HasField('alert'):
-                print entity.id
-                print entity.alert.trip.trip_id
-                print entity.alert.trip.route_id
-                print entity.alert.translation.text
-                self.alerts.append(entity)
-
-
+        try:
             for entity in feed.entity:
+
                 # Initial Ordered Dict
-                d = OrderedDict()
-                d['tripId'] = ''
-                d['routeId'] = ''
-                d['startDate'] = ''
-                d['direction'] = ''
-                d['currentStopId'] = ''
-                d['currentStopStatus'] = ''
-                d['vehicleTimeStamp'] = ''
-                d['futureStopData'] = ''
-                d['timestamp'] = ''
+
+                self.d['tripId'] = 'None'
+                self.d['routeId'] = 'None'
+                self.d['startDate'] = 'None'
+                self.d['direction'] = 'None'
+                self.d['currentStopId'] = 'None'
+                self.d['currentStopStatus'] = 'None'
+                self.d['vehicleTimeStamp'] = 'None'
+                self.d['futureStopData'] = 'None'
+                self.d['timestamp'] = str(time.time())
+
                 # timeStamp: Feed timestamp [EDIT: This timestamp can be
                 #  obtained from the mta feed's header message]
-                ts = feed.header.timestamp
+                self.d['timestamp'] = feed.header.timestamp
+
                 if entity.HasField('trip_update'):
+
                     e = entity
-                    id = e.id
+                    # id = e.id
+
                     # tripId: The unique trip identifier
-                    d['tripId'] = e.trip_update.trip.trip_id
+                    self.d['tripId'] = e.trip_update.trip.trip_id
+
                     # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
                     #  Shuttle Service between Times Square & Grand Central
-                    d['routeId'] = e.trip_update.trip.route_id
+                    self.d['routeId'] = e.trip_update.trip.route_id
+
                     # startDate: Journey Start Date
-                    d['startDate'] = e.trip_update.trip.start_date
+                    self.d['startDate'] = e.trip_update.trip.start_date
+
                     # direction: "N" or "S" depending on whether the journey is
                     #  uptown or downtown, respectively. (on the Grand Central
                     #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
-                    d['direction'] = e.trip_update.trip.trip_id[10:11]
+                    self.d['direction'] = e.trip_update.trip.trip_id[10:11]
+
                     # Message feed, regarding the message itself.
                     # futureStopData: Information from the trip_update message.
                     #  Should contain:
                     #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
                     #  for eg.
                     #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
-                    d['futureStopData'] = str(e.trip_update.stop_time_update)
+                    self.d['futureStopData'] = str(e.trip_update.stop_time_update)
 
                 if entity.HasField('vehicle'):
+
                     e = entity
+
                     # currentStopId: Applicable to vehicle messages, stop ID info.
-                    d['currentStopId'] = e.vehicle.stop_id
+                    self.d['currentStopId'] = e.vehicle.stop_id
+
                     # currentStopStatus:
                     #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
                     #  refer manual for more details.
-                    d['currentStopStatus'] = e.vehicle.current_status # ?????
+                    self.d['currentStopStatus'] = e.vehicle.current_status # ?????
+
                     # vehicleTimeStamp: The time stamp obtained from the vehicle
-                    d['vehicleTimeStamp'] = e.vehicle.timestamp
-
-
-
-                d = OrderedDict()
-                d['a'] = 'A'
-                d['b'] = 'B'
-                d['c'] = 'C'
-                d['d'] = 'D'
-                d['e'] = 'E'
-
-            #f = str(e.trip_update.stop_time_update)
-            #f[93:97] # or f[44:48] for departure
-
-        try:
-            if REQUEST == 'u':
-                return self.updates
-                # print "Trip Updates: ", self.trip_ctr
-            if REQUEST == 'v':
-                return self.vehicle
-                # print "Vehicle Position Updates: ", self.vehicle_ctr
-            if REQUEST == 'a':
-                return self.alerts
-                # print "Alerts: ", self.alert_ctr
+                    self.d['vehicleTimeStamp'] = e.vehicle.timestamp
         except:
-            print "Request Error"
+            print "Parsing Error"
 
+        return self.d
         # END OF getTripUpdates method

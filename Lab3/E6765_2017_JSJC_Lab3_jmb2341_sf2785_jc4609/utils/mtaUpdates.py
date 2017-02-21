@@ -106,7 +106,7 @@ class mtaUpdates:
                         self.D['futureStopData'] = str(e.trip_update.stop_time_update)
 
                     if entity.HasField('vehicle'):
-                        if entity.vehicle.trip.trip_id == D['tripId']:
+                        if entity.vehicle.trip.trip_id == self.D['tripId']:
 
                             e = entity
 

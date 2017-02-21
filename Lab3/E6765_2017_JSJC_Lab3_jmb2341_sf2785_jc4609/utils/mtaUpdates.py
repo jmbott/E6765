@@ -25,9 +25,9 @@ class mtaUpdates:
     def __init__(self, FEED=1):
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
-        self.updates = []
-        self.vehicle = []
-        self.alerts = []
+        #self.update = tripupdate
+        #self.vehicle = vehicle
+        #self.alert = alert
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
@@ -59,16 +59,71 @@ class mtaUpdates:
             # Trip update represents a change in timetable
 
             if entity.HasField('trip_update'):
-                # self.trip_ctr = self.trip_ctr + 1
-                self.updates.append(entity)
+                print entity.trip_update.trip.trip_id
+                print entity.trip_update.trip.route_id
+                    self.updates.append(entity)
 
             if entity.HasField('vehicle'):
                 # self.vehicle_ctr = self.vehicle_ctr + 1
                 self.vehicle.append(entity)
 
             if entity.HasField('alert'):
-                # self.alert_ctr = self.alert_ctr + 1
+                print entity.id
+                print entity.alert.trip.trip_id
+                print entity.alert.trip.route_id
+                print entity.alert.translation.text
                 self.alerts.append(entity)
+
+
+            for entity in feed.entity:
+                # timeStamp: Feed timestamp [EDIT: This timestamp can be
+                #  obtained from the mta feed's header message]
+                ts = feed.header.timestamp
+                if entity.HasField('trip_update'):
+                    e = entity
+                    id = e.id
+                    # tripId: The unique trip identifier
+                    tripId = e.trip_update.trip.trip_id
+                    # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
+                    #  Shuttle Service between Times Square & Grand Central
+                    routId = e.trip_update.trip.route_id
+                    # startDate: Journey Start Date
+                    startDate = e.trip_update.trip.start_date
+                    # direction: "N" or "S" depending on whether the journey is
+                    #  uptown or downtown, respectively. (on the Grand Central
+                    #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
+                    direction = e.trip_update.trip.trip_id[10:11]
+                    # Message feed, regarding the message itself.
+                    # futureStopData: Information from the trip_update message.
+                    #  Should contain:
+                    #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
+                    #  for eg.
+                    #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
+                    messageFeed = e.trip_update.stop_time_update
+
+                if entity.HasField('vehicle'):
+                    e = entity
+                    # currentStopId: Applicable to vehicle messages, stop ID info.
+                    currentStopId = e.vehicle.stop_id
+                    # currentStopStatus:
+                    #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
+                    #  refer manual for more details.
+                    currentStopStatus = e.vehicle.current_status # ?????
+                    # vehicleTimeStamp: The time stamp obtained from the vehicle
+                    vehicleTimeStamp = e.vehicle.timestamp
+
+
+
+                d = OrderedDict()
+                d['a'] = 'A'
+                d['b'] = 'B'
+                d['c'] = 'C'
+                d['d'] = 'D'
+                d['e'] = 'E'
+
+            #f = str(e.trip_update.stop_time_update)
+            #f[93:97] # or f[44:48] for departure
+
         try:
             if REQUEST == 'u':
                 return self.updates

@@ -30,7 +30,7 @@ class mtaUpdates:
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
     # Method to get trip updates from mta real time feed
-    def getTripUpdates(self, REQUEST):
+    def getTripUpdates(self):
         ## Using the gtfs_realtime_pb2 file created by the
         ## proto compiler, we view the feed using the method below.
         feed = gtfs_realtime_pb2.FeedMessage()

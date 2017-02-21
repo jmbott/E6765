@@ -31,6 +31,7 @@ class mtaUpdates:
     def __init__(self, FEED=1):
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
+        self.D = OrderedDict()
         print "3"
         print self.FEED
         print "4"
@@ -64,8 +65,6 @@ class mtaUpdates:
         self.timestamp = feed.header.timestamp
         self.nytime = datetime.fromtimestamp(self.timestamp,self.TIMEZONE)
 
-        D = OrderedDict()
-
         print "6"
         print self.nytime
 
@@ -73,19 +72,19 @@ class mtaUpdates:
             for entity in feed.entity:
 
                 # Initial Ordered Dict
-                D['tripId'] = 'None'
-                D['routeId'] = 'None'
-                D['startDate'] = 'None'
-                D['direction'] = 'None'
-                D['currentStopId'] = 'None'
-                D['currentStopStatus'] = 'None'
-                D['vehicleTimeStamp'] = 'None'
-                D['futureStopData'] = 'None'
-                D['timestamp'] = str(time.time())
+                self.D['tripId'] = 'None'
+                self.D['routeId'] = 'None'
+                self.D['startDate'] = 'None'
+                self.D['direction'] = 'None'
+                self.D['currentStopId'] = 'None'
+                self.D['currentStopStatus'] = 'None'
+                self.D['vehicleTimeStamp'] = 'None'
+                self.D['futureStopData'] = 'None'
+                self.D['timestamp'] = str(time.time())
 
                 # timeStamp: Feed timestamp [EDIT: This timestamp can be
                 #  obtained from the mta feed's header message]
-                D['timestamp'] = feed.header.timestamp
+                self.D['timestamp'] = feed.header.timestamp
 
                 if entity.HasField('trip_update'):
 
@@ -93,19 +92,19 @@ class mtaUpdates:
                     # id = e.id
 
                     # tripId: The unique trip identifier
-                    D['tripId'] = e.trip_update.trip.trip_id
+                    self.D['tripId'] = e.trip_update.trip.trip_id
 
                     # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
                     #  Shuttle Service between Times Square & Grand Central
-                    D['routeId'] = e.trip_update.trip.route_id
+                    self.D['routeId'] = e.trip_update.trip.route_id
 
                     # startDate: Journey Start Date
-                    D['startDate'] = e.trip_update.trip.start_date
+                    self.D['startDate'] = e.trip_update.trip.start_date
 
                     # direction: "N" or "S" depending on whether the journey is
                     #  uptown or downtown, respectively. (on the Grand Central
                     #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
-                    D['direction'] = e.trip_update.trip.trip_id[10:11]
+                    self.D['direction'] = e.trip_update.trip.trip_id[10:11]
 
                     # Message feed, regarding the message itself.
                     # futureStopData: Information from the trip_update message.
@@ -113,24 +112,23 @@ class mtaUpdates:
                     #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
                     #  for eg.
                     #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
-                    D['futureStopData'] = str(e.trip_update.stop_time_update)
+                    self.D['futureStopData'] = str(e.trip_update.stop_time_update)
 
                 if entity.HasField('vehicle'):
 
                     e = entity
 
                     # currentStopId: Applicable to vehicle messages, stop ID info.
-                    D['currentStopId'] = e.vehicle.stop_id
+                    self.D['currentStopId'] = e.vehicle.stop_id
 
                     # currentStopStatus:
                     #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
                     #  refer manual for more details.
-                    D['currentStopStatus'] = e.vehicle.current_status # ?????
+                    self.D['currentStopStatus'] = e.vehicle.current_status # ?????
 
                     # vehicleTimeStamp: The time stamp obtained from the vehicle
-                    D['vehicleTimeStamp'] = e.vehicle.timestamp
+                    self.D['vehicleTimeStamp'] = e.vehicle.timestamp
+                    
+                return self.D
         except:
             print "Parsing Error"
-
-        return D
-        # END OF getTripUpdates method

@@ -25,7 +25,7 @@ from threading import Thread
 import boto3
 from boto3.dynamodb.conditions import Key,Attr
 
-#from utils import tripupdate,vehicle,alert,aws,mtaUpdates
+from utils import aws,mtaUpdates
 
 # *********************************************************************************************
 # Program to update dynamodb with latest data from mta feed. It also cleans up stale entried from db

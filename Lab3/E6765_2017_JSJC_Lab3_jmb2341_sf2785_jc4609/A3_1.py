@@ -22,8 +22,6 @@ from protos import gtfs_realtime_pb2
 import google.protobuf
 import sys
 
-#from utils import vehicle,alert,tripupdate
-
 class mtaUpdates:
 
     # Do not change Timezone

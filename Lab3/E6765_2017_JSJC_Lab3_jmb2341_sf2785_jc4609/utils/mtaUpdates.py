@@ -105,7 +105,7 @@ class mtaUpdates:
                         #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
                         self.D['futureStopData'] = str(e.trip_update.stop_time_update)
 
-                    if entity.HasField('vehicle'):
+                    if entity.HasField('vehicle') and entity.vehicle.trip.trip_id == D['tripId']:
 
                         e = entity
 
@@ -120,11 +120,12 @@ class mtaUpdates:
                         # vehicleTimeStamp: The time stamp obtained from the vehicle
                         self.D['vehicleTimeStamp'] = e.vehicle.timestamp
 
-                    try:
-                        item = self.D
-                        batch.put_item(Item=item)
-                    except:
-                        print "Batch Create Error"
-
+                        try:
+                            item = self.D
+                            batch.put_item(Item=item)
+                        except:
+                            print "Batch Create Error"
+        except KeyboardInterrupt:
+            exit
         except:
-            print "Parsing Error"
+            print "mtaUpdates Error"

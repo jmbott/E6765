@@ -80,7 +80,7 @@ class mtaUpdates:
                     if entity.HasField('trip_update'):
 
                         e = entity
-                        # id = e.id
+                        self.id = e.id
 
                         # tripId: The unique trip identifier
                         self.D['tripId'] = e.trip_update.trip.trip_id
@@ -106,7 +106,7 @@ class mtaUpdates:
                         self.D['futureStopData'] = str(e.trip_update.stop_time_update)
 
                     if entity.HasField('vehicle'):
-                        if entity.vehicle.trip.trip_id == self.D['tripId']:
+                        if entity.id == self.id:
 
                             e = entity
 

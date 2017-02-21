@@ -77,55 +77,57 @@ class mtaUpdates:
                     #  obtained from the mta feed's header message]
                     self.D['timestamp'] = feed.header.timestamp
 
-                    if entity.HasField('trip_update'):
+                    if entity.HasField('vehicle'):
 
                         e = entity
                         self.id = e.id
 
-                        # tripId: The unique trip identifier
-                        self.D['tripId'] = e.trip_update.trip.trip_id
+                        # currentStopId: Applicable to vehicle messages, stop ID info.
+                        self.D['currentStopId'] = e.vehicle.stop_id
 
-                        # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
-                        #  Shuttle Service between Times Square & Grand Central
-                        self.D['routeId'] = e.trip_update.trip.route_id
+                        # currentStopStatus:
+                        #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
+                        #  refer manual for more details.
+                        self.D['currentStopStatus'] = e.vehicle.current_status # ?????
 
-                        # startDate: Journey Start Date
-                        self.D['startDate'] = e.trip_update.trip.start_date
+                        # vehicleTimeStamp: The time stamp obtained from the vehicle
+                        self.D['vehicleTimeStamp'] = e.vehicle.timestamp
 
-                        # direction: "N" or "S" depending on whether the journey is
-                        #  uptown or downtown, respectively. (on the Grand Central
-                        #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
-                        self.D['direction'] = e.trip_update.trip.trip_id[10:11]
+                    if entity.HasField('trip_update'):
 
-                        # Message feed, regarding the message itself.
-                        # futureStopData: Information from the trip_update message.
-                        #  Should contain:
-                        #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
-                        #  for eg.
-                        #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
-                        self.D['futureStopData'] = str(e.trip_update.stop_time_update)
-
-                    if entity.HasField('vehicle'):
                         if entity.id == self.id:
 
                             e = entity
 
-                            # currentStopId: Applicable to vehicle messages, stop ID info.
-                            self.D['currentStopId'] = e.vehicle.stop_id
+                            # tripId: The unique trip identifier
+                            self.D['tripId'] = e.trip_update.trip.trip_id
 
-                            # currentStopStatus:
-                            #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
-                            #  refer manual for more details.
-                            self.D['currentStopStatus'] = e.vehicle.current_status # ?????
+                            # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
+                            #  Shuttle Service between Times Square & Grand Central
+                            self.D['routeId'] = e.trip_update.trip.route_id
 
-                            # vehicleTimeStamp: The time stamp obtained from the vehicle
-                            self.D['vehicleTimeStamp'] = e.vehicle.timestamp
+                            # startDate: Journey Start Date
+                            self.D['startDate'] = e.trip_update.trip.start_date
+
+                            # direction: "N" or "S" depending on whether the journey is
+                            #  uptown or downtown, respectively. (on the Grand Central
+                            #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
+                            self.D['direction'] = e.trip_update.trip.trip_id[10:11]
+
+                            # Message feed, regarding the message itself.
+                            # futureStopData: Information from the trip_update message.
+                            #  Should contain:
+                            #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
+                            #  for eg.
+                            #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
+                            self.D['futureStopData'] = str(e.trip_update.stop_time_update)
 
                             try:
                                 item = self.D
                                 batch.put_item(Item=item)
                             except:
                                 print "Batch Create Error"
+                                
         except KeyboardInterrupt:
             exit
         except:

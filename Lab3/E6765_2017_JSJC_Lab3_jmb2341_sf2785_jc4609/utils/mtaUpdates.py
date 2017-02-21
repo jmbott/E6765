@@ -10,6 +10,7 @@ import time
 
 import boto3
 from boto3.dynamodb.conditions import Key,Attr
+from utils import aws
 
 #from utils import vehicle,alert,tripupdate
 
@@ -134,6 +135,6 @@ class mtaUpdates:
                 item = self.D
                 name = "mtaData"
                 mtaUpdates(1).create_item(name, item)
-                
+
         except:
             print "Parsing Error"

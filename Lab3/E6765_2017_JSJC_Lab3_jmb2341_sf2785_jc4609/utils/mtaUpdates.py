@@ -57,102 +57,106 @@ class mtaUpdates:
 
         try:
             # Get the dynamoDB service resource
-            dynamodb = aws.getResource('dynamodb', 'us-east-1')
-            table = dynamodb.Table("mtaData")
-            with table.batch_writer() as batch:
-                for entity in feed.entity:
-                    if entity.HasField('vehicle'):
+            #dynamodb = aws.getResource('dynamodb', 'us-east-1')
+            #table = dynamodb.Table("mtaData")
+            #with table.batch_writer() as batch:
+            for entity in feed.entity:
+                if entity.HasField('vehicle'):
 
-                        # Clear Ordered Dict
-                        self.D['tripId'] = 'None'
-                        self.D['routeId'] = 'None'
-                        self.D['startDate'] = 'None'
-                        self.D['direction'] = 'None'
-                        self.D['currentStopId'] = 'None'
-                        self.D['currentStopStatus'] = 'None'
-                        self.D['vehicleTimeStamp'] = 'None'
-                        self.D['futureStopData'] = 'None'
-                        self.D['timestamp'] = str(time.time())
+                    # Clear Ordered Dict
+                    self.D['tripId'] = 'None'
+                    self.D['routeId'] = 'None'
+                    self.D['startDate'] = 'None'
+                    self.D['direction'] = 'None'
+                    self.D['currentStopId'] = 'None'
+                    self.D['currentStopStatus'] = 'None'
+                    self.D['vehicleTimeStamp'] = 'None'
+                    self.D['futureStopData'] = 'None'
+                    self.D['timestamp'] = str(time.time())
 
-                        # timeStamp: Feed timestamp [EDIT: This timestamp can be
-                        #  obtained from the mta feed's header message]
-                        self.D['timestamp'] = feed.header.timestamp
+                    # timeStamp: Feed timestamp [EDIT: This timestamp can be
+                    #  obtained from the mta feed's header message]
+                    self.D['timestamp'] = feed.header.timestamp
 
-                        e = entity
+                    e = entity
 
-                        # tripId: The unique trip identifier
-                        self.D['tripId'] = e.vehicle.trip.trip_id
+                    # tripId: The unique trip identifier
+                    self.D['tripId'] = e.vehicle.trip.trip_id
 
-                        # currentStopId: Applicable to vehicle messages, stop ID info.
-                        self.D['currentStopId'] = e.vehicle.stop_id
+                    # currentStopId: Applicable to vehicle messages, stop ID info.
+                    self.D['currentStopId'] = e.vehicle.stop_id
 
-                        # currentStopStatus:
-                        #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
-                        #  refer manual for more details.
-                        self.D['currentStopStatus'] = e.vehicle.current_status # ?????
+                    # currentStopStatus:
+                    #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
+                    #  refer manual for more details.
+                    self.D['currentStopStatus'] = e.vehicle.current_status # ?????
 
-                        # vehicleTimeStamp: The time stamp obtained from the vehicle
-                        self.D['vehicleTimeStamp'] = e.vehicle.timestamp
+                    # vehicleTimeStamp: The time stamp obtained from the vehicle
+                    self.D['vehicleTimeStamp'] = e.vehicle.timestamp
 
-                        # Post dict
-                        try:
-                            item = self.D
-                            batch.put_item(Item=item)
-                        except KeyboardInterrupt:
-                            exit
-                        except:
-                            print "Batch Create Error 1"
+                    # Post dict
+                    try:
+                        dynamodb = aws.getResource('dynamodb', 'us-east-1')
+                        table = dynamodb.Table("mtaData")
+                        item = self.D
+                        table.put_item(Item=item)
+                    except KeyboardInterrupt:
+                        exit
+                    except:
+                        print "Batch Create Error 1"
 
-                    if entity.HasField('trip_update'):
+                if entity.HasField('trip_update'):
 
-                        # Clear Ordered Dict
-                        self.D['tripId'] = 'None'
-                        self.D['routeId'] = 'None'
-                        self.D['startDate'] = 'None'
-                        self.D['direction'] = 'None'
-                        self.D['currentStopId'] = 'None'
-                        self.D['currentStopStatus'] = 'None'
-                        self.D['vehicleTimeStamp'] = 'None'
-                        self.D['futureStopData'] = 'None'
-                        self.D['timestamp'] = str(time.time())
+                    # Clear Ordered Dict
+                    self.D['tripId'] = 'None'
+                    self.D['routeId'] = 'None'
+                    self.D['startDate'] = 'None'
+                    self.D['direction'] = 'None'
+                    self.D['currentStopId'] = 'None'
+                    self.D['currentStopStatus'] = 'None'
+                    self.D['vehicleTimeStamp'] = 'None'
+                    self.D['futureStopData'] = 'None'
+                    self.D['timestamp'] = str(time.time())
 
-                        # timeStamp: Feed timestamp [EDIT: This timestamp can be
-                        #  obtained from the mta feed's header message]
-                        self.D['timestamp'] = feed.header.timestamp
+                    # timeStamp: Feed timestamp [EDIT: This timestamp can be
+                    #  obtained from the mta feed's header message]
+                    self.D['timestamp'] = feed.header.timestamp
 
-                        e = entity
+                    e = entity
 
-                        # tripId: The unique trip identifier
-                        self.D['tripId'] = e.trip_update.trip.trip_id
+                    # tripId: The unique trip identifier
+                    self.D['tripId'] = e.trip_update.trip.trip_id
 
-                        # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
-                        #  Shuttle Service between Times Square & Grand Central
-                        self.D['routeId'] = e.trip_update.trip.route_id
+                    # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
+                    #  Shuttle Service between Times Square & Grand Central
+                    self.D['routeId'] = e.trip_update.trip.route_id
 
-                        # startDate: Journey Start Date
-                        self.D['startDate'] = e.trip_update.trip.start_date
+                    # startDate: Journey Start Date
+                    self.D['startDate'] = e.trip_update.trip.start_date
 
-                        # direction: "N" or "S" depending on whether the journey is
-                        #  uptown or downtown, respectively. (on the Grand Central
-                        #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
-                        self.D['direction'] = e.trip_update.trip.trip_id[10:11]
+                    # direction: "N" or "S" depending on whether the journey is
+                    #  uptown or downtown, respectively. (on the Grand Central
+                    #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
+                    self.D['direction'] = e.trip_update.trip.trip_id[10:11]
 
-                        # Message feed, regarding the message itself.
-                        # futureStopData: Information from the trip_update message.
-                        #  Should contain:
-                        #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
-                        #  for eg.
-                        #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
-                        self.D['futureStopData'] = str(e.trip_update.stop_time_update)
+                    # Message feed, regarding the message itself.
+                    # futureStopData: Information from the trip_update message.
+                    #  Should contain:
+                    #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
+                    #  for eg.
+                    #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
+                    self.D['futureStopData'] = str(e.trip_update.stop_time_update)
 
-                        # Post dict
-                        try:
-                            item = self.D
-                            batch.put_item(Item=item)
-                        except KeyboardInterrupt:
-                            exit
-                        except:
-                            print "Batch Create Error 2"
+                    # Post dict
+                    try:
+                        dynamodb = aws.getResource('dynamodb', 'us-east-1')
+                        table = dynamodb.Table("mtaData")
+                        item = self.D
+                        table.put_item(Item=item)
+                    except KeyboardInterrupt:
+                        exit
+                    except:
+                        print "Batch Create Error 2"
 
         except KeyboardInterrupt:
             exit

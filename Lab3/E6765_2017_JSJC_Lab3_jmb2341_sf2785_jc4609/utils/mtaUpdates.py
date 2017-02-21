@@ -31,16 +31,6 @@ class mtaUpdates:
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
         self.D = OrderedDict()
-        # Initial Ordered Dict
-        self.D['tripId'] = 'None'
-        self.D['routeId'] = 'None'
-        self.D['startDate'] = 'None'
-        self.D['direction'] = 'None'
-        self.D['currentStopId'] = 'None'
-        self.D['currentStopStatus'] = 'None'
-        self.D['vehicleTimeStamp'] = 'None'
-        self.D['futureStopData'] = 'None'
-        self.D['timestamp'] = str(time.time()) # To clear out
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
@@ -70,6 +60,18 @@ class mtaUpdates:
             dynamodb = aws.getResource('dynamodb', 'us-east-1')
             table = dynamodb.Table("mtaData")
             with table.batch_writer() as batch:
+
+                # Initial Ordered Dict
+                self.D['tripId'] = 'None'
+                self.D['routeId'] = 'None'
+                self.D['startDate'] = 'None'
+                self.D['direction'] = 'None'
+                self.D['currentStopId'] = 'None'
+                self.D['currentStopStatus'] = 'None'
+                self.D['vehicleTimeStamp'] = 'None'
+                self.D['futureStopData'] = 'None'
+                self.D['timestamp'] = str(time.time()) # To clear out
+                
                 for entity in feed.entity:
 
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
@@ -93,6 +95,15 @@ class mtaUpdates:
 
                         # vehicleTimeStamp: The time stamp obtained from the vehicle
                         self.D['vehicleTimeStamp'] = e.vehicle.timestamp
+
+                        # Post dict
+                        try:
+                            item = self.D
+                            batch.put_item(Item=item)
+                        except KeyboardInterrupt:
+                            exit
+                        except:
+                            print "Batch Create Error 1"
 
                     if entity.HasField('trip_update'):
 
@@ -125,19 +136,21 @@ class mtaUpdates:
                         try:
                             item = self.D
                             batch.put_item(Item=item)
+                        except KeyboardInterrupt:
+                            exit
                         except:
-                            print "Batch Create Error"
+                            print "Batch Create Error 2"
 
-                        # Clear Ordered Dict
-                        self.D['tripId'] = 'None'
-                        self.D['routeId'] = 'None'
-                        self.D['startDate'] = 'None'
-                        self.D['direction'] = 'None'
-                        self.D['currentStopId'] = 'None'
-                        self.D['currentStopStatus'] = 'None'
-                        self.D['vehicleTimeStamp'] = 'None'
-                        self.D['futureStopData'] = 'None'
-                        self.D['timestamp'] = str(time.time())
+                    # Clear Ordered Dict
+                    self.D['tripId'] = 'None'
+                    self.D['routeId'] = 'None'
+                    self.D['startDate'] = 'None'
+                    self.D['direction'] = 'None'
+                    self.D['currentStopId'] = 'None'
+                    self.D['currentStopStatus'] = 'None'
+                    self.D['vehicleTimeStamp'] = 'None'
+                    self.D['futureStopData'] = 'None'
+                    self.D['timestamp'] = str(time.time())
 
         except KeyboardInterrupt:
             exit

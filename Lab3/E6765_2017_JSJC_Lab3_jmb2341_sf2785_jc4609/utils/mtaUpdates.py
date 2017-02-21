@@ -34,10 +34,10 @@ class mtaUpdates:
         self.d = OrderedDict()
         print "3"
         print self.FEED
+        print "4"
+        print self.FEED_URL
 
 
-    print "4"
-    print self.FEED_URL
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 

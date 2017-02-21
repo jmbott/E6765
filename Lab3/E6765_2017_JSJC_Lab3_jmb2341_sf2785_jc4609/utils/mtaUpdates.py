@@ -105,26 +105,27 @@ class mtaUpdates:
                         #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
                         self.D['futureStopData'] = str(e.trip_update.stop_time_update)
 
-                    if entity.HasField('vehicle') and entity.vehicle.trip.trip_id == D['tripId']:
+                    if entity.HasField('vehicle'):
+                        if entity.vehicle.trip.trip_id == D['tripId']:
 
-                        e = entity
+                            e = entity
 
-                        # currentStopId: Applicable to vehicle messages, stop ID info.
-                        self.D['currentStopId'] = e.vehicle.stop_id
+                            # currentStopId: Applicable to vehicle messages, stop ID info.
+                            self.D['currentStopId'] = e.vehicle.stop_id
 
-                        # currentStopStatus:
-                        #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
-                        #  refer manual for more details.
-                        self.D['currentStopStatus'] = e.vehicle.current_status # ?????
+                            # currentStopStatus:
+                            #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
+                            #  refer manual for more details.
+                            self.D['currentStopStatus'] = e.vehicle.current_status # ?????
 
-                        # vehicleTimeStamp: The time stamp obtained from the vehicle
-                        self.D['vehicleTimeStamp'] = e.vehicle.timestamp
+                            # vehicleTimeStamp: The time stamp obtained from the vehicle
+                            self.D['vehicleTimeStamp'] = e.vehicle.timestamp
 
-                        try:
-                            item = self.D
-                            batch.put_item(Item=item)
-                        except:
-                            print "Batch Create Error"
+                            try:
+                                item = self.D
+                                batch.put_item(Item=item)
+                            except:
+                                print "Batch Create Error"
         except KeyboardInterrupt:
             exit
         except:

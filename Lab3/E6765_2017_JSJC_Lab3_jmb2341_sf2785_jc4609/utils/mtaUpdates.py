@@ -104,6 +104,9 @@ class mtaUpdates:
                     except:
                         print "Batch Create Error 1"
 
+                    # Clear Ordered Dict
+                    del self.D
+
                 if entity.HasField('trip_update'):
 
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
@@ -145,6 +148,9 @@ class mtaUpdates:
                         exit
                     except:
                         print "Batch Create Error 2"
+
+                    # Clear Ordered Dict
+                    del self.D
 
         except KeyboardInterrupt:
             exit

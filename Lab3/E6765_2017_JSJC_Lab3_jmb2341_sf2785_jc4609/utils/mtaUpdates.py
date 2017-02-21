@@ -31,6 +31,7 @@ class mtaUpdates:
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.FEED + '&key=' + self.APIKEY
         self.D = OrderedDict()
+        self.id = ''
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
@@ -80,7 +81,7 @@ class mtaUpdates:
                     if entity.HasField('vehicle'):
 
                         e = entity
-                        self.id = e.id
+                        self.id = e.vehicle.trip.trip_id
 
                         # currentStopId: Applicable to vehicle messages, stop ID info.
                         self.D['currentStopId'] = e.vehicle.stop_id
@@ -95,7 +96,7 @@ class mtaUpdates:
 
                     if entity.HasField('trip_update'):
 
-                        if entity.id == self.id:
+                        if entity.trip_update.trip.trip_id == self.id:
 
                             e = entity
 
@@ -127,7 +128,7 @@ class mtaUpdates:
                                 batch.put_item(Item=item)
                             except:
                                 print "Batch Create Error"
-                                
+
         except KeyboardInterrupt:
             exit
         except:

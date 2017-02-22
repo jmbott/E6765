@@ -42,11 +42,6 @@ class mtaUpdates:
         self.D['futureStopData'] = 'None'
         self.D['ts'] = str(time.time())
 
-        # setup order
-        dynamodb = aws.getResource('dynamodb', 'us-east-1')
-        table = dynamodb.Table("mtaData")
-        table.put_item(Item=self.D)
-
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
     # Method to get trip updates from mta real time feed
@@ -94,7 +89,7 @@ class mtaUpdates:
                         # currentStopStatus:
                         #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
                         #  refer manual for more details.
-                        self.D['currentStopStatus'] = e.vehicle.current_status # ?????
+                        self.D['currentStopStatus'] = e.vehicle.current_stop_sequence 
 
                         # vehicleTimeStamp: The time stamp obtained from the vehicle
                         self.D['vehicleTimeStamp'] = e.vehicle.timestamp

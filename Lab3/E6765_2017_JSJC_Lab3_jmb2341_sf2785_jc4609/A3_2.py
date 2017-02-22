@@ -86,7 +86,7 @@ def search_timestamp(ts):
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
         table = dynamodb.Table("mtaData")
         response = table.scan(
-            FilterExpression=Attr('timestamp').lt(str(ts))
+            FilterExpression=Attr('ts').lt(str(ts))
         )
         items = response['Items']
         return items
@@ -114,15 +114,15 @@ def search_ts_remove_item(ts):
 # Initialize begining times for threads
 b1, b2 = 0, 0
 
-tmp = 1
+# Initialize Count
+i = 1
+j = 1
 
 def add():
     try:
-        print threading.currentThread().getName(), 'Starting'
-        ts = time.time()
-        item = {"tripId":str(tmp), "timestamp":str(ts)}
-        create_item('mtaData', item)
-        print threading.currentThread().getName(), 'Exiting'
+        print threading.currentThread().getName(), 'Starting', i
+        mtaUpdates.mtaUpdates(1).getTripUpdates()
+        print threading.currentThread().getName(), 'Exiting', i
     except KeyboardInterrupt:
         exit
     except:
@@ -131,10 +131,10 @@ def add():
 
 def clean():
     try:
-        print threading.currentThread().getName(), 'Starting'
+        print threading.currentThread().getName(), 'Starting', j
         ts_clean = time.time() - 120
         search_ts_remove_item(ts_clean)
-        print threading.currentThread().getName(), 'Exiting'
+        print threading.currentThread().getName(), 'Exiting', j
     except KeyboardInterrupt:
         exit
     except:
@@ -148,12 +148,16 @@ try:
             b1 = time.time()
             print b1
             t1= threading.Thread(name='add new data', target=add) # Define Threads
+            t1.setDaemon(True) # Set Daemon because takes longer than 30 seconds
             t1.start() # Start thread t1
+            i = i + 1
         if b2 == 0:
             b2 = time.time()
             print b2
             t2= threading.Thread(name='clean old data', target=clean) # Define Threads
+            t2.setDaemon(True) # Start Daemon for consistency
             t2.start() # Start thread t2
+            j = j + 1
         if time.time() - b1 > 30:
             tmp = tmp + 1
             b1 = 0

@@ -86,7 +86,7 @@ def search_timestamp(ts):
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
         table = dynamodb.Table("mtaData")
         response = table.scan(
-            FilterExpression=Attr('ts').lt(str(ts))
+            FilterExpression=Attr('ts').lt(int(ts))
         )
         items = response['Items']
         return items
@@ -128,7 +128,7 @@ def add():
 def clean():
     try:
         print threading.currentThread().getName(), 'Starting'
-        ts_clean = time.time() - 120
+        ts_clean = int(time.time()) - 120
         search_ts_remove_item(ts_clean)
         print threading.currentThread().getName(), 'Exiting'
     except KeyboardInterrupt:

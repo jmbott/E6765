@@ -87,7 +87,7 @@ class mtaUpdates:
                         self.D['currentStopId'] = e.vehicle.stop_id
 
                         # currentStopStatus:
-                        #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
+                        #  {0:"INCOMING_AT", 1:"STOPPED_AT", 2:"IN_TRANSIT_TO"},
                         #  refer manual for more details.
                         self.D['currentStopStatus'] = e.vehicle.current_status
 

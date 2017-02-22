@@ -114,15 +114,11 @@ def search_ts_remove_item(ts):
 # Initialize begining times for threads
 b1, b2 = 0, 0
 
-# Initialize Count
-i = 1
-j = 1
-
 def add():
     try:
-        print threading.currentThread().getName(), 'Starting', i
+        print threading.currentThread().getName(), 'Starting'
         mtaUpdates.mtaUpdates(1).getTripUpdates()
-        print threading.currentThread().getName(), 'Exiting', i
+        print threading.currentThread().getName(), 'Exiting'
     except KeyboardInterrupt:
         exit
     except:
@@ -131,10 +127,10 @@ def add():
 
 def clean():
     try:
-        print threading.currentThread().getName(), 'Starting', j
+        print threading.currentThread().getName(), 'Starting'
         ts_clean = time.time() - 120
         search_ts_remove_item(ts_clean)
-        print threading.currentThread().getName(), 'Exiting', j
+        print threading.currentThread().getName(), 'Exiting'
     except KeyboardInterrupt:
         exit
     except:
@@ -157,10 +153,8 @@ try:
             t2.setDaemon(True) # Start Daemon for consistency
             t2.start() # Start thread t2
         if time.time() - b1 > 30:
-            j = j + 1
             b1 = 0
         if time.time() - b2 > 60:
-            i = i + 1
             b2 = 0
 except KeyboardInterrupt:
     exit

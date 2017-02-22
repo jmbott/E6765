@@ -89,7 +89,7 @@ class mtaUpdates:
                         # currentStopStatus:
                         #  {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"},
                         #  refer manual for more details.
-                        self.D['currentStopStatus'] = e.vehicle.current_stop_sequence 
+                        self.D['currentStopStatus'] = e.vehicle.current_status
 
                         # vehicleTimeStamp: The time stamp obtained from the vehicle
                         self.D['vehicleTimeStamp'] = e.vehicle.timestamp

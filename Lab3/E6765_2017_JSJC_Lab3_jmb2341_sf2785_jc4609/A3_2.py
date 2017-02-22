@@ -150,20 +150,19 @@ try:
             t1= threading.Thread(name='add new data', target=add) # Define Threads
             t1.setDaemon(True) # Set Daemon because takes longer than 30 seconds
             t1.start() # Start thread t1
-            i = i + 1
         if b2 == 0:
             b2 = time.time()
             print b2
             t2= threading.Thread(name='clean old data', target=clean) # Define Threads
             t2.setDaemon(True) # Start Daemon for consistency
             t2.start() # Start thread t2
-            j = j + 1
         if time.time() - b1 > 30:
-            tmp = tmp + 1
+            j = j + 1
             b1 = 0
         if time.time() - b2 > 60:
+            i = i + 1
             b2 = 0
 except KeyboardInterrupt:
     exit
 except:
-    print "Error"
+    print "Threading Error"

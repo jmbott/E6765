@@ -44,7 +44,7 @@ class mtaUpdates:
 
     # setup order
     dynamodb = aws.getResource('dynamodb', 'us-east-1')
-    table = dynamodb.Table("mtaData)
+    table = dynamodb.Table("mtaData")
     table.put_item(Item=self.D)
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}

@@ -73,8 +73,6 @@ class mtaUpdates:
             for entity in feed.entity:
                 if entity.HasField('vehicle'):
 
-                    self.D = OrderedDict()
-
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
                     #  obtained from the mta feed's header message]
                     self.D['timestamp'] = feed.header.timestamp
@@ -99,19 +97,15 @@ class mtaUpdates:
                     try:
                         dynamodb = aws.getResource('dynamodb', 'us-east-1')
                         table = dynamodb.Table("mtaData")
-                        item = self.D
-                        table.put_item(Item=item)
+                        table.update_item(Key={'tripId':self.D['tripId']},
+                        UpdateExpression="set timestamp = :a, currentStopId=:b, currentStopStatus=:c, vehicleTimeStamp:d",
+                        ExpressionAttributeValues={':a':self.D['timestamp'],':b':self.D['currentStopId'],':c':self.D['currentStopStatus'],':d':self.D['vehicleTimeStamp']})
                     except KeyboardInterrupt:
                         exit
                     except:
                         print "Batch Create Error 1"
 
-                    # Clear Ordered Dict
-                    del self.D
-
                 if entity.HasField('trip_update'):
-
-                    self.D = OrderedDict()
 
                     # timeStamp: Feed timestamp [EDIT: This timestamp can be
                     #  obtained from the mta feed's header message]
@@ -146,15 +140,13 @@ class mtaUpdates:
                     try:
                         dynamodb = aws.getResource('dynamodb', 'us-east-1')
                         table = dynamodb.Table("mtaData")
-                        item = self.D
-                        table.put_item(Item=item)
+                        table.update_item(Key={'tripId':self.D['tripId']},
+                        UpdateExpression="set timestamp = :a, routeId=:b, startDate=:c, direction:d, futureStopData:e",
+                        ExpressionAttributeValues={':a':self.D['timestamp'],':b':self.D['currentStopId'],':c':self.D['currentStopStatus'],':d':self.D['vehicleTimeStamp'],':e':self.D['futureStopData']})
                     except KeyboardInterrupt:
                         exit
                     except:
                         print "Batch Create Error 2"
-
-                    # Clear Ordered Dict
-                    del self.D
 
         except KeyboardInterrupt:
             exit

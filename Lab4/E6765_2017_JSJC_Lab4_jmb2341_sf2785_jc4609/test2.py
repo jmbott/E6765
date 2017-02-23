@@ -3,7 +3,7 @@ import logging
 from utils import aws
 
 # Setup Logging
-logging.basicConfig(filename="sns-publish.log", level=logging.DEBUG)
+#logging.basicConfig(filename="sns-publish.log", level=logging.DEBUG)
 
 #client = boto3.client('sns', 'us-east-1')
 

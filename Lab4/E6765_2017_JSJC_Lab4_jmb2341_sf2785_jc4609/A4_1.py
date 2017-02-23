@@ -1,31 +1,38 @@
 import mraa
 import time
 import math
+import boto3
+import logging
+from utils import aws
 
 # Create the temperature sensor object using AIO pin 0
 tempSensor = mraa.Aio(0)
 
-# Setup aws
-topic = 'mtaSub'
-topic_arn = arn:aws:sns:us-east-1:811222862937:mtaSub
+# Get the service resource.
+client = aws.getClient('sns', 'us-east-1')
 
-def email():
+def publish(subject,message):
     try:
-
+        response = client.publish(
+            TopicArn='arn:aws:sns:us-east-1:811222862937:mtaSub',
+            #TargetArn='string',
+            #PhoneNumber='string',
+            Message=str(message),
+            Subject=str(subject),
+            #MessageStructure='string',
+            #MessageAttributes={
+                #'string': {
+                    #'DataType': 'string',
+                    #'StringValue': 'string',
+                    #'BinaryValue': b'bytes'
+                #}
+            #}
+        )
         return True
     except KeyboardInterrupt:
             exit
     except:
-        print "Error with Email"
-
-def sms():
-    try:
-
-        return True
-    except KeyboardInterrupt:
-            exit
-    except:
-        print "Error with SMS"
+        print "Error Publishing"
 
 
 print "Press Ctrl+C to escape..."
@@ -49,10 +56,7 @@ try:
 
                     # publish message to subscrivers here
                     item = {'fahrenheit':fahrenheit, 'celsius':celsius}
-                    e = email(item)
-                    s = sms(item)
-                    # print result of attempt
-                    print "email %s, sms %s" % (e,s)
+                    publish('temperature',item)
 
                     time.sleep(10)        # pause 10 seconds
 except KeyboardInterrupt:

@@ -41,6 +41,8 @@ class mtaUpdates:
         self.updates = []
         self.vehicle = []
         self.alerts = []
+        self.test = []
+        self.t = []
 
     #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
 
@@ -74,6 +76,8 @@ class mtaUpdates:
             if entity.HasField('trip_update'):
                 self.trip_ctr = self.trip_ctr + 1
                 self.updates.append(entity)
+                self.test = entity.trip_update
+                self.t.append(entity.trip_update.stop_time_update)
 
             if entity.HasField('vehicle'):
                 self.vehicle_ctr = self.vehicle_ctr + 1
@@ -92,6 +96,10 @@ class mtaUpdates:
             if REQUEST == 'a':
                 print self.alerts
                 print "Alerts: ", self.alert_ctr
+            if REQUEST == 't':
+                print self.test
+                print self.test.stop_time_update
+                print self.t
         except:
             print "Request Error"
 

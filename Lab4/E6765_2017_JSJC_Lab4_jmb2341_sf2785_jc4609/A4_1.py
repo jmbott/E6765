@@ -1,3 +1,15 @@
+#
+# IOT E6756 Lab Assignment 4
+#
+# Group: JSJC - Jack Bott, Jingshi Chen, and Shuwei Feng
+#
+# Question 1 (20 pts)
+# Using a temperature sensor, send subscribers the temperature of the Edison's
+# surroundings, by SMS & email, using only Amazon SNS (do not use the code you
+# developed in Lab 1 for email). You need not have code to add new subscribers,
+# you may use a predefined list.
+#
+
 import mraa
 import time
 import math
@@ -61,3 +73,5 @@ try:
             time.sleep(10)        # pause 10 seconds
 except KeyboardInterrupt:
         exit
+except:
+    print "Error in Main Loop"

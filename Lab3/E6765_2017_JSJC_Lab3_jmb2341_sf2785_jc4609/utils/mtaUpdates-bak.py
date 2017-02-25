@@ -42,6 +42,8 @@ class mtaUpdates:
         self.D['futureStopData'] = 'None'
         self.D['ts'] = str(time.time())
 
+    #VCS = {1:"INCOMING_AT", 2:"STOPPED_AT", 3:"IN_TRANSIT_TO"}
+
     # Method to get trip updates from mta real time feed
     def getTripUpdates(self):
         ## Using the gtfs_realtime_pb2 file created by the
@@ -64,8 +66,10 @@ class mtaUpdates:
         self.nytime = datetime.fromtimestamp(self.timestamp,self.TIMEZONE)
 
         try:
-            dynamodb = aws.getResource('dynamodb', 'us-east-1')
-            table = dynamodb.Table("mtaData")
+            # Get the dynamoDB service resource
+            #dynamodb = aws.getResource('dynamodb', 'us-east-1')
+            #table = dynamodb.Table("mtaData")
+            #with table.batch_writer() as batch:
             for entity in feed.entity:
                 try:
                     if entity.HasField('vehicle'):
@@ -92,6 +96,8 @@ class mtaUpdates:
 
                         # Post dict
                         try:
+                            dynamodb = aws.getResource('dynamodb', 'us-east-1')
+                            table = dynamodb.Table("mtaData")
                             table.update_item(
                                 Key={
                                     'tripId':self.D['tripId']
@@ -143,6 +149,8 @@ class mtaUpdates:
 
                         # Post dict
                         try:
+                            dynamodb = aws.getResource('dynamodb', 'us-east-1')
+                            table = dynamodb.Table("mtaData")
                             table.update_item(
                                 Key={
                                     'tripId':self.D['tripId']
@@ -170,49 +178,3 @@ class mtaUpdates:
             exit
         except:
             print "mtaUpdates Error"
-
-dynamodb = aws.getResource('dynamodb', 'us-east-1')
-table = dynamodb.Table("mtaData")
-for entity in feed.entity:
-    if entity.HasField('vehicle'):
-        D['ts'] = feed.header.timestamp
-        e = entity
-        D['tripId'] = e.vehicle.trip.trip_id
-        D['currentStopId'] = e.vehicle.stop_id
-        D['currentStopStatus'] = e.vehicle.current_status
-        D['vehicleTimeStamp'] = e.vehicle.timestamp
-        table.update_item(
-            Key={
-                'tripId':D['tripId']
-            },
-            UpdateExpression=
-                "set ts = :a,currentStopId=:b,currentStopStatus=:c,vehicleTimeStamp=:d",
-            ExpressionAttributeValues={
-                ':a':D['ts'],
-                ':b':D['currentStopId'],
-                ':c':D['currentStopStatus'],
-                ':d':D['vehicleTimeStamp']
-            }
-        )
-    if entity.HasField('trip_update'):
-        D['ts'] = feed.header.timestamp
-        e = entity
-        D['tripId'] = e.trip_update.trip.trip_id
-        D['routeId'] = e.trip_update.trip.route_id
-        D['startDate'] = e.trip_update.trip.start_date
-        D['direction'] = e.trip_update.trip.trip_id[10:11]
-        D['futureStopData'] = str(e.trip_update.stop_time_update)
-        table.update_item(
-            Key={
-                'tripId':D['tripId']
-            },
-            UpdateExpression=
-                "set ts = :a,routeId=:b,startDate=:c,direction=:d,futureStopData=:e",
-            ExpressionAttributeValues={
-                ':a':D['ts'],
-                ':b':D['routeId'],
-                ':c':D['startDate'],
-                ':d':D['direction'],
-                ':e':D['futureStopData']
-            }
-        )

@@ -1,0 +1,7608 @@
+"tripId (S)","direction (S)","futureStopData (S)","routeId (S)","startDate (S)","ts (N)","currentStopId (S)","currentStopStatus (N)","vehicleTimeStamp (N)"
+"074800_3..S01X002","S","[arrival {
+  time: 1488048330
+}
+departure {
+  time: 1488048330
+}
+stop_id: ""255S""
+, arrival {
+  time: 1488048390
+}
+departure {
+  time: 1488048390
+}
+stop_id: ""256S""
+, arrival {
+  time: 1488048480
+}
+stop_id: ""257S""
+]","3","20170225","1488048292","255S","0","1488048290"
+"078800_3..S01X002","S","[arrival {
+  time: 1488048348
+}
+departure {
+  time: 1488048348
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488048408
+}
+departure {
+  time: 1488048408
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488048468
+}
+departure {
+  time: 1488048468
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488048558
+}
+departure {
+  time: 1488048558
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488048648
+}
+departure {
+  time: 1488048648
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488048738
+}
+departure {
+  time: 1488048738
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488048798
+}
+departure {
+  time: 1488048798
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488048888
+}
+departure {
+  time: 1488048888
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488048948
+}
+departure {
+  time: 1488048948
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488049098
+}
+departure {
+  time: 1488049098
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488049158
+}
+departure {
+  time: 1488049158
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488049428
+}
+departure {
+  time: 1488049428
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488049488
+}
+departure {
+  time: 1488049488
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488049578
+}
+departure {
+  time: 1488049578
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488049638
+}
+departure {
+  time: 1488049638
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488049728
+}
+departure {
+  time: 1488049728
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488049788
+}
+departure {
+  time: 1488049788
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488049908
+}
+departure {
+  time: 1488049908
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488049998
+}
+departure {
+  time: 1488049998
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488050088
+}
+departure {
+  time: 1488050088
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488050178
+}
+departure {
+  time: 1488050178
+}
+stop_id: ""248S""
+, arrival {
+  time: 1488050268
+}
+departure {
+  time: 1488050268
+}
+stop_id: ""249S""
+, arrival {
+  time: 1488050388
+}
+departure {
+  time: 1488050628
+}
+stop_id: ""250S""
+, arrival {
+  time: 1488050778
+}
+departure {
+  time: 1488050778
+}
+stop_id: ""251S""
+, arrival {
+  time: 1488050868
+}
+departure {
+  time: 1488050868
+}
+stop_id: ""252S""
+, arrival {
+  time: 1488050988
+}
+departure {
+  time: 1488050988
+}
+stop_id: ""253S""
+, arrival {
+  time: 1488051048
+}
+departure {
+  time: 1488051048
+}
+stop_id: ""254S""
+, arrival {
+  time: 1488051138
+}
+departure {
+  time: 1488051138
+}
+stop_id: ""255S""
+, arrival {
+  time: 1488051198
+}
+departure {
+  time: 1488051198
+}
+stop_id: ""256S""
+, arrival {
+  time: 1488051288
+}
+stop_id: ""257S""
+]","3","20170225","1488048292","130S","0","1488048288"
+"083500_GS.N03R","N","[departure {
+  time: 1488048900
+}
+stop_id: ""901N""
+, arrival {
+  time: 1488048990
+}
+stop_id: ""902N""
+]","GS","20170225","1488048262",,,
+"082550_4..N13X300","N","[departure {
+  time: 1488048330
+}
+stop_id: ""640N""
+, arrival {
+  time: 1488048450
+}
+departure {
+  time: 1488048450
+}
+stop_id: ""639N""
+, arrival {
+  time: 1488048540
+}
+departure {
+  time: 1488048540
+}
+stop_id: ""638N""
+, arrival {
+  time: 1488048600
+}
+departure {
+  time: 1488048600
+}
+stop_id: ""637N""
+, arrival {
+  time: 1488048690
+}
+departure {
+  time: 1488048690
+}
+stop_id: ""636N""
+, arrival {
+  time: 1488048780
+}
+departure {
+  time: 1488048780
+}
+stop_id: ""635N""
+, arrival {
+  time: 1488048900
+}
+departure {
+  time: 1488048900
+}
+stop_id: ""634N""
+, arrival {
+  time: 1488048960
+}
+departure {
+  time: 1488048960
+}
+stop_id: ""633N""
+, arrival {
+  time: 1488049020
+}
+departure {
+  time: 1488049020
+}
+stop_id: ""632N""
+, arrival {
+  time: 1488049140
+}
+departure {
+  time: 1488049140
+}
+stop_id: ""631N""
+, arrival {
+  time: 1488049260
+}
+departure {
+  time: 1488049260
+}
+stop_id: ""630N""
+, arrival {
+  time: 1488049350
+}
+departure {
+  time: 1488049350
+}
+stop_id: ""629N""
+, arrival {
+  time: 1488049440
+}
+departure {
+  time: 1488049440
+}
+stop_id: ""628N""
+, arrival {
+  time: 1488049560
+}
+departure {
+  time: 1488049560
+}
+stop_id: ""627N""
+, arrival {
+  time: 1488049650
+}
+departure {
+  time: 1488049650
+}
+stop_id: ""626N""
+, arrival {
+  time: 1488049770
+}
+departure {
+  time: 1488049770
+}
+stop_id: ""625N""
+, arrival {
+  time: 1488049860
+}
+departure {
+  time: 1488049860
+}
+stop_id: ""624N""
+, arrival {
+  time: 1488049920
+}
+departure {
+  time: 1488049920
+}
+stop_id: ""623N""
+, arrival {
+  time: 1488050010
+}
+departure {
+  time: 1488050010
+}
+stop_id: ""622N""
+, arrival {
+  time: 1488050100
+}
+departure {
+  time: 1488050160
+}
+stop_id: ""621N""
+, arrival {
+  time: 1488050310
+}
+departure {
+  time: 1488050310
+}
+stop_id: ""416N""
+, arrival {
+  time: 1488050430
+}
+departure {
+  time: 1488050430
+}
+stop_id: ""415N""
+, arrival {
+  time: 1488050580
+}
+departure {
+  time: 1488050580
+}
+stop_id: ""414N""
+, arrival {
+  time: 1488050700
+}
+departure {
+  time: 1488050700
+}
+stop_id: ""413N""
+, arrival {
+  time: 1488050790
+}
+departure {
+  time: 1488050790
+}
+stop_id: ""412N""
+, arrival {
+  time: 1488050880
+}
+departure {
+  time: 1488050880
+}
+stop_id: ""411N""
+, arrival {
+  time: 1488050940
+}
+departure {
+  time: 1488050940
+}
+stop_id: ""410N""
+, arrival {
+  time: 1488051030
+}
+departure {
+  time: 1488051030
+}
+stop_id: ""409N""
+, arrival {
+  time: 1488051120
+}
+departure {
+  time: 1488051120
+}
+stop_id: ""408N""
+, arrival {
+  time: 1488051180
+}
+departure {
+  time: 1488051180
+}
+stop_id: ""407N""
+, arrival {
+  time: 1488051240
+}
+departure {
+  time: 1488051240
+}
+stop_id: ""406N""
+, arrival {
+  time: 1488051360
+}
+departure {
+  time: 1488051360
+}
+stop_id: ""405N""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""402N""
+, arrival {
+  time: 1488051570
+}
+stop_id: ""401N""
+]","4","20170225","1488048262","640N","1","1488048154"
+"076800_2..S08R","S","[arrival {
+  time: 1488048251
+}
+departure {
+  time: 1488048251
+}
+stop_id: ""125S""
+, arrival {
+  time: 1488048371
+}
+departure {
+  time: 1488048371
+}
+stop_id: ""126S""
+, arrival {
+  time: 1488048461
+}
+departure {
+  time: 1488048461
+}
+stop_id: ""127S""
+, arrival {
+  time: 1488048551
+}
+departure {
+  time: 1488048551
+}
+stop_id: ""128S""
+, arrival {
+  time: 1488048641
+}
+departure {
+  time: 1488048641
+}
+stop_id: ""129S""
+, arrival {
+  time: 1488048701
+}
+departure {
+  time: 1488048701
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488048761
+}
+departure {
+  time: 1488048761
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488048821
+}
+departure {
+  time: 1488048821
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488048911
+}
+departure {
+  time: 1488048911
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488049001
+}
+departure {
+  time: 1488049001
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488049091
+}
+departure {
+  time: 1488049091
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488049151
+}
+departure {
+  time: 1488049151
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488049241
+}
+departure {
+  time: 1488049241
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488049301
+}
+departure {
+  time: 1488049301
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488049451
+}
+departure {
+  time: 1488049451
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488049511
+}
+departure {
+  time: 1488049511
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488049781
+}
+departure {
+  time: 1488049781
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488049841
+}
+departure {
+  time: 1488049841
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488049931
+}
+departure {
+  time: 1488049931
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488049991
+}
+departure {
+  time: 1488049991
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488050081
+}
+departure {
+  time: 1488050081
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488050141
+}
+departure {
+  time: 1488050141
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488050261
+}
+departure {
+  time: 1488050261
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488050351
+}
+departure {
+  time: 1488050351
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488050441
+}
+departure {
+  time: 1488050441
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488050621
+}
+departure {
+  time: 1488050621
+}
+stop_id: ""241S""
+, arrival {
+  time: 1488050681
+}
+departure {
+  time: 1488050681
+}
+stop_id: ""242S""
+, arrival {
+  time: 1488050771
+}
+departure {
+  time: 1488050771
+}
+stop_id: ""243S""
+, arrival {
+  time: 1488050861
+}
+departure {
+  time: 1488050861
+}
+stop_id: ""244S""
+, arrival {
+  time: 1488050951
+}
+departure {
+  time: 1488050951
+}
+stop_id: ""245S""
+, arrival {
+  time: 1488051041
+}
+departure {
+  time: 1488051041
+}
+stop_id: ""246S""
+, arrival {
+  time: 1488051161
+}
+stop_id: ""247S""
+]","2","20170225","1488048292","125S","1","1488048221"
+"085850_5..S08X011","S","[departure {
+  time: 1488050310
+}
+stop_id: ""501S""
+, arrival {
+  time: 1488050430
+}
+departure {
+  time: 1488050430
+}
+stop_id: ""502S""
+, arrival {
+  time: 1488050580
+}
+departure {
+  time: 1488050580
+}
+stop_id: ""503S""
+, arrival {
+  time: 1488050730
+}
+departure {
+  time: 1488050730
+}
+stop_id: ""504S""
+, arrival {
+  time: 1488050790
+}
+departure {
+  time: 1488050790
+}
+stop_id: ""505S""
+, arrival {
+  time: 1488050970
+}
+departure {
+  time: 1488050970
+}
+stop_id: ""213S""
+, arrival {
+  time: 1488051060
+}
+departure {
+  time: 1488051060
+}
+stop_id: ""214S""
+, arrival {
+  time: 1488051180
+}
+departure {
+  time: 1488051180
+}
+stop_id: ""215S""
+, arrival {
+  time: 1488051300
+}
+departure {
+  time: 1488051300
+}
+stop_id: ""216S""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""217S""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""218S""
+, arrival {
+  time: 1488051540
+}
+departure {
+  time: 1488051540
+}
+stop_id: ""219S""
+, arrival {
+  time: 1488051630
+}
+departure {
+  time: 1488051630
+}
+stop_id: ""220S""
+, arrival {
+  time: 1488051750
+}
+departure {
+  time: 1488051750
+}
+stop_id: ""221S""
+, arrival {
+  time: 1488051870
+}
+departure {
+  time: 1488051870
+}
+stop_id: ""222S""
+, arrival {
+  time: 1488052020
+}
+departure {
+  time: 1488052020
+}
+stop_id: ""416S""
+, arrival {
+  time: 1488052170
+}
+departure {
+  time: 1488052290
+}
+stop_id: ""621S""
+, arrival {
+  time: 1488052560
+}
+departure {
+  time: 1488052680
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488052890
+}
+departure {
+  time: 1488052890
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488053040
+}
+stop_id: ""631S""
+]","5","20170225","1488048262",,,
+"084150_4..N13X300","N","[departure {
+  time: 1488049290
+}
+stop_id: ""640N""
+, arrival {
+  time: 1488049410
+}
+departure {
+  time: 1488049410
+}
+stop_id: ""639N""
+, arrival {
+  time: 1488049500
+}
+departure {
+  time: 1488049500
+}
+stop_id: ""638N""
+, arrival {
+  time: 1488049560
+}
+departure {
+  time: 1488049560
+}
+stop_id: ""637N""
+, arrival {
+  time: 1488049650
+}
+departure {
+  time: 1488049650
+}
+stop_id: ""636N""
+, arrival {
+  time: 1488049740
+}
+departure {
+  time: 1488049740
+}
+stop_id: ""635N""
+, arrival {
+  time: 1488049860
+}
+departure {
+  time: 1488049860
+}
+stop_id: ""634N""
+, arrival {
+  time: 1488049920
+}
+departure {
+  time: 1488049920
+}
+stop_id: ""633N""
+, arrival {
+  time: 1488049980
+}
+departure {
+  time: 1488049980
+}
+stop_id: ""632N""
+, arrival {
+  time: 1488050100
+}
+departure {
+  time: 1488050100
+}
+stop_id: ""631N""
+, arrival {
+  time: 1488050220
+}
+departure {
+  time: 1488050220
+}
+stop_id: ""630N""
+, arrival {
+  time: 1488050310
+}
+departure {
+  time: 1488050310
+}
+stop_id: ""629N""
+, arrival {
+  time: 1488050400
+}
+departure {
+  time: 1488050400
+}
+stop_id: ""628N""
+, arrival {
+  time: 1488050520
+}
+departure {
+  time: 1488050520
+}
+stop_id: ""627N""
+, arrival {
+  time: 1488050610
+}
+departure {
+  time: 1488050610
+}
+stop_id: ""626N""
+, arrival {
+  time: 1488050730
+}
+departure {
+  time: 1488050730
+}
+stop_id: ""625N""
+, arrival {
+  time: 1488050820
+}
+departure {
+  time: 1488050820
+}
+stop_id: ""624N""
+, arrival {
+  time: 1488050880
+}
+departure {
+  time: 1488050880
+}
+stop_id: ""623N""
+, arrival {
+  time: 1488050970
+}
+departure {
+  time: 1488050970
+}
+stop_id: ""622N""
+, arrival {
+  time: 1488051060
+}
+departure {
+  time: 1488051060
+}
+stop_id: ""621N""
+, arrival {
+  time: 1488051210
+}
+departure {
+  time: 1488051210
+}
+stop_id: ""416N""
+, arrival {
+  time: 1488051330
+}
+departure {
+  time: 1488051330
+}
+stop_id: ""415N""
+, arrival {
+  time: 1488051480
+}
+departure {
+  time: 1488051480
+}
+stop_id: ""414N""
+, arrival {
+  time: 1488051600
+}
+departure {
+  time: 1488051600
+}
+stop_id: ""413N""
+, arrival {
+  time: 1488051690
+}
+departure {
+  time: 1488051690
+}
+stop_id: ""412N""
+, arrival {
+  time: 1488051780
+}
+departure {
+  time: 1488051780
+}
+stop_id: ""411N""
+, arrival {
+  time: 1488051840
+}
+departure {
+  time: 1488051840
+}
+stop_id: ""410N""
+, arrival {
+  time: 1488051930
+}
+departure {
+  time: 1488051930
+}
+stop_id: ""409N""
+, arrival {
+  time: 1488052020
+}
+departure {
+  time: 1488052020
+}
+stop_id: ""408N""
+, arrival {
+  time: 1488052080
+}
+departure {
+  time: 1488052080
+}
+stop_id: ""407N""
+, arrival {
+  time: 1488052140
+}
+departure {
+  time: 1488052140
+}
+stop_id: ""406N""
+, arrival {
+  time: 1488052260
+}
+departure {
+  time: 1488052260
+}
+stop_id: ""405N""
+, arrival {
+  time: 1488052350
+}
+departure {
+  time: 1488052350
+}
+stop_id: ""402N""
+, arrival {
+  time: 1488052470
+}
+stop_id: ""401N""
+]","4","20170225","1488048262",,,
+"083400_GS.S01R","S","[departure {
+  time: 1488048840
+}
+stop_id: ""902S""
+, arrival {
+  time: 1488048930
+}
+stop_id: ""901S""
+]","GS","20170225","1488048262",,,
+"077350_6..S01R","S","[arrival {
+  time: 1488048272
+}
+departure {
+  time: 1488048272
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488048392
+}
+departure {
+  time: 1488048392
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488048452
+}
+departure {
+  time: 1488048452
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488048542
+}
+departure {
+  time: 1488048542
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488048602
+}
+departure {
+  time: 1488048602
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488048692
+}
+departure {
+  time: 1488048692
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488048812
+}
+stop_id: ""640S""
+]","6","20170225","1488048262","634S","1","1488048242"
+"079150_4..S13X300","S","[arrival {
+  time: 1488048259
+}
+departure {
+  time: 1488048259
+}
+stop_id: ""627S""
+, arrival {
+  time: 1488048379
+}
+departure {
+  time: 1488048379
+}
+stop_id: ""628S""
+, arrival {
+  time: 1488048469
+}
+departure {
+  time: 1488048469
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488048589
+}
+departure {
+  time: 1488048589
+}
+stop_id: ""630S""
+, arrival {
+  time: 1488048709
+}
+departure {
+  time: 1488048709
+}
+stop_id: ""631S""
+, arrival {
+  time: 1488048829
+}
+departure {
+  time: 1488048829
+}
+stop_id: ""632S""
+, arrival {
+  time: 1488048889
+}
+departure {
+  time: 1488048889
+}
+stop_id: ""633S""
+, arrival {
+  time: 1488048949
+}
+departure {
+  time: 1488048949
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488049039
+}
+departure {
+  time: 1488049039
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488049129
+}
+departure {
+  time: 1488049129
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488049219
+}
+departure {
+  time: 1488049219
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488049279
+}
+departure {
+  time: 1488049279
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488049369
+}
+departure {
+  time: 1488049369
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488049489
+}
+stop_id: ""640S""
+]","4","20170225","1488048262","627S","1","1488048229"
+"078600_3..N01X021","N","[arrival {
+  time: 1488048265
+}
+departure {
+  time: 1488048265
+}
+stop_id: ""137N""
+, arrival {
+  time: 1488048685
+}
+departure {
+  time: 1488048685
+}
+stop_id: ""132N""
+, arrival {
+  time: 1488048955
+}
+departure {
+  time: 1488048955
+}
+stop_id: ""128N""
+, arrival {
+  time: 1488049045
+}
+departure {
+  time: 1488049045
+}
+stop_id: ""127N""
+, arrival {
+  time: 1488049165
+}
+departure {
+  time: 1488049165
+}
+stop_id: ""126N""
+, arrival {
+  time: 1488049285
+}
+departure {
+  time: 1488049285
+}
+stop_id: ""125N""
+, arrival {
+  time: 1488049375
+}
+departure {
+  time: 1488049375
+}
+stop_id: ""124N""
+, arrival {
+  time: 1488049435
+}
+departure {
+  time: 1488049435
+}
+stop_id: ""123N""
+, arrival {
+  time: 1488049555
+}
+departure {
+  time: 1488049555
+}
+stop_id: ""122N""
+, arrival {
+  time: 1488049615
+}
+departure {
+  time: 1488049615
+}
+stop_id: ""121N""
+, arrival {
+  time: 1488049735
+}
+departure {
+  time: 1488049735
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488049975
+}
+departure {
+  time: 1488049975
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488050035
+}
+departure {
+  time: 1488050035
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488050125
+}
+departure {
+  time: 1488050125
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488050215
+}
+departure {
+  time: 1488050215
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488050335
+}
+departure {
+  time: 1488050515
+}
+stop_id: ""302N""
+, arrival {
+  time: 1488050635
+}
+stop_id: ""301N""
+]","3","20170225","1488048292","137N","1","1488048235"
+"084400_3..S01X002","S","[departure {
+  time: 1488049440
+}
+stop_id: ""301S""
+, arrival {
+  time: 1488049530
+}
+departure {
+  time: 1488049530
+}
+stop_id: ""302S""
+, arrival {
+  time: 1488049650
+}
+departure {
+  time: 1488049650
+}
+stop_id: ""224S""
+, arrival {
+  time: 1488049740
+}
+departure {
+  time: 1488049740
+}
+stop_id: ""225S""
+, arrival {
+  time: 1488049830
+}
+departure {
+  time: 1488049830
+}
+stop_id: ""226S""
+, arrival {
+  time: 1488049890
+}
+departure {
+  time: 1488049890
+}
+stop_id: ""227S""
+, arrival {
+  time: 1488050160
+}
+departure {
+  time: 1488050160
+}
+stop_id: ""120S""
+, arrival {
+  time: 1488050280
+}
+departure {
+  time: 1488050280
+}
+stop_id: ""121S""
+, arrival {
+  time: 1488050340
+}
+departure {
+  time: 1488050340
+}
+stop_id: ""122S""
+, arrival {
+  time: 1488050430
+}
+departure {
+  time: 1488050430
+}
+stop_id: ""123S""
+, arrival {
+  time: 1488050520
+}
+departure {
+  time: 1488050520
+}
+stop_id: ""124S""
+, arrival {
+  time: 1488050610
+}
+departure {
+  time: 1488050610
+}
+stop_id: ""125S""
+, arrival {
+  time: 1488050730
+}
+departure {
+  time: 1488050730
+}
+stop_id: ""126S""
+, arrival {
+  time: 1488050820
+}
+departure {
+  time: 1488050820
+}
+stop_id: ""127S""
+, arrival {
+  time: 1488050910
+}
+departure {
+  time: 1488050910
+}
+stop_id: ""128S""
+, arrival {
+  time: 1488051000
+}
+departure {
+  time: 1488051000
+}
+stop_id: ""129S""
+, arrival {
+  time: 1488051060
+}
+departure {
+  time: 1488051060
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488051120
+}
+departure {
+  time: 1488051120
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488051180
+}
+departure {
+  time: 1488051180
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488051270
+}
+departure {
+  time: 1488051270
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488051360
+}
+departure {
+  time: 1488051360
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488051510
+}
+departure {
+  time: 1488051510
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488051600
+}
+departure {
+  time: 1488051600
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488051660
+}
+departure {
+  time: 1488051660
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488051810
+}
+departure {
+  time: 1488051810
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488051870
+}
+departure {
+  time: 1488051870
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488052140
+}
+departure {
+  time: 1488052140
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488052200
+}
+departure {
+  time: 1488052200
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488052290
+}
+departure {
+  time: 1488052290
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488052350
+}
+departure {
+  time: 1488052350
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488052440
+}
+departure {
+  time: 1488052440
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488052500
+}
+departure {
+  time: 1488052500
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488052620
+}
+departure {
+  time: 1488052620
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488052710
+}
+departure {
+  time: 1488052710
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488052800
+}
+departure {
+  time: 1488052800
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488052890
+}
+departure {
+  time: 1488052890
+}
+stop_id: ""248S""
+, arrival {
+  time: 1488052980
+}
+departure {
+  time: 1488052980
+}
+stop_id: ""249S""
+, arrival {
+  time: 1488053100
+}
+departure {
+  time: 1488053340
+}
+stop_id: ""250S""
+, arrival {
+  time: 1488053490
+}
+departure {
+  time: 1488053490
+}
+stop_id: ""251S""
+, arrival {
+  time: 1488053580
+}
+departure {
+  time: 1488053580
+}
+stop_id: ""252S""
+, arrival {
+  time: 1488053700
+}
+departure {
+  time: 1488053700
+}
+stop_id: ""253S""
+, arrival {
+  time: 1488053760
+}
+departure {
+  time: 1488053760
+}
+stop_id: ""254S""
+, arrival {
+  time: 1488053850
+}
+departure {
+  time: 1488053850
+}
+stop_id: ""255S""
+, arrival {
+  time: 1488053910
+}
+departure {
+  time: 1488053910
+}
+stop_id: ""256S""
+, arrival {
+  time: 1488054000
+}
+stop_id: ""257S""
+]","3","20170225","1488048262",,,
+"082800_3..S01X002","S","[departure {
+  time: 1488048480
+}
+stop_id: ""301S""
+, arrival {
+  time: 1488048570
+}
+departure {
+  time: 1488048570
+}
+stop_id: ""302S""
+, arrival {
+  time: 1488048690
+}
+departure {
+  time: 1488048690
+}
+stop_id: ""224S""
+, arrival {
+  time: 1488048780
+}
+departure {
+  time: 1488048780
+}
+stop_id: ""225S""
+, arrival {
+  time: 1488048870
+}
+departure {
+  time: 1488048870
+}
+stop_id: ""226S""
+, arrival {
+  time: 1488048930
+}
+departure {
+  time: 1488048930
+}
+stop_id: ""227S""
+, arrival {
+  time: 1488049200
+}
+departure {
+  time: 1488049200
+}
+stop_id: ""120S""
+, arrival {
+  time: 1488049320
+}
+departure {
+  time: 1488049320
+}
+stop_id: ""121S""
+, arrival {
+  time: 1488049380
+}
+departure {
+  time: 1488049380
+}
+stop_id: ""122S""
+, arrival {
+  time: 1488049470
+}
+departure {
+  time: 1488049470
+}
+stop_id: ""123S""
+, arrival {
+  time: 1488049560
+}
+departure {
+  time: 1488049560
+}
+stop_id: ""124S""
+, arrival {
+  time: 1488049650
+}
+departure {
+  time: 1488049650
+}
+stop_id: ""125S""
+, arrival {
+  time: 1488049770
+}
+departure {
+  time: 1488049770
+}
+stop_id: ""126S""
+, arrival {
+  time: 1488049860
+}
+departure {
+  time: 1488049860
+}
+stop_id: ""127S""
+, arrival {
+  time: 1488049950
+}
+departure {
+  time: 1488049950
+}
+stop_id: ""128S""
+, arrival {
+  time: 1488050040
+}
+departure {
+  time: 1488050040
+}
+stop_id: ""129S""
+, arrival {
+  time: 1488050100
+}
+departure {
+  time: 1488050100
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488050160
+}
+departure {
+  time: 1488050160
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488050220
+}
+departure {
+  time: 1488050220
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488050310
+}
+departure {
+  time: 1488050310
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488050400
+}
+departure {
+  time: 1488050400
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488050490
+}
+departure {
+  time: 1488050490
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488050550
+}
+departure {
+  time: 1488050550
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488050640
+}
+departure {
+  time: 1488050640
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488050700
+}
+departure {
+  time: 1488050700
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488050850
+}
+departure {
+  time: 1488050850
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488050910
+}
+departure {
+  time: 1488050910
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488051180
+}
+departure {
+  time: 1488051180
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488051240
+}
+departure {
+  time: 1488051240
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488051330
+}
+departure {
+  time: 1488051330
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488051480
+}
+departure {
+  time: 1488051480
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488051540
+}
+departure {
+  time: 1488051540
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488051660
+}
+departure {
+  time: 1488051660
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488051750
+}
+departure {
+  time: 1488051750
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488051840
+}
+departure {
+  time: 1488051840
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488051930
+}
+departure {
+  time: 1488051930
+}
+stop_id: ""248S""
+, arrival {
+  time: 1488052020
+}
+departure {
+  time: 1488052020
+}
+stop_id: ""249S""
+, arrival {
+  time: 1488052140
+}
+departure {
+  time: 1488052140
+}
+stop_id: ""250S""
+, arrival {
+  time: 1488052290
+}
+departure {
+  time: 1488052290
+}
+stop_id: ""251S""
+, arrival {
+  time: 1488052380
+}
+departure {
+  time: 1488052380
+}
+stop_id: ""252S""
+, arrival {
+  time: 1488052500
+}
+departure {
+  time: 1488052500
+}
+stop_id: ""253S""
+, arrival {
+  time: 1488052560
+}
+departure {
+  time: 1488052560
+}
+stop_id: ""254S""
+, arrival {
+  time: 1488052650
+}
+departure {
+  time: 1488052650
+}
+stop_id: ""255S""
+, arrival {
+  time: 1488052710
+}
+departure {
+  time: 1488052710
+}
+stop_id: ""256S""
+, arrival {
+  time: 1488052800
+}
+stop_id: ""257S""
+]","3","20170225","1488048262",,,
+"082500_GS.N03R","N","[departure {
+  time: 1488048300
+}
+stop_id: ""901N""
+, arrival {
+  time: 1488048390
+}
+stop_id: ""902N""
+]","GS","20170225","1488048262",,,
+"083400_3..N01X021","N","[departure {
+  time: 1488048840
+}
+stop_id: ""257N""
+, arrival {
+  time: 1488048930
+}
+departure {
+  time: 1488048930
+}
+stop_id: ""256N""
+, arrival {
+  time: 1488048990
+}
+departure {
+  time: 1488048990
+}
+stop_id: ""255N""
+, arrival {
+  time: 1488049080
+}
+departure {
+  time: 1488049080
+}
+stop_id: ""254N""
+, arrival {
+  time: 1488049140
+}
+departure {
+  time: 1488049140
+}
+stop_id: ""253N""
+, arrival {
+  time: 1488049260
+}
+departure {
+  time: 1488049260
+}
+stop_id: ""252N""
+, arrival {
+  time: 1488049350
+}
+departure {
+  time: 1488049350
+}
+stop_id: ""251N""
+, arrival {
+  time: 1488049500
+}
+departure {
+  time: 1488049500
+}
+stop_id: ""250N""
+, arrival {
+  time: 1488049620
+}
+departure {
+  time: 1488049620
+}
+stop_id: ""249N""
+, arrival {
+  time: 1488049710
+}
+departure {
+  time: 1488049710
+}
+stop_id: ""248N""
+, arrival {
+  time: 1488049800
+}
+departure {
+  time: 1488049800
+}
+stop_id: ""239N""
+, arrival {
+  time: 1488049890
+}
+departure {
+  time: 1488049890
+}
+stop_id: ""238N""
+, arrival {
+  time: 1488050010
+}
+departure {
+  time: 1488050010
+}
+stop_id: ""237N""
+, arrival {
+  time: 1488050130
+}
+departure {
+  time: 1488050130
+}
+stop_id: ""236N""
+, arrival {
+  time: 1488050190
+}
+departure {
+  time: 1488050190
+}
+stop_id: ""235N""
+, arrival {
+  time: 1488050280
+}
+departure {
+  time: 1488050280
+}
+stop_id: ""234N""
+, arrival {
+  time: 1488050370
+}
+departure {
+  time: 1488050370
+}
+stop_id: ""233N""
+, arrival {
+  time: 1488050460
+}
+departure {
+  time: 1488050460
+}
+stop_id: ""232N""
+, arrival {
+  time: 1488050550
+}
+departure {
+  time: 1488050550
+}
+stop_id: ""231N""
+, arrival {
+  time: 1488050730
+}
+departure {
+  time: 1488050730
+}
+stop_id: ""230N""
+, arrival {
+  time: 1488050790
+}
+departure {
+  time: 1488050790
+}
+stop_id: ""229N""
+, arrival {
+  time: 1488050940
+}
+departure {
+  time: 1488050940
+}
+stop_id: ""228N""
+, arrival {
+  time: 1488051000
+}
+departure {
+  time: 1488051000
+}
+stop_id: ""137N""
+, arrival {
+  time: 1488051420
+}
+departure {
+  time: 1488051420
+}
+stop_id: ""132N""
+, arrival {
+  time: 1488051690
+}
+departure {
+  time: 1488051690
+}
+stop_id: ""128N""
+, arrival {
+  time: 1488051780
+}
+departure {
+  time: 1488051780
+}
+stop_id: ""127N""
+, arrival {
+  time: 1488051900
+}
+departure {
+  time: 1488051900
+}
+stop_id: ""126N""
+, arrival {
+  time: 1488052020
+}
+departure {
+  time: 1488052020
+}
+stop_id: ""125N""
+, arrival {
+  time: 1488052110
+}
+departure {
+  time: 1488052110
+}
+stop_id: ""124N""
+, arrival {
+  time: 1488052170
+}
+departure {
+  time: 1488052170
+}
+stop_id: ""123N""
+, arrival {
+  time: 1488052290
+}
+departure {
+  time: 1488052290
+}
+stop_id: ""122N""
+, arrival {
+  time: 1488052350
+}
+departure {
+  time: 1488052350
+}
+stop_id: ""121N""
+, arrival {
+  time: 1488052470
+}
+departure {
+  time: 1488052470
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488052710
+}
+departure {
+  time: 1488052710
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488052770
+}
+departure {
+  time: 1488052770
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488052860
+}
+departure {
+  time: 1488052860
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488052950
+}
+departure {
+  time: 1488052950
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488053070
+}
+departure {
+  time: 1488053250
+}
+stop_id: ""302N""
+, arrival {
+  time: 1488053370
+}
+stop_id: ""301N""
+]","3","20170225","1488048262",,,
+"082950_6..S01R","S","[departure {
+  time: 1488048570
+}
+stop_id: ""601S""
+, arrival {
+  time: 1488048720
+}
+departure {
+  time: 1488048720
+}
+stop_id: ""602S""
+, arrival {
+  time: 1488048810
+}
+departure {
+  time: 1488048810
+}
+stop_id: ""603S""
+, arrival {
+  time: 1488048900
+}
+departure {
+  time: 1488048900
+}
+stop_id: ""604S""
+, arrival {
+  time: 1488048990
+}
+departure {
+  time: 1488048990
+}
+stop_id: ""606S""
+, arrival {
+  time: 1488049050
+}
+departure {
+  time: 1488049050
+}
+stop_id: ""607S""
+, arrival {
+  time: 1488049170
+}
+departure {
+  time: 1488049170
+}
+stop_id: ""608S""
+, arrival {
+  time: 1488049260
+}
+departure {
+  time: 1488049260
+}
+stop_id: ""609S""
+, arrival {
+  time: 1488049350
+}
+departure {
+  time: 1488049350
+}
+stop_id: ""610S""
+, arrival {
+  time: 1488049410
+}
+departure {
+  time: 1488049410
+}
+stop_id: ""611S""
+, arrival {
+  time: 1488049530
+}
+departure {
+  time: 1488049530
+}
+stop_id: ""612S""
+, arrival {
+  time: 1488049650
+}
+departure {
+  time: 1488049650
+}
+stop_id: ""613S""
+, arrival {
+  time: 1488049740
+}
+departure {
+  time: 1488049740
+}
+stop_id: ""614S""
+, arrival {
+  time: 1488049860
+}
+departure {
+  time: 1488049860
+}
+stop_id: ""615S""
+, arrival {
+  time: 1488049920
+}
+departure {
+  time: 1488049920
+}
+stop_id: ""616S""
+, arrival {
+  time: 1488050040
+}
+departure {
+  time: 1488050040
+}
+stop_id: ""617S""
+, arrival {
+  time: 1488050100
+}
+departure {
+  time: 1488050100
+}
+stop_id: ""618S""
+, arrival {
+  time: 1488050190
+}
+departure {
+  time: 1488050190
+}
+stop_id: ""619S""
+, arrival {
+  time: 1488050370
+}
+departure {
+  time: 1488050370
+}
+stop_id: ""621S""
+, arrival {
+  time: 1488050460
+}
+departure {
+  time: 1488050460
+}
+stop_id: ""622S""
+, arrival {
+  time: 1488050550
+}
+departure {
+  time: 1488050550
+}
+stop_id: ""623S""
+, arrival {
+  time: 1488050610
+}
+departure {
+  time: 1488050610
+}
+stop_id: ""624S""
+, arrival {
+  time: 1488050700
+}
+departure {
+  time: 1488050700
+}
+stop_id: ""625S""
+, arrival {
+  time: 1488050820
+}
+departure {
+  time: 1488050820
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488050940
+}
+departure {
+  time: 1488050940
+}
+stop_id: ""627S""
+, arrival {
+  time: 1488051060
+}
+departure {
+  time: 1488051060
+}
+stop_id: ""628S""
+, arrival {
+  time: 1488051150
+}
+departure {
+  time: 1488051150
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488051270
+}
+departure {
+  time: 1488051270
+}
+stop_id: ""630S""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""631S""
+, arrival {
+  time: 1488051510
+}
+departure {
+  time: 1488051510
+}
+stop_id: ""632S""
+, arrival {
+  time: 1488051570
+}
+departure {
+  time: 1488051570
+}
+stop_id: ""633S""
+, arrival {
+  time: 1488051630
+}
+departure {
+  time: 1488051630
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488051750
+}
+departure {
+  time: 1488051750
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488051810
+}
+departure {
+  time: 1488051810
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488051900
+}
+departure {
+  time: 1488051900
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488051960
+}
+departure {
+  time: 1488051960
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488052050
+}
+departure {
+  time: 1488052050
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488052170
+}
+stop_id: ""640S""
+]","6","20170225","1488048262",,,
+"076150_2..N01X019","N","[arrival {
+  time: 1488048269
+}
+departure {
+  time: 1488048269
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488048509
+}
+departure {
+  time: 1488048509
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488048569
+}
+departure {
+  time: 1488048569
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488048659
+}
+departure {
+  time: 1488048659
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488048749
+}
+departure {
+  time: 1488048749
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488048929
+}
+departure {
+  time: 1488048929
+}
+stop_id: ""222N""
+, arrival {
+  time: 1488049049
+}
+departure {
+  time: 1488049049
+}
+stop_id: ""221N""
+, arrival {
+  time: 1488049169
+}
+departure {
+  time: 1488049169
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488049259
+}
+departure {
+  time: 1488049259
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488049319
+}
+departure {
+  time: 1488049319
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488049379
+}
+departure {
+  time: 1488049379
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488049469
+}
+departure {
+  time: 1488049469
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488049589
+}
+departure {
+  time: 1488049589
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488049709
+}
+departure {
+  time: 1488049709
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488049799
+}
+departure {
+  time: 1488049799
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488049919
+}
+departure {
+  time: 1488049919
+}
+stop_id: ""212N""
+, arrival {
+  time: 1488050039
+}
+departure {
+  time: 1488050039
+}
+stop_id: ""211N""
+, arrival {
+  time: 1488050159
+}
+departure {
+  time: 1488050159
+}
+stop_id: ""210N""
+, arrival {
+  time: 1488050219
+}
+departure {
+  time: 1488050219
+}
+stop_id: ""209N""
+, arrival {
+  time: 1488050309
+}
+departure {
+  time: 1488050309
+}
+stop_id: ""208N""
+, arrival {
+  time: 1488050399
+}
+departure {
+  time: 1488050399
+}
+stop_id: ""207N""
+, arrival {
+  time: 1488050489
+}
+departure {
+  time: 1488050489
+}
+stop_id: ""206N""
+, arrival {
+  time: 1488050549
+}
+departure {
+  time: 1488050549
+}
+stop_id: ""205N""
+, arrival {
+  time: 1488050639
+}
+departure {
+  time: 1488050939
+}
+stop_id: ""204N""
+, arrival {
+  time: 1488051059
+}
+stop_id: ""201N""
+]","2","20170225","1488048292","120N","1","1488048239"
+"082150_6..S01R","S","[arrival {
+  time: 1488048293
+}
+departure {
+  time: 1488048293
+}
+stop_id: ""603S""
+, arrival {
+  time: 1488048383
+}
+departure {
+  time: 1488048383
+}
+stop_id: ""604S""
+, arrival {
+  time: 1488048473
+}
+departure {
+  time: 1488048473
+}
+stop_id: ""606S""
+, arrival {
+  time: 1488048533
+}
+departure {
+  time: 1488048533
+}
+stop_id: ""607S""
+, arrival {
+  time: 1488048653
+}
+departure {
+  time: 1488048653
+}
+stop_id: ""608S""
+, arrival {
+  time: 1488048743
+}
+departure {
+  time: 1488048743
+}
+stop_id: ""609S""
+, arrival {
+  time: 1488048833
+}
+departure {
+  time: 1488048833
+}
+stop_id: ""610S""
+, arrival {
+  time: 1488048893
+}
+departure {
+  time: 1488048893
+}
+stop_id: ""611S""
+, arrival {
+  time: 1488049013
+}
+departure {
+  time: 1488049013
+}
+stop_id: ""612S""
+, arrival {
+  time: 1488049133
+}
+departure {
+  time: 1488049133
+}
+stop_id: ""613S""
+, arrival {
+  time: 1488049223
+}
+departure {
+  time: 1488049223
+}
+stop_id: ""614S""
+, arrival {
+  time: 1488049343
+}
+departure {
+  time: 1488049343
+}
+stop_id: ""615S""
+, arrival {
+  time: 1488049403
+}
+departure {
+  time: 1488049403
+}
+stop_id: ""616S""
+, arrival {
+  time: 1488049523
+}
+departure {
+  time: 1488049523
+}
+stop_id: ""617S""
+, arrival {
+  time: 1488049583
+}
+departure {
+  time: 1488049583
+}
+stop_id: ""618S""
+, arrival {
+  time: 1488049673
+}
+departure {
+  time: 1488049673
+}
+stop_id: ""619S""
+, arrival {
+  time: 1488049853
+}
+departure {
+  time: 1488049853
+}
+stop_id: ""621S""
+, arrival {
+  time: 1488049943
+}
+departure {
+  time: 1488049943
+}
+stop_id: ""622S""
+, arrival {
+  time: 1488050033
+}
+departure {
+  time: 1488050033
+}
+stop_id: ""623S""
+, arrival {
+  time: 1488050093
+}
+departure {
+  time: 1488050093
+}
+stop_id: ""624S""
+, arrival {
+  time: 1488050183
+}
+departure {
+  time: 1488050183
+}
+stop_id: ""625S""
+, arrival {
+  time: 1488050303
+}
+departure {
+  time: 1488050303
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488050423
+}
+departure {
+  time: 1488050423
+}
+stop_id: ""627S""
+, arrival {
+  time: 1488050543
+}
+departure {
+  time: 1488050543
+}
+stop_id: ""628S""
+, arrival {
+  time: 1488050633
+}
+departure {
+  time: 1488050633
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488050753
+}
+departure {
+  time: 1488050753
+}
+stop_id: ""630S""
+, arrival {
+  time: 1488050873
+}
+departure {
+  time: 1488050873
+}
+stop_id: ""631S""
+, arrival {
+  time: 1488050993
+}
+departure {
+  time: 1488050993
+}
+stop_id: ""632S""
+, arrival {
+  time: 1488051053
+}
+departure {
+  time: 1488051053
+}
+stop_id: ""633S""
+, arrival {
+  time: 1488051113
+}
+departure {
+  time: 1488051113
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488051233
+}
+departure {
+  time: 1488051233
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488051293
+}
+departure {
+  time: 1488051293
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488051383
+}
+departure {
+  time: 1488051383
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488051443
+}
+departure {
+  time: 1488051443
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488051533
+}
+departure {
+  time: 1488051533
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488051653
+}
+stop_id: ""640S""
+]","6","20170225","1488048262","603S","0","1488048253"
+"080150_2..N01X019","N","[arrival {
+  time: 1488048376
+}
+departure {
+  time: 1488048376
+}
+stop_id: ""232N""
+, arrival {
+  time: 1488048466
+}
+departure {
+  time: 1488048466
+}
+stop_id: ""231N""
+, arrival {
+  time: 1488048646
+}
+departure {
+  time: 1488048646
+}
+stop_id: ""230N""
+, arrival {
+  time: 1488048706
+}
+departure {
+  time: 1488048706
+}
+stop_id: ""229N""
+, arrival {
+  time: 1488048856
+}
+departure {
+  time: 1488048856
+}
+stop_id: ""228N""
+, arrival {
+  time: 1488048916
+}
+departure {
+  time: 1488048916
+}
+stop_id: ""137N""
+, arrival {
+  time: 1488049336
+}
+departure {
+  time: 1488049336
+}
+stop_id: ""132N""
+, arrival {
+  time: 1488049606
+}
+departure {
+  time: 1488049606
+}
+stop_id: ""128N""
+, arrival {
+  time: 1488049696
+}
+departure {
+  time: 1488049696
+}
+stop_id: ""127N""
+, arrival {
+  time: 1488049816
+}
+departure {
+  time: 1488049816
+}
+stop_id: ""126N""
+, arrival {
+  time: 1488049936
+}
+departure {
+  time: 1488049936
+}
+stop_id: ""125N""
+, arrival {
+  time: 1488050026
+}
+departure {
+  time: 1488050026
+}
+stop_id: ""124N""
+, arrival {
+  time: 1488050086
+}
+departure {
+  time: 1488050086
+}
+stop_id: ""123N""
+, arrival {
+  time: 1488050206
+}
+departure {
+  time: 1488050206
+}
+stop_id: ""122N""
+, arrival {
+  time: 1488050266
+}
+departure {
+  time: 1488050266
+}
+stop_id: ""121N""
+, arrival {
+  time: 1488050386
+}
+departure {
+  time: 1488050386
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488050626
+}
+departure {
+  time: 1488050626
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488050686
+}
+departure {
+  time: 1488050686
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488050776
+}
+departure {
+  time: 1488050776
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488050866
+}
+departure {
+  time: 1488050866
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488051046
+}
+departure {
+  time: 1488051046
+}
+stop_id: ""222N""
+, arrival {
+  time: 1488051166
+}
+departure {
+  time: 1488051166
+}
+stop_id: ""221N""
+, arrival {
+  time: 1488051286
+}
+departure {
+  time: 1488051286
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488051376
+}
+departure {
+  time: 1488051376
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488051436
+}
+departure {
+  time: 1488051436
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488051496
+}
+departure {
+  time: 1488051496
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488051586
+}
+departure {
+  time: 1488051586
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488051706
+}
+departure {
+  time: 1488051706
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488051826
+}
+departure {
+  time: 1488051826
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488051916
+}
+departure {
+  time: 1488051916
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488052036
+}
+departure {
+  time: 1488052036
+}
+stop_id: ""212N""
+, arrival {
+  time: 1488052156
+}
+departure {
+  time: 1488052156
+}
+stop_id: ""211N""
+, arrival {
+  time: 1488052276
+}
+departure {
+  time: 1488052276
+}
+stop_id: ""210N""
+, arrival {
+  time: 1488052336
+}
+departure {
+  time: 1488052336
+}
+stop_id: ""209N""
+, arrival {
+  time: 1488052426
+}
+departure {
+  time: 1488052426
+}
+stop_id: ""208N""
+, arrival {
+  time: 1488052516
+}
+departure {
+  time: 1488052516
+}
+stop_id: ""207N""
+, arrival {
+  time: 1488052606
+}
+departure {
+  time: 1488052606
+}
+stop_id: ""206N""
+, arrival {
+  time: 1488052666
+}
+departure {
+  time: 1488052666
+}
+stop_id: ""205N""
+, arrival {
+  time: 1488052756
+}
+departure {
+  time: 1488053056
+}
+stop_id: ""204N""
+, arrival {
+  time: 1488053176
+}
+stop_id: ""201N""
+]","2","20170225","1488048292","232N","2","1488048286"
+"081750_5..N73X004","N","[arrival {
+  time: 1488048473
+}
+departure {
+  time: 1488048473
+}
+stop_id: ""621N""
+, arrival {
+  time: 1488048623
+}
+departure {
+  time: 1488048623
+}
+stop_id: ""416N""
+, arrival {
+  time: 1488048773
+}
+departure {
+  time: 1488048773
+}
+stop_id: ""222N""
+, arrival {
+  time: 1488048893
+}
+departure {
+  time: 1488048893
+}
+stop_id: ""221N""
+, arrival {
+  time: 1488049013
+}
+departure {
+  time: 1488049013
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488049103
+}
+departure {
+  time: 1488049103
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488049163
+}
+departure {
+  time: 1488049163
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488049223
+}
+departure {
+  time: 1488049223
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488049313
+}
+departure {
+  time: 1488049313
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488049433
+}
+departure {
+  time: 1488049433
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488049553
+}
+departure {
+  time: 1488049553
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488049643
+}
+departure {
+  time: 1488049643
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488049853
+}
+departure {
+  time: 1488049853
+}
+stop_id: ""505N""
+, arrival {
+  time: 1488049913
+}
+departure {
+  time: 1488049913
+}
+stop_id: ""504N""
+, arrival {
+  time: 1488050093
+}
+departure {
+  time: 1488050093
+}
+stop_id: ""503N""
+, arrival {
+  time: 1488050213
+}
+departure {
+  time: 1488050213
+}
+stop_id: ""502N""
+, arrival {
+  time: 1488050363
+}
+stop_id: ""501N""
+]","5","20170225","1488048262","621N","2","1488048260"
+"083300_2..N01X019","N","[departure {
+  time: 1488048780
+}
+stop_id: ""247N""
+, arrival {
+  time: 1488048900
+}
+departure {
+  time: 1488048900
+}
+stop_id: ""246N""
+, arrival {
+  time: 1488048960
+}
+departure {
+  time: 1488048960
+}
+stop_id: ""245N""
+, arrival {
+  time: 1488049050
+}
+departure {
+  time: 1488049050
+}
+stop_id: ""244N""
+, arrival {
+  time: 1488049140
+}
+departure {
+  time: 1488049140
+}
+stop_id: ""243N""
+, arrival {
+  time: 1488049230
+}
+departure {
+  time: 1488049230
+}
+stop_id: ""242N""
+, arrival {
+  time: 1488049290
+}
+departure {
+  time: 1488049290
+}
+stop_id: ""241N""
+, arrival {
+  time: 1488049470
+}
+departure {
+  time: 1488049470
+}
+stop_id: ""239N""
+, arrival {
+  time: 1488049560
+}
+departure {
+  time: 1488049560
+}
+stop_id: ""238N""
+, arrival {
+  time: 1488049680
+}
+departure {
+  time: 1488049680
+}
+stop_id: ""237N""
+, arrival {
+  time: 1488049800
+}
+departure {
+  time: 1488049800
+}
+stop_id: ""236N""
+, arrival {
+  time: 1488049860
+}
+departure {
+  time: 1488049860
+}
+stop_id: ""235N""
+, arrival {
+  time: 1488049950
+}
+departure {
+  time: 1488049950
+}
+stop_id: ""234N""
+, arrival {
+  time: 1488050040
+}
+departure {
+  time: 1488050040
+}
+stop_id: ""233N""
+, arrival {
+  time: 1488050130
+}
+departure {
+  time: 1488050130
+}
+stop_id: ""232N""
+, arrival {
+  time: 1488050220
+}
+departure {
+  time: 1488050220
+}
+stop_id: ""231N""
+, arrival {
+  time: 1488050400
+}
+departure {
+  time: 1488050400
+}
+stop_id: ""230N""
+, arrival {
+  time: 1488050460
+}
+departure {
+  time: 1488050460
+}
+stop_id: ""229N""
+, arrival {
+  time: 1488050610
+}
+departure {
+  time: 1488050610
+}
+stop_id: ""228N""
+, arrival {
+  time: 1488050670
+}
+departure {
+  time: 1488050670
+}
+stop_id: ""137N""
+, arrival {
+  time: 1488051090
+}
+departure {
+  time: 1488051090
+}
+stop_id: ""132N""
+, arrival {
+  time: 1488051360
+}
+departure {
+  time: 1488051360
+}
+stop_id: ""128N""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""127N""
+, arrival {
+  time: 1488051570
+}
+departure {
+  time: 1488051570
+}
+stop_id: ""126N""
+, arrival {
+  time: 1488051690
+}
+departure {
+  time: 1488051690
+}
+stop_id: ""125N""
+, arrival {
+  time: 1488051780
+}
+departure {
+  time: 1488051780
+}
+stop_id: ""124N""
+, arrival {
+  time: 1488051840
+}
+departure {
+  time: 1488051840
+}
+stop_id: ""123N""
+, arrival {
+  time: 1488051960
+}
+departure {
+  time: 1488051960
+}
+stop_id: ""122N""
+, arrival {
+  time: 1488052020
+}
+departure {
+  time: 1488052020
+}
+stop_id: ""121N""
+, arrival {
+  time: 1488052140
+}
+departure {
+  time: 1488052140
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488052380
+}
+departure {
+  time: 1488052380
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488052440
+}
+departure {
+  time: 1488052440
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488052530
+}
+departure {
+  time: 1488052530
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488052620
+}
+departure {
+  time: 1488052620
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488052800
+}
+departure {
+  time: 1488052800
+}
+stop_id: ""222N""
+, arrival {
+  time: 1488052920
+}
+departure {
+  time: 1488052920
+}
+stop_id: ""221N""
+, arrival {
+  time: 1488053040
+}
+departure {
+  time: 1488053040
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488053130
+}
+departure {
+  time: 1488053130
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488053190
+}
+departure {
+  time: 1488053190
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488053250
+}
+departure {
+  time: 1488053250
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488053340
+}
+departure {
+  time: 1488053340
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488053460
+}
+departure {
+  time: 1488053460
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488053580
+}
+departure {
+  time: 1488053580
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488053670
+}
+departure {
+  time: 1488053670
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488053790
+}
+departure {
+  time: 1488053790
+}
+stop_id: ""212N""
+, arrival {
+  time: 1488053910
+}
+departure {
+  time: 1488053910
+}
+stop_id: ""211N""
+, arrival {
+  time: 1488054030
+}
+departure {
+  time: 1488054030
+}
+stop_id: ""210N""
+, arrival {
+  time: 1488054090
+}
+departure {
+  time: 1488054090
+}
+stop_id: ""209N""
+, arrival {
+  time: 1488054180
+}
+departure {
+  time: 1488054180
+}
+stop_id: ""208N""
+, arrival {
+  time: 1488054270
+}
+departure {
+  time: 1488054270
+}
+stop_id: ""207N""
+, arrival {
+  time: 1488054360
+}
+departure {
+  time: 1488054360
+}
+stop_id: ""206N""
+, arrival {
+  time: 1488054420
+}
+departure {
+  time: 1488054420
+}
+stop_id: ""205N""
+, arrival {
+  time: 1488054510
+}
+departure {
+  time: 1488054510
+}
+stop_id: ""204N""
+, arrival {
+  time: 1488054630
+}
+stop_id: ""201N""
+]","2","20170225","1488048292",,,
+"074550_2..N01X019","N","[arrival {
+  time: 1488048312
+}
+departure {
+  time: 1488048312
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488048402
+}
+departure {
+  time: 1488048402
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488048462
+}
+departure {
+  time: 1488048462
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488048522
+}
+departure {
+  time: 1488048522
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488048612
+}
+departure {
+  time: 1488048612
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488048732
+}
+departure {
+  time: 1488048732
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488048852
+}
+departure {
+  time: 1488048852
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488048942
+}
+departure {
+  time: 1488048942
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488049062
+}
+departure {
+  time: 1488049062
+}
+stop_id: ""212N""
+, arrival {
+  time: 1488049182
+}
+departure {
+  time: 1488049182
+}
+stop_id: ""211N""
+, arrival {
+  time: 1488049302
+}
+departure {
+  time: 1488049302
+}
+stop_id: ""210N""
+, arrival {
+  time: 1488049362
+}
+departure {
+  time: 1488049362
+}
+stop_id: ""209N""
+, arrival {
+  time: 1488049452
+}
+departure {
+  time: 1488049452
+}
+stop_id: ""208N""
+, arrival {
+  time: 1488049542
+}
+departure {
+  time: 1488049542
+}
+stop_id: ""207N""
+, arrival {
+  time: 1488049632
+}
+departure {
+  time: 1488049632
+}
+stop_id: ""206N""
+, arrival {
+  time: 1488049692
+}
+departure {
+  time: 1488049692
+}
+stop_id: ""205N""
+, arrival {
+  time: 1488049782
+}
+departure {
+  time: 1488050082
+}
+stop_id: ""204N""
+, arrival {
+  time: 1488050202
+}
+stop_id: ""201N""
+]","2","20170225","1488048292","220N","1","1488048282"
+"082550_2..N01X019","N","[departure {
+  time: 1488048330
+}
+stop_id: ""247N""
+, arrival {
+  time: 1488048450
+}
+departure {
+  time: 1488048450
+}
+stop_id: ""246N""
+, arrival {
+  time: 1488048510
+}
+departure {
+  time: 1488048510
+}
+stop_id: ""245N""
+, arrival {
+  time: 1488048600
+}
+departure {
+  time: 1488048600
+}
+stop_id: ""244N""
+, arrival {
+  time: 1488048690
+}
+departure {
+  time: 1488048690
+}
+stop_id: ""243N""
+, arrival {
+  time: 1488048780
+}
+departure {
+  time: 1488048780
+}
+stop_id: ""242N""
+, arrival {
+  time: 1488048840
+}
+departure {
+  time: 1488048840
+}
+stop_id: ""241N""
+, arrival {
+  time: 1488049020
+}
+departure {
+  time: 1488049020
+}
+stop_id: ""239N""
+, arrival {
+  time: 1488049110
+}
+departure {
+  time: 1488049110
+}
+stop_id: ""238N""
+, arrival {
+  time: 1488049230
+}
+departure {
+  time: 1488049230
+}
+stop_id: ""237N""
+, arrival {
+  time: 1488049350
+}
+departure {
+  time: 1488049350
+}
+stop_id: ""236N""
+, arrival {
+  time: 1488049410
+}
+departure {
+  time: 1488049410
+}
+stop_id: ""235N""
+, arrival {
+  time: 1488049500
+}
+departure {
+  time: 1488049500
+}
+stop_id: ""234N""
+, arrival {
+  time: 1488049590
+}
+departure {
+  time: 1488049590
+}
+stop_id: ""233N""
+, arrival {
+  time: 1488049680
+}
+departure {
+  time: 1488049680
+}
+stop_id: ""232N""
+, arrival {
+  time: 1488049770
+}
+departure {
+  time: 1488049770
+}
+stop_id: ""231N""
+, arrival {
+  time: 1488049950
+}
+departure {
+  time: 1488049950
+}
+stop_id: ""230N""
+, arrival {
+  time: 1488050010
+}
+departure {
+  time: 1488050010
+}
+stop_id: ""229N""
+, arrival {
+  time: 1488050160
+}
+departure {
+  time: 1488050160
+}
+stop_id: ""228N""
+, arrival {
+  time: 1488050220
+}
+departure {
+  time: 1488050220
+}
+stop_id: ""137N""
+, arrival {
+  time: 1488050640
+}
+departure {
+  time: 1488050640
+}
+stop_id: ""132N""
+, arrival {
+  time: 1488050910
+}
+departure {
+  time: 1488050910
+}
+stop_id: ""128N""
+, arrival {
+  time: 1488051000
+}
+departure {
+  time: 1488051000
+}
+stop_id: ""127N""
+, arrival {
+  time: 1488051120
+}
+departure {
+  time: 1488051120
+}
+stop_id: ""126N""
+, arrival {
+  time: 1488051240
+}
+departure {
+  time: 1488051240
+}
+stop_id: ""125N""
+, arrival {
+  time: 1488051330
+}
+departure {
+  time: 1488051330
+}
+stop_id: ""124N""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""123N""
+, arrival {
+  time: 1488051510
+}
+departure {
+  time: 1488051510
+}
+stop_id: ""122N""
+, arrival {
+  time: 1488051570
+}
+departure {
+  time: 1488051570
+}
+stop_id: ""121N""
+, arrival {
+  time: 1488051690
+}
+departure {
+  time: 1488051690
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488051930
+}
+departure {
+  time: 1488051930
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488051990
+}
+departure {
+  time: 1488051990
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488052080
+}
+departure {
+  time: 1488052080
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488052170
+}
+departure {
+  time: 1488052170
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488052350
+}
+departure {
+  time: 1488052350
+}
+stop_id: ""222N""
+, arrival {
+  time: 1488052470
+}
+departure {
+  time: 1488052470
+}
+stop_id: ""221N""
+, arrival {
+  time: 1488052590
+}
+departure {
+  time: 1488052590
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488052680
+}
+departure {
+  time: 1488052680
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488052740
+}
+departure {
+  time: 1488052740
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488052800
+}
+departure {
+  time: 1488052800
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488052890
+}
+departure {
+  time: 1488052890
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488053010
+}
+departure {
+  time: 1488053010
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488053130
+}
+departure {
+  time: 1488053130
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488053220
+}
+departure {
+  time: 1488053220
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488053340
+}
+departure {
+  time: 1488053340
+}
+stop_id: ""212N""
+, arrival {
+  time: 1488053460
+}
+departure {
+  time: 1488053460
+}
+stop_id: ""211N""
+, arrival {
+  time: 1488053580
+}
+departure {
+  time: 1488053580
+}
+stop_id: ""210N""
+, arrival {
+  time: 1488053640
+}
+departure {
+  time: 1488053640
+}
+stop_id: ""209N""
+, arrival {
+  time: 1488053730
+}
+departure {
+  time: 1488053730
+}
+stop_id: ""208N""
+, arrival {
+  time: 1488053820
+}
+departure {
+  time: 1488053820
+}
+stop_id: ""207N""
+, arrival {
+  time: 1488053910
+}
+departure {
+  time: 1488053910
+}
+stop_id: ""206N""
+, arrival {
+  time: 1488053970
+}
+departure {
+  time: 1488053970
+}
+stop_id: ""205N""
+, arrival {
+  time: 1488054060
+}
+departure {
+  time: 1488054360
+}
+stop_id: ""204N""
+, arrival {
+  time: 1488054480
+}
+stop_id: ""201N""
+]","2","20170225","1488048292",,,
+"083250_4..S13X300","S","[departure {
+  time: 1488048750
+}
+stop_id: ""401S""
+, arrival {
+  time: 1488048870
+}
+departure {
+  time: 1488048870
+}
+stop_id: ""402S""
+, arrival {
+  time: 1488048960
+}
+departure {
+  time: 1488048960
+}
+stop_id: ""405S""
+, arrival {
+  time: 1488049080
+}
+departure {
+  time: 1488049080
+}
+stop_id: ""406S""
+, arrival {
+  time: 1488049140
+}
+departure {
+  time: 1488049140
+}
+stop_id: ""407S""
+, arrival {
+  time: 1488049200
+}
+departure {
+  time: 1488049200
+}
+stop_id: ""408S""
+, arrival {
+  time: 1488049290
+}
+departure {
+  time: 1488049290
+}
+stop_id: ""409S""
+, arrival {
+  time: 1488049380
+}
+departure {
+  time: 1488049380
+}
+stop_id: ""410S""
+, arrival {
+  time: 1488049440
+}
+departure {
+  time: 1488049440
+}
+stop_id: ""411S""
+, arrival {
+  time: 1488049530
+}
+departure {
+  time: 1488049530
+}
+stop_id: ""412S""
+, arrival {
+  time: 1488049620
+}
+departure {
+  time: 1488049620
+}
+stop_id: ""413S""
+, arrival {
+  time: 1488049740
+}
+departure {
+  time: 1488049740
+}
+stop_id: ""414S""
+, arrival {
+  time: 1488049890
+}
+departure {
+  time: 1488049980
+}
+stop_id: ""415S""
+, arrival {
+  time: 1488050070
+}
+departure {
+  time: 1488050070
+}
+stop_id: ""416S""
+, arrival {
+  time: 1488050220
+}
+departure {
+  time: 1488050220
+}
+stop_id: ""621S""
+, arrival {
+  time: 1488050340
+}
+departure {
+  time: 1488050340
+}
+stop_id: ""622S""
+, arrival {
+  time: 1488050400
+}
+departure {
+  time: 1488050400
+}
+stop_id: ""623S""
+, arrival {
+  time: 1488050490
+}
+departure {
+  time: 1488050490
+}
+stop_id: ""624S""
+, arrival {
+  time: 1488050580
+}
+departure {
+  time: 1488050580
+}
+stop_id: ""625S""
+, arrival {
+  time: 1488050700
+}
+departure {
+  time: 1488050700
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488050820
+}
+departure {
+  time: 1488050820
+}
+stop_id: ""627S""
+, arrival {
+  time: 1488050940
+}
+departure {
+  time: 1488050940
+}
+stop_id: ""628S""
+, arrival {
+  time: 1488051030
+}
+departure {
+  time: 1488051030
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488051150
+}
+departure {
+  time: 1488051150
+}
+stop_id: ""630S""
+, arrival {
+  time: 1488051270
+}
+departure {
+  time: 1488051270
+}
+stop_id: ""631S""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""632S""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""633S""
+, arrival {
+  time: 1488051510
+}
+departure {
+  time: 1488051510
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488051600
+}
+departure {
+  time: 1488051600
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488051690
+}
+departure {
+  time: 1488051690
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488051780
+}
+departure {
+  time: 1488051780
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488051840
+}
+departure {
+  time: 1488051840
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488051930
+}
+departure {
+  time: 1488051930
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488052050
+}
+stop_id: ""640S""
+]","4","20170225","1488048262",,,
+"074600_3..N01X021","N","[arrival {
+  time: 1488048236
+}
+stop_id: ""301N""
+]","3","20170225","1488048292","301N","1","1488048236"
+"084750_4..S13X300","S","[departure {
+  time: 1488049650
+}
+stop_id: ""401S""
+, arrival {
+  time: 1488049770
+}
+departure {
+  time: 1488049770
+}
+stop_id: ""402S""
+, arrival {
+  time: 1488049860
+}
+departure {
+  time: 1488049860
+}
+stop_id: ""405S""
+, arrival {
+  time: 1488049980
+}
+departure {
+  time: 1488049980
+}
+stop_id: ""406S""
+, arrival {
+  time: 1488050040
+}
+departure {
+  time: 1488050040
+}
+stop_id: ""407S""
+, arrival {
+  time: 1488050100
+}
+departure {
+  time: 1488050100
+}
+stop_id: ""408S""
+, arrival {
+  time: 1488050190
+}
+departure {
+  time: 1488050190
+}
+stop_id: ""409S""
+, arrival {
+  time: 1488050280
+}
+departure {
+  time: 1488050280
+}
+stop_id: ""410S""
+, arrival {
+  time: 1488050340
+}
+departure {
+  time: 1488050340
+}
+stop_id: ""411S""
+, arrival {
+  time: 1488050430
+}
+departure {
+  time: 1488050430
+}
+stop_id: ""412S""
+, arrival {
+  time: 1488050520
+}
+departure {
+  time: 1488050520
+}
+stop_id: ""413S""
+, arrival {
+  time: 1488050640
+}
+departure {
+  time: 1488050640
+}
+stop_id: ""414S""
+, arrival {
+  time: 1488050790
+}
+departure {
+  time: 1488050790
+}
+stop_id: ""415S""
+, arrival {
+  time: 1488050880
+}
+departure {
+  time: 1488050880
+}
+stop_id: ""416S""
+, arrival {
+  time: 1488051030
+}
+departure {
+  time: 1488051030
+}
+stop_id: ""621S""
+, arrival {
+  time: 1488051150
+}
+departure {
+  time: 1488051150
+}
+stop_id: ""622S""
+, arrival {
+  time: 1488051210
+}
+departure {
+  time: 1488051210
+}
+stop_id: ""623S""
+, arrival {
+  time: 1488051300
+}
+departure {
+  time: 1488051300
+}
+stop_id: ""624S""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""625S""
+, arrival {
+  time: 1488051510
+}
+departure {
+  time: 1488051510
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488051630
+}
+departure {
+  time: 1488051630
+}
+stop_id: ""627S""
+, arrival {
+  time: 1488051750
+}
+departure {
+  time: 1488051750
+}
+stop_id: ""628S""
+, arrival {
+  time: 1488051840
+}
+departure {
+  time: 1488051840
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488051960
+}
+departure {
+  time: 1488051960
+}
+stop_id: ""630S""
+, arrival {
+  time: 1488052080
+}
+departure {
+  time: 1488052080
+}
+stop_id: ""631S""
+, arrival {
+  time: 1488052200
+}
+departure {
+  time: 1488052200
+}
+stop_id: ""632S""
+, arrival {
+  time: 1488052260
+}
+departure {
+  time: 1488052260
+}
+stop_id: ""633S""
+, arrival {
+  time: 1488052320
+}
+departure {
+  time: 1488052320
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488052410
+}
+departure {
+  time: 1488052410
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488052500
+}
+departure {
+  time: 1488052500
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488052590
+}
+departure {
+  time: 1488052590
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488052650
+}
+departure {
+  time: 1488052650
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488052740
+}
+departure {
+  time: 1488052740
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488052860
+}
+stop_id: ""640S""
+]","4","20170225","1488048262",,,
+"084400_GS.S01R","S","[departure {
+  time: 1488049440
+}
+stop_id: ""902S""
+, arrival {
+  time: 1488049530
+}
+stop_id: ""901S""
+]","GS","20170225","1488048262",,,
+"084900_GS.S03R","S","[departure {
+  time: 1488049740
+}
+stop_id: ""902S""
+, arrival {
+  time: 1488049830
+}
+stop_id: ""901S""
+]","GS","20170225","1488048262",,,
+"078650_5..S08X011","S","[arrival {
+  time: 1488048342
+}
+departure {
+  time: 1488048462
+}
+stop_id: ""621S""
+, arrival {
+  time: 1488048732
+}
+departure {
+  time: 1488048852
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488049062
+}
+departure {
+  time: 1488049062
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488049212
+}
+stop_id: ""631S""
+]","5","20170225","1488048262","621S","0","1488048256"
+"078950_6..S01R","S","[arrival {
+  time: 1488048322
+}
+departure {
+  time: 1488048322
+}
+stop_id: ""625S""
+, arrival {
+  time: 1488048442
+}
+departure {
+  time: 1488048442
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488048562
+}
+departure {
+  time: 1488048562
+}
+stop_id: ""627S""
+, arrival {
+  time: 1488048682
+}
+departure {
+  time: 1488048682
+}
+stop_id: ""628S""
+, arrival {
+  time: 1488048772
+}
+departure {
+  time: 1488048772
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488048892
+}
+departure {
+  time: 1488048892
+}
+stop_id: ""630S""
+, arrival {
+  time: 1488049012
+}
+departure {
+  time: 1488049012
+}
+stop_id: ""631S""
+, arrival {
+  time: 1488049132
+}
+departure {
+  time: 1488049132
+}
+stop_id: ""632S""
+, arrival {
+  time: 1488049192
+}
+departure {
+  time: 1488049192
+}
+stop_id: ""633S""
+, arrival {
+  time: 1488049252
+}
+departure {
+  time: 1488049252
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488049372
+}
+departure {
+  time: 1488049372
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488049432
+}
+departure {
+  time: 1488049432
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488049522
+}
+departure {
+  time: 1488049522
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488049582
+}
+departure {
+  time: 1488049582
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488049672
+}
+departure {
+  time: 1488049672
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488049792
+}
+stop_id: ""640S""
+]","6","20170225","1488048262","625S","2","1488048258"
+"080850_4..S13X300","S","[arrival {
+  time: 1488048258
+}
+departure {
+  time: 1488048258
+}
+stop_id: ""414S""
+, arrival {
+  time: 1488048408
+}
+departure {
+  time: 1488048498
+}
+stop_id: ""415S""
+, arrival {
+  time: 1488048588
+}
+departure {
+  time: 1488048588
+}
+stop_id: ""416S""
+, arrival {
+  time: 1488048738
+}
+departure {
+  time: 1488048738
+}
+stop_id: ""621S""
+, arrival {
+  time: 1488048858
+}
+departure {
+  time: 1488048858
+}
+stop_id: ""622S""
+, arrival {
+  time: 1488048918
+}
+departure {
+  time: 1488048918
+}
+stop_id: ""623S""
+, arrival {
+  time: 1488049008
+}
+departure {
+  time: 1488049008
+}
+stop_id: ""624S""
+, arrival {
+  time: 1488049098
+}
+departure {
+  time: 1488049098
+}
+stop_id: ""625S""
+, arrival {
+  time: 1488049218
+}
+departure {
+  time: 1488049218
+}
+stop_id: ""626S""
+, arrival {
+  time: 1488049338
+}
+departure {
+  time: 1488049338
+}
+stop_id: ""627S""
+, arrival {
+  time: 1488049458
+}
+departure {
+  time: 1488049458
+}
+stop_id: ""628S""
+, arrival {
+  time: 1488049548
+}
+departure {
+  time: 1488049548
+}
+stop_id: ""629S""
+, arrival {
+  time: 1488049668
+}
+departure {
+  time: 1488049668
+}
+stop_id: ""630S""
+, arrival {
+  time: 1488049788
+}
+departure {
+  time: 1488049788
+}
+stop_id: ""631S""
+, arrival {
+  time: 1488049908
+}
+departure {
+  time: 1488049908
+}
+stop_id: ""632S""
+, arrival {
+  time: 1488049968
+}
+departure {
+  time: 1488049968
+}
+stop_id: ""633S""
+, arrival {
+  time: 1488050028
+}
+departure {
+  time: 1488050028
+}
+stop_id: ""634S""
+, arrival {
+  time: 1488050118
+}
+departure {
+  time: 1488050118
+}
+stop_id: ""635S""
+, arrival {
+  time: 1488050208
+}
+departure {
+  time: 1488050208
+}
+stop_id: ""636S""
+, arrival {
+  time: 1488050298
+}
+departure {
+  time: 1488050298
+}
+stop_id: ""637S""
+, arrival {
+  time: 1488050358
+}
+departure {
+  time: 1488050358
+}
+stop_id: ""638S""
+, arrival {
+  time: 1488050448
+}
+departure {
+  time: 1488050448
+}
+stop_id: ""639S""
+, arrival {
+  time: 1488050568
+}
+stop_id: ""640S""
+]","4","20170225","1488048262","414S","1","1488048228"
+"079400_3..N01X021","N","[arrival {
+  time: 1488048357
+}
+departure {
+  time: 1488048357
+}
+stop_id: ""231N""
+, arrival {
+  time: 1488048537
+}
+departure {
+  time: 1488048537
+}
+stop_id: ""230N""
+, arrival {
+  time: 1488048597
+}
+departure {
+  time: 1488048597
+}
+stop_id: ""229N""
+, arrival {
+  time: 1488048747
+}
+departure {
+  time: 1488048747
+}
+stop_id: ""228N""
+, arrival {
+  time: 1488048807
+}
+departure {
+  time: 1488048807
+}
+stop_id: ""137N""
+, arrival {
+  time: 1488049227
+}
+departure {
+  time: 1488049227
+}
+stop_id: ""132N""
+, arrival {
+  time: 1488049497
+}
+departure {
+  time: 1488049497
+}
+stop_id: ""128N""
+, arrival {
+  time: 1488049587
+}
+departure {
+  time: 1488049587
+}
+stop_id: ""127N""
+, arrival {
+  time: 1488049707
+}
+departure {
+  time: 1488049707
+}
+stop_id: ""126N""
+, arrival {
+  time: 1488049827
+}
+departure {
+  time: 1488049827
+}
+stop_id: ""125N""
+, arrival {
+  time: 1488049917
+}
+departure {
+  time: 1488049917
+}
+stop_id: ""124N""
+, arrival {
+  time: 1488049977
+}
+departure {
+  time: 1488049977
+}
+stop_id: ""123N""
+, arrival {
+  time: 1488050097
+}
+departure {
+  time: 1488050097
+}
+stop_id: ""122N""
+, arrival {
+  time: 1488050157
+}
+departure {
+  time: 1488050157
+}
+stop_id: ""121N""
+, arrival {
+  time: 1488050277
+}
+departure {
+  time: 1488050277
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488050517
+}
+departure {
+  time: 1488050517
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488050577
+}
+departure {
+  time: 1488050577
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488050667
+}
+departure {
+  time: 1488050667
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488050757
+}
+departure {
+  time: 1488050757
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488050877
+}
+departure {
+  time: 1488051057
+}
+stop_id: ""302N""
+, arrival {
+  time: 1488051177
+}
+stop_id: ""301N""
+]","3","20170225","1488048292","231N","2","1488048277"
+"084950_4..N13X300","N","[departure {
+  time: 1488049770
+}
+stop_id: ""640N""
+, arrival {
+  time: 1488049890
+}
+departure {
+  time: 1488049890
+}
+stop_id: ""639N""
+, arrival {
+  time: 1488049980
+}
+departure {
+  time: 1488049980
+}
+stop_id: ""638N""
+, arrival {
+  time: 1488050040
+}
+departure {
+  time: 1488050040
+}
+stop_id: ""637N""
+, arrival {
+  time: 1488050130
+}
+departure {
+  time: 1488050130
+}
+stop_id: ""636N""
+, arrival {
+  time: 1488050220
+}
+departure {
+  time: 1488050220
+}
+stop_id: ""635N""
+, arrival {
+  time: 1488050340
+}
+departure {
+  time: 1488050340
+}
+stop_id: ""634N""
+, arrival {
+  time: 1488050400
+}
+departure {
+  time: 1488050400
+}
+stop_id: ""633N""
+, arrival {
+  time: 1488050460
+}
+departure {
+  time: 1488050460
+}
+stop_id: ""632N""
+, arrival {
+  time: 1488050580
+}
+departure {
+  time: 1488050580
+}
+stop_id: ""631N""
+, arrival {
+  time: 1488050700
+}
+departure {
+  time: 1488050700
+}
+stop_id: ""630N""
+, arrival {
+  time: 1488050790
+}
+departure {
+  time: 1488050790
+}
+stop_id: ""629N""
+, arrival {
+  time: 1488050880
+}
+departure {
+  time: 1488050880
+}
+stop_id: ""628N""
+, arrival {
+  time: 1488051000
+}
+departure {
+  time: 1488051000
+}
+stop_id: ""627N""
+, arrival {
+  time: 1488051090
+}
+departure {
+  time: 1488051090
+}
+stop_id: ""626N""
+, arrival {
+  time: 1488051210
+}
+departure {
+  time: 1488051210
+}
+stop_id: ""625N""
+, arrival {
+  time: 1488051300
+}
+departure {
+  time: 1488051300
+}
+stop_id: ""624N""
+, arrival {
+  time: 1488051360
+}
+departure {
+  time: 1488051360
+}
+stop_id: ""623N""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""622N""
+, arrival {
+  time: 1488051540
+}
+departure {
+  time: 1488051600
+}
+stop_id: ""621N""
+, arrival {
+  time: 1488051750
+}
+departure {
+  time: 1488051750
+}
+stop_id: ""416N""
+, arrival {
+  time: 1488051870
+}
+departure {
+  time: 1488051870
+}
+stop_id: ""415N""
+, arrival {
+  time: 1488052020
+}
+departure {
+  time: 1488052020
+}
+stop_id: ""414N""
+, arrival {
+  time: 1488052140
+}
+departure {
+  time: 1488052140
+}
+stop_id: ""413N""
+, arrival {
+  time: 1488052230
+}
+departure {
+  time: 1488052230
+}
+stop_id: ""412N""
+, arrival {
+  time: 1488052320
+}
+departure {
+  time: 1488052320
+}
+stop_id: ""411N""
+, arrival {
+  time: 1488052380
+}
+departure {
+  time: 1488052380
+}
+stop_id: ""410N""
+, arrival {
+  time: 1488052470
+}
+departure {
+  time: 1488052470
+}
+stop_id: ""409N""
+, arrival {
+  time: 1488052560
+}
+departure {
+  time: 1488052560
+}
+stop_id: ""408N""
+, arrival {
+  time: 1488052620
+}
+departure {
+  time: 1488052620
+}
+stop_id: ""407N""
+, arrival {
+  time: 1488052680
+}
+departure {
+  time: 1488052680
+}
+stop_id: ""406N""
+, arrival {
+  time: 1488052800
+}
+departure {
+  time: 1488052800
+}
+stop_id: ""405N""
+, arrival {
+  time: 1488052890
+}
+departure {
+  time: 1488052890
+}
+stop_id: ""402N""
+, arrival {
+  time: 1488053010
+}
+stop_id: ""401N""
+]","4","20170225","1488048262",,,
+"081350_6..N01R","N","[arrival {
+  time: 1488048279
+}
+departure {
+  time: 1488048279
+}
+stop_id: ""632N""
+, arrival {
+  time: 1488048399
+}
+departure {
+  time: 1488048399
+}
+stop_id: ""631N""
+, arrival {
+  time: 1488048519
+}
+departure {
+  time: 1488048519
+}
+stop_id: ""630N""
+, arrival {
+  time: 1488048609
+}
+departure {
+  time: 1488048609
+}
+stop_id: ""629N""
+, arrival {
+  time: 1488048699
+}
+departure {
+  time: 1488048699
+}
+stop_id: ""628N""
+, arrival {
+  time: 1488048819
+}
+departure {
+  time: 1488048819
+}
+stop_id: ""627N""
+, arrival {
+  time: 1488048909
+}
+departure {
+  time: 1488048909
+}
+stop_id: ""626N""
+, arrival {
+  time: 1488049029
+}
+departure {
+  time: 1488049029
+}
+stop_id: ""625N""
+, arrival {
+  time: 1488049119
+}
+departure {
+  time: 1488049119
+}
+stop_id: ""624N""
+, arrival {
+  time: 1488049179
+}
+departure {
+  time: 1488049179
+}
+stop_id: ""623N""
+, arrival {
+  time: 1488049269
+}
+departure {
+  time: 1488049269
+}
+stop_id: ""622N""
+, arrival {
+  time: 1488049359
+}
+departure {
+  time: 1488049359
+}
+stop_id: ""621N""
+, arrival {
+  time: 1488049539
+}
+departure {
+  time: 1488049539
+}
+stop_id: ""619N""
+, arrival {
+  time: 1488049629
+}
+departure {
+  time: 1488049629
+}
+stop_id: ""618N""
+, arrival {
+  time: 1488049689
+}
+departure {
+  time: 1488049689
+}
+stop_id: ""617N""
+, arrival {
+  time: 1488049809
+}
+departure {
+  time: 1488049809
+}
+stop_id: ""616N""
+, arrival {
+  time: 1488049899
+}
+departure {
+  time: 1488049899
+}
+stop_id: ""615N""
+, arrival {
+  time: 1488049989
+}
+departure {
+  time: 1488049989
+}
+stop_id: ""614N""
+, arrival {
+  time: 1488050109
+}
+departure {
+  time: 1488050109
+}
+stop_id: ""613N""
+, arrival {
+  time: 1488050199
+}
+departure {
+  time: 1488050199
+}
+stop_id: ""612N""
+, arrival {
+  time: 1488050319
+}
+departure {
+  time: 1488050319
+}
+stop_id: ""611N""
+, arrival {
+  time: 1488050379
+}
+departure {
+  time: 1488050379
+}
+stop_id: ""610N""
+, arrival {
+  time: 1488050439
+}
+departure {
+  time: 1488050439
+}
+stop_id: ""609N""
+, arrival {
+  time: 1488050529
+}
+departure {
+  time: 1488050529
+}
+stop_id: ""608N""
+, arrival {
+  time: 1488050619
+}
+departure {
+  time: 1488050619
+}
+stop_id: ""607N""
+, arrival {
+  time: 1488050679
+}
+departure {
+  time: 1488050679
+}
+stop_id: ""606N""
+, arrival {
+  time: 1488050739
+}
+departure {
+  time: 1488050739
+}
+stop_id: ""604N""
+, arrival {
+  time: 1488050829
+}
+departure {
+  time: 1488050829
+}
+stop_id: ""603N""
+, arrival {
+  time: 1488050919
+}
+departure {
+  time: 1488050919
+}
+stop_id: ""602N""
+, arrival {
+  time: 1488051069
+}
+stop_id: ""601N""
+]","6","20170225","1488048262","632N","1","1488048249"
+"078550_2..N01X019","N","[arrival {
+  time: 1488048529
+}
+departure {
+  time: 1488048529
+}
+stop_id: ""128N""
+, arrival {
+  time: 1488048619
+}
+departure {
+  time: 1488048619
+}
+stop_id: ""127N""
+, arrival {
+  time: 1488048739
+}
+departure {
+  time: 1488048739
+}
+stop_id: ""126N""
+, arrival {
+  time: 1488048859
+}
+departure {
+  time: 1488048859
+}
+stop_id: ""125N""
+, arrival {
+  time: 1488048949
+}
+departure {
+  time: 1488048949
+}
+stop_id: ""124N""
+, arrival {
+  time: 1488049009
+}
+departure {
+  time: 1488049009
+}
+stop_id: ""123N""
+, arrival {
+  time: 1488049129
+}
+departure {
+  time: 1488049129
+}
+stop_id: ""122N""
+, arrival {
+  time: 1488049189
+}
+departure {
+  time: 1488049189
+}
+stop_id: ""121N""
+, arrival {
+  time: 1488049309
+}
+departure {
+  time: 1488049309
+}
+stop_id: ""120N""
+, arrival {
+  time: 1488049549
+}
+departure {
+  time: 1488049549
+}
+stop_id: ""227N""
+, arrival {
+  time: 1488049609
+}
+departure {
+  time: 1488049609
+}
+stop_id: ""226N""
+, arrival {
+  time: 1488049699
+}
+departure {
+  time: 1488049699
+}
+stop_id: ""225N""
+, arrival {
+  time: 1488049789
+}
+departure {
+  time: 1488049789
+}
+stop_id: ""224N""
+, arrival {
+  time: 1488049969
+}
+departure {
+  time: 1488049969
+}
+stop_id: ""222N""
+, arrival {
+  time: 1488050089
+}
+departure {
+  time: 1488050089
+}
+stop_id: ""221N""
+, arrival {
+  time: 1488050209
+}
+departure {
+  time: 1488050209
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488050299
+}
+departure {
+  time: 1488050299
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488050359
+}
+departure {
+  time: 1488050359
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488050419
+}
+departure {
+  time: 1488050419
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488050509
+}
+departure {
+  time: 1488050509
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488050629
+}
+departure {
+  time: 1488050629
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488050749
+}
+departure {
+  time: 1488050749
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488050839
+}
+departure {
+  time: 1488050839
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488050959
+}
+departure {
+  time: 1488050959
+}
+stop_id: ""212N""
+, arrival {
+  time: 1488051079
+}
+departure {
+  time: 1488051079
+}
+stop_id: ""211N""
+, arrival {
+  time: 1488051199
+}
+departure {
+  time: 1488051199
+}
+stop_id: ""210N""
+, arrival {
+  time: 1488051259
+}
+departure {
+  time: 1488051259
+}
+stop_id: ""209N""
+, arrival {
+  time: 1488051349
+}
+departure {
+  time: 1488051349
+}
+stop_id: ""208N""
+, arrival {
+  time: 1488051439
+}
+departure {
+  time: 1488051439
+}
+stop_id: ""207N""
+, arrival {
+  time: 1488051529
+}
+departure {
+  time: 1488051529
+}
+stop_id: ""206N""
+, arrival {
+  time: 1488051589
+}
+departure {
+  time: 1488051589
+}
+stop_id: ""205N""
+, arrival {
+  time: 1488051679
+}
+departure {
+  time: 1488051979
+}
+stop_id: ""204N""
+, arrival {
+  time: 1488052099
+}
+stop_id: ""201N""
+]","2","20170225","1488048292","128N","2","1488048286"
+"085350_5..N73X004","N","[departure {
+  time: 1488050010
+}
+stop_id: ""631N""
+, arrival {
+  time: 1488050130
+}
+departure {
+  time: 1488050130
+}
+stop_id: ""629N""
+, arrival {
+  time: 1488050340
+}
+departure {
+  time: 1488050340
+}
+stop_id: ""626N""
+, arrival {
+  time: 1488050640
+}
+departure {
+  time: 1488050640
+}
+stop_id: ""621N""
+, arrival {
+  time: 1488050790
+}
+departure {
+  time: 1488050790
+}
+stop_id: ""416N""
+, arrival {
+  time: 1488050940
+}
+departure {
+  time: 1488050940
+}
+stop_id: ""222N""
+, arrival {
+  time: 1488051060
+}
+departure {
+  time: 1488051060
+}
+stop_id: ""221N""
+, arrival {
+  time: 1488051180
+}
+departure {
+  time: 1488051180
+}
+stop_id: ""220N""
+, arrival {
+  time: 1488051270
+}
+departure {
+  time: 1488051270
+}
+stop_id: ""219N""
+, arrival {
+  time: 1488051330
+}
+departure {
+  time: 1488051330
+}
+stop_id: ""218N""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""217N""
+, arrival {
+  time: 1488051480
+}
+departure {
+  time: 1488051480
+}
+stop_id: ""216N""
+, arrival {
+  time: 1488051600
+}
+departure {
+  time: 1488051600
+}
+stop_id: ""215N""
+, arrival {
+  time: 1488051720
+}
+departure {
+  time: 1488051720
+}
+stop_id: ""214N""
+, arrival {
+  time: 1488051810
+}
+departure {
+  time: 1488051810
+}
+stop_id: ""213N""
+, arrival {
+  time: 1488052020
+}
+departure {
+  time: 1488052020
+}
+stop_id: ""505N""
+, arrival {
+  time: 1488052080
+}
+departure {
+  time: 1488052080
+}
+stop_id: ""504N""
+, arrival {
+  time: 1488052260
+}
+departure {
+  time: 1488052260
+}
+stop_id: ""503N""
+, arrival {
+  time: 1488052380
+}
+departure {
+  time: 1488052380
+}
+stop_id: ""502N""
+, arrival {
+  time: 1488052530
+}
+stop_id: ""501N""
+]","5","20170225","1488048262",,,
+"081750_4..N13X300","N","[arrival {
+  time: 1488048243
+}
+departure {
+  time: 1488048243
+}
+stop_id: ""636N""
+, arrival {
+  time: 1488048333
+}
+departure {
+  time: 1488048333
+}
+stop_id: ""635N""
+, arrival {
+  time: 1488048453
+}
+departure {
+  time: 1488048453
+}
+stop_id: ""634N""
+, arrival {
+  time: 1488048513
+}
+departure {
+  time: 1488048513
+}
+stop_id: ""633N""
+, arrival {
+  time: 1488048573
+}
+departure {
+  time: 1488048573
+}
+stop_id: ""632N""
+, arrival {
+  time: 1488048693
+}
+departure {
+  time: 1488048693
+}
+stop_id: ""631N""
+, arrival {
+  time: 1488048813
+}
+departure {
+  time: 1488048813
+}
+stop_id: ""630N""
+, arrival {
+  time: 1488048903
+}
+departure {
+  time: 1488048903
+}
+stop_id: ""629N""
+, arrival {
+  time: 1488048993
+}
+departure {
+  time: 1488048993
+}
+stop_id: ""628N""
+, arrival {
+  time: 1488049113
+}
+departure {
+  time: 1488049113
+}
+stop_id: ""627N""
+, arrival {
+  time: 1488049203
+}
+departure {
+  time: 1488049203
+}
+stop_id: ""626N""
+, arrival {
+  time: 1488049323
+}
+departure {
+  time: 1488049323
+}
+stop_id: ""625N""
+, arrival {
+  time: 1488049413
+}
+departure {
+  time: 1488049413
+}
+stop_id: ""624N""
+, arrival {
+  time: 1488049473
+}
+departure {
+  time: 1488049473
+}
+stop_id: ""623N""
+, arrival {
+  time: 1488049563
+}
+departure {
+  time: 1488049563
+}
+stop_id: ""622N""
+, arrival {
+  time: 1488049653
+}
+departure {
+  time: 1488049653
+}
+stop_id: ""621N""
+, arrival {
+  time: 1488049803
+}
+departure {
+  time: 1488049803
+}
+stop_id: ""416N""
+, arrival {
+  time: 1488049923
+}
+departure {
+  time: 1488049923
+}
+stop_id: ""415N""
+, arrival {
+  time: 1488050073
+}
+departure {
+  time: 1488050073
+}
+stop_id: ""414N""
+, arrival {
+  time: 1488050193
+}
+departure {
+  time: 1488050193
+}
+stop_id: ""413N""
+, arrival {
+  time: 1488050283
+}
+departure {
+  time: 1488050283
+}
+stop_id: ""412N""
+, arrival {
+  time: 1488050373
+}
+departure {
+  time: 1488050373
+}
+stop_id: ""411N""
+, arrival {
+  time: 1488050433
+}
+departure {
+  time: 1488050433
+}
+stop_id: ""410N""
+, arrival {
+  time: 1488050523
+}
+departure {
+  time: 1488050523
+}
+stop_id: ""409N""
+, arrival {
+  time: 1488050613
+}
+departure {
+  time: 1488050613
+}
+stop_id: ""408N""
+, arrival {
+  time: 1488050673
+}
+departure {
+  time: 1488050673
+}
+stop_id: ""407N""
+, arrival {
+  time: 1488050733
+}
+departure {
+  time: 1488050733
+}
+stop_id: ""406N""
+, arrival {
+  time: 1488050853
+}
+departure {
+  time: 1488050853
+}
+stop_id: ""405N""
+, arrival {
+  time: 1488050943
+}
+departure {
+  time: 1488050943
+}
+stop_id: ""402N""
+, arrival {
+  time: 1488051063
+}
+stop_id: ""401N""
+]","4","20170225","1488048262","636N","1","1488048213"
+"085700_2..S08R","S","[departure {
+  time: 1488050220
+}
+stop_id: ""201S""
+, arrival {
+  time: 1488050310
+}
+departure {
+  time: 1488050310
+}
+stop_id: ""204S""
+, arrival {
+  time: 1488050400
+}
+departure {
+  time: 1488050400
+}
+stop_id: ""205S""
+, arrival {
+  time: 1488050460
+}
+departure {
+  time: 1488050460
+}
+stop_id: ""206S""
+, arrival {
+  time: 1488050550
+}
+departure {
+  time: 1488050550
+}
+stop_id: ""207S""
+, arrival {
+  time: 1488050640
+}
+departure {
+  time: 1488050640
+}
+stop_id: ""208S""
+, arrival {
+  time: 1488050730
+}
+departure {
+  time: 1488050730
+}
+stop_id: ""209S""
+, arrival {
+  time: 1488050790
+}
+departure {
+  time: 1488050790
+}
+stop_id: ""210S""
+, arrival {
+  time: 1488050910
+}
+departure {
+  time: 1488050910
+}
+stop_id: ""211S""
+, arrival {
+  time: 1488051030
+}
+departure {
+  time: 1488051030
+}
+stop_id: ""212S""
+, arrival {
+  time: 1488051150
+}
+departure {
+  time: 1488051150
+}
+stop_id: ""213S""
+, arrival {
+  time: 1488051240
+}
+departure {
+  time: 1488051240
+}
+stop_id: ""214S""
+, arrival {
+  time: 1488051360
+}
+departure {
+  time: 1488051360
+}
+stop_id: ""215S""
+, arrival {
+  time: 1488051480
+}
+departure {
+  time: 1488051480
+}
+stop_id: ""216S""
+, arrival {
+  time: 1488051570
+}
+departure {
+  time: 1488051570
+}
+stop_id: ""217S""
+, arrival {
+  time: 1488051630
+}
+departure {
+  time: 1488051630
+}
+stop_id: ""218S""
+, arrival {
+  time: 1488051720
+}
+departure {
+  time: 1488051720
+}
+stop_id: ""219S""
+, arrival {
+  time: 1488051810
+}
+departure {
+  time: 1488051810
+}
+stop_id: ""220S""
+, arrival {
+  time: 1488051930
+}
+departure {
+  time: 1488051930
+}
+stop_id: ""221S""
+, arrival {
+  time: 1488052050
+}
+departure {
+  time: 1488052050
+}
+stop_id: ""222S""
+, arrival {
+  time: 1488052230
+}
+departure {
+  time: 1488052230
+}
+stop_id: ""224S""
+, arrival {
+  time: 1488052320
+}
+departure {
+  time: 1488052320
+}
+stop_id: ""225S""
+, arrival {
+  time: 1488052410
+}
+departure {
+  time: 1488052410
+}
+stop_id: ""226S""
+, arrival {
+  time: 1488052470
+}
+departure {
+  time: 1488052470
+}
+stop_id: ""227S""
+, arrival {
+  time: 1488052740
+}
+departure {
+  time: 1488052740
+}
+stop_id: ""120S""
+, arrival {
+  time: 1488052860
+}
+departure {
+  time: 1488052860
+}
+stop_id: ""121S""
+, arrival {
+  time: 1488052920
+}
+departure {
+  time: 1488052920
+}
+stop_id: ""122S""
+, arrival {
+  time: 1488053010
+}
+departure {
+  time: 1488053010
+}
+stop_id: ""123S""
+, arrival {
+  time: 1488053100
+}
+departure {
+  time: 1488053100
+}
+stop_id: ""124S""
+, arrival {
+  time: 1488053190
+}
+departure {
+  time: 1488053190
+}
+stop_id: ""125S""
+, arrival {
+  time: 1488053310
+}
+departure {
+  time: 1488053310
+}
+stop_id: ""126S""
+, arrival {
+  time: 1488053400
+}
+departure {
+  time: 1488053400
+}
+stop_id: ""127S""
+, arrival {
+  time: 1488053490
+}
+departure {
+  time: 1488053490
+}
+stop_id: ""128S""
+, arrival {
+  time: 1488053580
+}
+departure {
+  time: 1488053580
+}
+stop_id: ""129S""
+, arrival {
+  time: 1488053640
+}
+departure {
+  time: 1488053640
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488053700
+}
+departure {
+  time: 1488053700
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488053760
+}
+departure {
+  time: 1488053760
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488053850
+}
+departure {
+  time: 1488053850
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488053940
+}
+departure {
+  time: 1488053940
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488054030
+}
+departure {
+  time: 1488054030
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488054090
+}
+departure {
+  time: 1488054090
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488054180
+}
+departure {
+  time: 1488054180
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488054240
+}
+departure {
+  time: 1488054240
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488054390
+}
+departure {
+  time: 1488054390
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488054450
+}
+departure {
+  time: 1488054450
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488054720
+}
+departure {
+  time: 1488054720
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488054780
+}
+departure {
+  time: 1488054780
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488054870
+}
+departure {
+  time: 1488054870
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488054930
+}
+departure {
+  time: 1488054930
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488055020
+}
+departure {
+  time: 1488055020
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488055080
+}
+departure {
+  time: 1488055080
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488055200
+}
+departure {
+  time: 1488055200
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488055290
+}
+departure {
+  time: 1488055290
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488055380
+}
+departure {
+  time: 1488055380
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488055560
+}
+departure {
+  time: 1488055560
+}
+stop_id: ""241S""
+, arrival {
+  time: 1488055620
+}
+departure {
+  time: 1488055620
+}
+stop_id: ""242S""
+, arrival {
+  time: 1488055710
+}
+departure {
+  time: 1488055710
+}
+stop_id: ""243S""
+, arrival {
+  time: 1488055800
+}
+departure {
+  time: 1488055800
+}
+stop_id: ""244S""
+, arrival {
+  time: 1488055890
+}
+departure {
+  time: 1488055890
+}
+stop_id: ""245S""
+, arrival {
+  time: 1488055980
+}
+departure {
+  time: 1488055980
+}
+stop_id: ""246S""
+, arrival {
+  time: 1488056100
+}
+stop_id: ""247S""
+]","2","20170225","1488048292",,,
+"081600_2..S08R","S","[arrival {
+  time: 1488048346
+}
+departure {
+  time: 1488048346
+}
+stop_id: ""210S""
+, arrival {
+  time: 1488048466
+}
+departure {
+  time: 1488048466
+}
+stop_id: ""211S""
+, arrival {
+  time: 1488048586
+}
+departure {
+  time: 1488048586
+}
+stop_id: ""212S""
+, arrival {
+  time: 1488048706
+}
+departure {
+  time: 1488048706
+}
+stop_id: ""213S""
+, arrival {
+  time: 1488048796
+}
+departure {
+  time: 1488048796
+}
+stop_id: ""214S""
+, arrival {
+  time: 1488048916
+}
+departure {
+  time: 1488048916
+}
+stop_id: ""215S""
+, arrival {
+  time: 1488049036
+}
+departure {
+  time: 1488049036
+}
+stop_id: ""216S""
+, arrival {
+  time: 1488049126
+}
+departure {
+  time: 1488049126
+}
+stop_id: ""217S""
+, arrival {
+  time: 1488049186
+}
+departure {
+  time: 1488049186
+}
+stop_id: ""218S""
+, arrival {
+  time: 1488049276
+}
+departure {
+  time: 1488049276
+}
+stop_id: ""219S""
+, arrival {
+  time: 1488049366
+}
+departure {
+  time: 1488049366
+}
+stop_id: ""220S""
+, arrival {
+  time: 1488049486
+}
+departure {
+  time: 1488049486
+}
+stop_id: ""221S""
+, arrival {
+  time: 1488049606
+}
+departure {
+  time: 1488049606
+}
+stop_id: ""222S""
+, arrival {
+  time: 1488049786
+}
+departure {
+  time: 1488049786
+}
+stop_id: ""224S""
+, arrival {
+  time: 1488049876
+}
+departure {
+  time: 1488049876
+}
+stop_id: ""225S""
+, arrival {
+  time: 1488049966
+}
+departure {
+  time: 1488049966
+}
+stop_id: ""226S""
+, arrival {
+  time: 1488050026
+}
+departure {
+  time: 1488050026
+}
+stop_id: ""227S""
+, arrival {
+  time: 1488050296
+}
+departure {
+  time: 1488050296
+}
+stop_id: ""120S""
+, arrival {
+  time: 1488050416
+}
+departure {
+  time: 1488050416
+}
+stop_id: ""121S""
+, arrival {
+  time: 1488050476
+}
+departure {
+  time: 1488050476
+}
+stop_id: ""122S""
+, arrival {
+  time: 1488050566
+}
+departure {
+  time: 1488050566
+}
+stop_id: ""123S""
+, arrival {
+  time: 1488050656
+}
+departure {
+  time: 1488050656
+}
+stop_id: ""124S""
+, arrival {
+  time: 1488050746
+}
+departure {
+  time: 1488050746
+}
+stop_id: ""125S""
+, arrival {
+  time: 1488050866
+}
+departure {
+  time: 1488050866
+}
+stop_id: ""126S""
+, arrival {
+  time: 1488050956
+}
+departure {
+  time: 1488050956
+}
+stop_id: ""127S""
+, arrival {
+  time: 1488051046
+}
+departure {
+  time: 1488051046
+}
+stop_id: ""128S""
+, arrival {
+  time: 1488051136
+}
+departure {
+  time: 1488051136
+}
+stop_id: ""129S""
+, arrival {
+  time: 1488051196
+}
+departure {
+  time: 1488051196
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488051256
+}
+departure {
+  time: 1488051256
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488051316
+}
+departure {
+  time: 1488051316
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488051406
+}
+departure {
+  time: 1488051406
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488051496
+}
+departure {
+  time: 1488051496
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488051586
+}
+departure {
+  time: 1488051586
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488051646
+}
+departure {
+  time: 1488051646
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488051736
+}
+departure {
+  time: 1488051736
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488051796
+}
+departure {
+  time: 1488051796
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488051946
+}
+departure {
+  time: 1488051946
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488052006
+}
+departure {
+  time: 1488052006
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488052276
+}
+departure {
+  time: 1488052276
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488052336
+}
+departure {
+  time: 1488052336
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488052426
+}
+departure {
+  time: 1488052426
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488052486
+}
+departure {
+  time: 1488052486
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488052576
+}
+departure {
+  time: 1488052576
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488052636
+}
+departure {
+  time: 1488052636
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488052756
+}
+departure {
+  time: 1488052756
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488052846
+}
+departure {
+  time: 1488052846
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488052936
+}
+departure {
+  time: 1488052936
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488053116
+}
+departure {
+  time: 1488053116
+}
+stop_id: ""241S""
+, arrival {
+  time: 1488053176
+}
+departure {
+  time: 1488053176
+}
+stop_id: ""242S""
+, arrival {
+  time: 1488053266
+}
+departure {
+  time: 1488053266
+}
+stop_id: ""243S""
+, arrival {
+  time: 1488053356
+}
+departure {
+  time: 1488053356
+}
+stop_id: ""244S""
+, arrival {
+  time: 1488053446
+}
+departure {
+  time: 1488053446
+}
+stop_id: ""245S""
+, arrival {
+  time: 1488053536
+}
+departure {
+  time: 1488053536
+}
+stop_id: ""246S""
+, arrival {
+  time: 1488053656
+}
+stop_id: ""247S""
+]","2","20170225","1488048292","210S","2","1488048286"
+"080400_3..S01X002","S","[arrival {
+  time: 1488048360
+}
+departure {
+  time: 1488048360
+}
+stop_id: ""123S""
+, arrival {
+  time: 1488048450
+}
+departure {
+  time: 1488048450
+}
+stop_id: ""124S""
+, arrival {
+  time: 1488048540
+}
+departure {
+  time: 1488048540
+}
+stop_id: ""125S""
+, arrival {
+  time: 1488048660
+}
+departure {
+  time: 1488048660
+}
+stop_id: ""126S""
+, arrival {
+  time: 1488048750
+}
+departure {
+  time: 1488048750
+}
+stop_id: ""127S""
+, arrival {
+  time: 1488048840
+}
+departure {
+  time: 1488048840
+}
+stop_id: ""128S""
+, arrival {
+  time: 1488048930
+}
+departure {
+  time: 1488048930
+}
+stop_id: ""129S""
+, arrival {
+  time: 1488048990
+}
+departure {
+  time: 1488048990
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488049050
+}
+departure {
+  time: 1488049050
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488049110
+}
+departure {
+  time: 1488049110
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488049200
+}
+departure {
+  time: 1488049200
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488049290
+}
+departure {
+  time: 1488049290
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488049380
+}
+departure {
+  time: 1488049380
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488049440
+}
+departure {
+  time: 1488049440
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488049530
+}
+departure {
+  time: 1488049530
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488049590
+}
+departure {
+  time: 1488049590
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488049740
+}
+departure {
+  time: 1488049740
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488049800
+}
+departure {
+  time: 1488049800
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488050070
+}
+departure {
+  time: 1488050070
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488050130
+}
+departure {
+  time: 1488050130
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488050220
+}
+departure {
+  time: 1488050220
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488050280
+}
+departure {
+  time: 1488050280
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488050370
+}
+departure {
+  time: 1488050370
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488050430
+}
+departure {
+  time: 1488050430
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488050550
+}
+departure {
+  time: 1488050550
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488050640
+}
+departure {
+  time: 1488050640
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488050730
+}
+departure {
+  time: 1488050730
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488050820
+}
+departure {
+  time: 1488050820
+}
+stop_id: ""248S""
+, arrival {
+  time: 1488050910
+}
+departure {
+  time: 1488050910
+}
+stop_id: ""249S""
+, arrival {
+  time: 1488051030
+}
+departure {
+  time: 1488051030
+}
+stop_id: ""250S""
+, arrival {
+  time: 1488051180
+}
+departure {
+  time: 1488051180
+}
+stop_id: ""251S""
+, arrival {
+  time: 1488051270
+}
+departure {
+  time: 1488051270
+}
+stop_id: ""252S""
+, arrival {
+  time: 1488051390
+}
+departure {
+  time: 1488051390
+}
+stop_id: ""253S""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""254S""
+, arrival {
+  time: 1488051540
+}
+departure {
+  time: 1488051540
+}
+stop_id: ""255S""
+, arrival {
+  time: 1488051600
+}
+departure {
+  time: 1488051600
+}
+stop_id: ""256S""
+, arrival {
+  time: 1488051690
+}
+stop_id: ""257S""
+]","3","20170225","1488048292","123S","2","1488048277"
+"084900_2..S08R","S","[departure {
+  time: 1488049740
+}
+stop_id: ""201S""
+, arrival {
+  time: 1488049830
+}
+departure {
+  time: 1488049830
+}
+stop_id: ""204S""
+, arrival {
+  time: 1488049920
+}
+departure {
+  time: 1488049920
+}
+stop_id: ""205S""
+, arrival {
+  time: 1488049980
+}
+departure {
+  time: 1488049980
+}
+stop_id: ""206S""
+, arrival {
+  time: 1488050070
+}
+departure {
+  time: 1488050070
+}
+stop_id: ""207S""
+, arrival {
+  time: 1488050160
+}
+departure {
+  time: 1488050160
+}
+stop_id: ""208S""
+, arrival {
+  time: 1488050250
+}
+departure {
+  time: 1488050250
+}
+stop_id: ""209S""
+, arrival {
+  time: 1488050310
+}
+departure {
+  time: 1488050310
+}
+stop_id: ""210S""
+, arrival {
+  time: 1488050430
+}
+departure {
+  time: 1488050430
+}
+stop_id: ""211S""
+, arrival {
+  time: 1488050550
+}
+departure {
+  time: 1488050550
+}
+stop_id: ""212S""
+, arrival {
+  time: 1488050670
+}
+departure {
+  time: 1488050670
+}
+stop_id: ""213S""
+, arrival {
+  time: 1488050760
+}
+departure {
+  time: 1488050760
+}
+stop_id: ""214S""
+, arrival {
+  time: 1488050880
+}
+departure {
+  time: 1488050880
+}
+stop_id: ""215S""
+, arrival {
+  time: 1488051000
+}
+departure {
+  time: 1488051000
+}
+stop_id: ""216S""
+, arrival {
+  time: 1488051090
+}
+departure {
+  time: 1488051090
+}
+stop_id: ""217S""
+, arrival {
+  time: 1488051150
+}
+departure {
+  time: 1488051150
+}
+stop_id: ""218S""
+, arrival {
+  time: 1488051240
+}
+departure {
+  time: 1488051240
+}
+stop_id: ""219S""
+, arrival {
+  time: 1488051330
+}
+departure {
+  time: 1488051330
+}
+stop_id: ""220S""
+, arrival {
+  time: 1488051450
+}
+departure {
+  time: 1488051450
+}
+stop_id: ""221S""
+, arrival {
+  time: 1488051570
+}
+departure {
+  time: 1488051570
+}
+stop_id: ""222S""
+, arrival {
+  time: 1488051750
+}
+departure {
+  time: 1488051750
+}
+stop_id: ""224S""
+, arrival {
+  time: 1488051840
+}
+departure {
+  time: 1488051840
+}
+stop_id: ""225S""
+, arrival {
+  time: 1488051930
+}
+departure {
+  time: 1488051930
+}
+stop_id: ""226S""
+, arrival {
+  time: 1488051990
+}
+departure {
+  time: 1488051990
+}
+stop_id: ""227S""
+, arrival {
+  time: 1488052260
+}
+departure {
+  time: 1488052260
+}
+stop_id: ""120S""
+, arrival {
+  time: 1488052380
+}
+departure {
+  time: 1488052380
+}
+stop_id: ""121S""
+, arrival {
+  time: 1488052440
+}
+departure {
+  time: 1488052440
+}
+stop_id: ""122S""
+, arrival {
+  time: 1488052530
+}
+departure {
+  time: 1488052530
+}
+stop_id: ""123S""
+, arrival {
+  time: 1488052620
+}
+departure {
+  time: 1488052620
+}
+stop_id: ""124S""
+, arrival {
+  time: 1488052710
+}
+departure {
+  time: 1488052710
+}
+stop_id: ""125S""
+, arrival {
+  time: 1488052830
+}
+departure {
+  time: 1488052830
+}
+stop_id: ""126S""
+, arrival {
+  time: 1488052920
+}
+departure {
+  time: 1488052920
+}
+stop_id: ""127S""
+, arrival {
+  time: 1488053010
+}
+departure {
+  time: 1488053010
+}
+stop_id: ""128S""
+, arrival {
+  time: 1488053100
+}
+departure {
+  time: 1488053100
+}
+stop_id: ""129S""
+, arrival {
+  time: 1488053160
+}
+departure {
+  time: 1488053160
+}
+stop_id: ""130S""
+, arrival {
+  time: 1488053220
+}
+departure {
+  time: 1488053220
+}
+stop_id: ""131S""
+, arrival {
+  time: 1488053280
+}
+departure {
+  time: 1488053280
+}
+stop_id: ""132S""
+, arrival {
+  time: 1488053370
+}
+departure {
+  time: 1488053370
+}
+stop_id: ""133S""
+, arrival {
+  time: 1488053460
+}
+departure {
+  time: 1488053460
+}
+stop_id: ""134S""
+, arrival {
+  time: 1488053550
+}
+departure {
+  time: 1488053550
+}
+stop_id: ""135S""
+, arrival {
+  time: 1488053610
+}
+departure {
+  time: 1488053610
+}
+stop_id: ""136S""
+, arrival {
+  time: 1488053700
+}
+departure {
+  time: 1488053700
+}
+stop_id: ""137S""
+, arrival {
+  time: 1488053760
+}
+departure {
+  time: 1488053760
+}
+stop_id: ""228S""
+, arrival {
+  time: 1488053910
+}
+departure {
+  time: 1488053910
+}
+stop_id: ""229S""
+, arrival {
+  time: 1488053970
+}
+departure {
+  time: 1488053970
+}
+stop_id: ""230S""
+, arrival {
+  time: 1488054240
+}
+departure {
+  time: 1488054240
+}
+stop_id: ""231S""
+, arrival {
+  time: 1488054300
+}
+departure {
+  time: 1488054300
+}
+stop_id: ""232S""
+, arrival {
+  time: 1488054390
+}
+departure {
+  time: 1488054390
+}
+stop_id: ""233S""
+, arrival {
+  time: 1488054450
+}
+departure {
+  time: 1488054450
+}
+stop_id: ""234S""
+, arrival {
+  time: 1488054540
+}
+departure {
+  time: 1488054540
+}
+stop_id: ""235S""
+, arrival {
+  time: 1488054600
+}
+departure {
+  time: 1488054600
+}
+stop_id: ""236S""
+, arrival {
+  time: 1488054720
+}
+departure {
+  time: 1488054720
+}
+stop_id: ""237S""
+, arrival {
+  time: 1488054810
+}
+departure {
+  time: 1488054810
+}
+stop_id: ""238S""
+, arrival {
+  time: 1488054900
+}
+departure {
+  time: 1488054900
+}
+stop_id: ""239S""
+, arrival {
+  time: 1488055080
+}
+departure {
+  time: 1488055080
+}
+stop_id: ""241S""
+, arrival {
+  time: 1488055140
+}
+departure {
+  time: 1488055140
+}
+stop_id: ""242S""
+, arrival {
+  time: 1488055230
+}
+departure {
+  time: 1488055230
+}
+stop_id: ""243S""
+, arrival {
+  time: 1488055320
+}
+departure {
+  time: 1488055320
+}
+stop_id: ""244S""
+, arrival {
+  time: 1488055410
+}
+departure {
+  time: 1488055410
+}
+stop_id: ""245S""
+, arrival {
+  time: 1488055500
+}
+departure {
+  time: 1488055500
+}
+stop_id: ""246S""
+, arrival {
+  time: 1488055620
+}
+stop_id: ""247S""
+]","2","20170225","1488048292",,,

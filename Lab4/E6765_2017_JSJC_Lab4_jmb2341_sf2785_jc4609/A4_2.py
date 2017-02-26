@@ -50,6 +50,7 @@ from utils import aws
 # Get the service resource.
 def get_resource():
     try:
+        global dynamodb, table
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
         table = dynamodb.Table("mtaData")
     except KeyboardInterrupt:
@@ -110,11 +111,69 @@ def list_trains(speed):
     except:
         print "Error listing trains"
 
-# Find and display tripId of earliest train reaching the 96th station
-def list_earliest(train_type):
+# Find and display tripId of earliest train reaching the 96th street station
+def list_earliest(speed, direction):
     try:
-
-        return True
+        t = None
+        i = None
+        if direction == 'north':
+            d = 'N'
+        elif direction == 'south':
+            d = 'S'
+        else:
+            print "Improper direction"
+            return False
+        if speed == 'local':
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('1')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find('120' + d)
+                if x != -1:
+                    t_new = int(out[x-23:x-13])
+                    if t != None:
+                        if t > t_new:
+                            t = t_new
+                            i = n['tripId']
+                    else:
+                        t = t_new
+                        i = n['tripId']
+        if speed == 'express':
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('2')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find('120' + d)
+                if x != -1:
+                    t_new = int(out[x-23:x-13])
+                    if t != None:
+                        if t > t_new:
+                            t = t_new
+                            i = n['tripId']
+                    else:
+                        t = t_new
+                        i = n['tripId']
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('3')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find('120' + d)
+                if x != -1:
+                    t_new = int(out[x-23:x-13])
+                    if t != None:
+                        if t > t_new:
+                            t = t_new
+                            i = n['tripId']
+                    else:
+                        t = t_new
+                        i = n['tripId']
+        return {'tripId':i, 'time':t}
     except KeyboardInterrupt:
             exit
     except ClientError:

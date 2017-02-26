@@ -39,14 +39,74 @@
 # to get off at 96th Street.
 #
 
+import time
+
+import boto3
+from boto3.dynamodb.conditions import Key,Attr
+from botocore.exceptions import ClientError
+
+from utils import aws
+
+# Get the service resource.
+def get_resource():
+    try:
+        dynamodb = aws.getResource('dynamodb', 'us-east-1')
+        table = dynamodb.Table("mtaData")
+    except KeyboardInterrupt:
+        exit
+    except:
+        print "Get Resource Failure"
 
 # Get a list of local or express trains passing through the 96th station
 def list_trains(speed):
     try:
-
-        return True
+        m = []
+        if speed == 'local':
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('1')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find('120N')
+                y = out.find('120S')
+                if x != -1:
+                    m.append(n['tripId'])
+                if y != -1:
+                    m.append(n['tripId'])
+        elif speed == 'express':
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('2')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find('120N')
+                y = out.find('120S')
+                if x != -1:
+                    m.append(n['tripId'])
+                if y != -1:
+                    m.append(n['tripId'])
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('3')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find('120N')
+                y = out.find('120S')
+                if x != -1:
+                    m.append(n['tripId'])
+                if y != -1:
+                    m.append(n['tripId'])
+        else:
+            return False
+        return m
     except KeyboardInterrupt:
-            exit
+        exit
+    except ClientError:
+        get_resource()
+        print "Token Updated, Retry"
     except:
         print "Error listing trains"
 
@@ -57,6 +117,9 @@ def list_earliest(train_type):
         return True
     except KeyboardInterrupt:
             exit
+    except ClientError:
+        get_resource()
+        print "Token Updated, Retry"
     except:
         print "Error listing earliest train"
 
@@ -114,6 +177,7 @@ menu['6']="Exit"
 print "Press Ctrl+C to escape..."
 try:
     while True:
+        get_resource()
         options=menu.keys()
         options.sort()
         for entry in options:
@@ -174,3 +238,36 @@ except:
 
 # Deal with it if there is nothing in the database
 # Deal with it if there is not a database
+
+#
+#for n in items:
+#    out.update([("routeId", str(n['routeId']))])
+#    #out = n['tripId'][10:]
+#
+#c = 1
+#for n in items:
+#    out = n['futureStopData']
+#    x = out.find('stop_id')
+#    print c
+#    print out[x:x+20]
+#    c = c + 1
+#
+#import re
+#for n in items:
+#    out = n['futureStopData']
+#    for m in re.finditer('stop_id', out):
+#        print('stop_id found', m.start(), m.end())
+#
+#for n in items:
+#    out = n['futureStopData']
+#    x = out.find('120N')
+#    y = out.find('120S')
+#    if x != -1:
+#        print "x"
+#        print x
+#        print out[x-10:x+5]
+#    if y != -1:
+#        print "y"
+#        print y
+#        print out[y-10:y+5]
+#

@@ -18,8 +18,7 @@
 # >> Subscribe to message feed: (Ask the user for his/her phone number & send
 # a subscription message to the same)
 # >> Exit (Exit and close program)
-
-
+#
 # 1. (10 pts) Get a list of local trains (ie, 1 trains) passing through the
 # 96th station
 # 2. (10 pts) Repeat the same for express trains (ie, 2 or 3 trains)
@@ -148,7 +147,7 @@ def list_earliest(speed, direction, t_delta=0):
         t_arrival = 9999999999
         i = None
         if t_delta < 0:
-            print "t_delta must be greater than zero"
+            print "t_delta must be greater than or equal to zero"
             return False
         if direction == 'north':
             d = 'N'
@@ -209,9 +208,12 @@ def list_earliest(speed, direction, t_delta=0):
 
 # Print time taken to reach destination station on a local or express train
 # from source station. The options are below:
-def time_to(speed, source, destination):
+def time_to(speed, source, destination, t_delta=0):
     try:
         t = None
+        if t_delta < 0:
+            print "t_delta must be greater than or equal to zero"
+            return False
         if int(destination) > int(source):
             direction = 'S'
         elif int(destination) < int(source):
@@ -282,10 +284,29 @@ def time_to(speed, source, destination):
         print "Error getting time to"
 
 # Flexible decision whether or not to switch at 96th st
-def switch_decision(origin,destination):
+def switch_decision(source,destination):
     try:
+        if int(destination) > int(source):
+            direction = 'S'
+        elif int(destination) < int(source):
+            direction = 'N'
+        else:
+            print "destination and source are the same"
+            return False
+        #if str(source) != '120' and str(source) != '123' and str(source) != '127':
+        #    # not an express source
+        #    pass
+        if int(source) < 120 and direction == 'N':
+            decision = "Stay on in the Local Train"
+        elif int(source) < 120 and direction == 'S' and int(destination) <= 120:
+            decision = "Stay on in the Local Train"
+        elif int(source) < 120 and direction == 'S' and int(destination) >= 120:
+            t_d1 = time_to('local', source, '120')
+            t_d2l = time_to('local', '120', str(destination))
+            t_d2e = time_to('express', '120', str(destination))
 
-        return True
+
+        return decision
     except KeyboardInterrupt:
         exit
     except:

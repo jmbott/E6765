@@ -38,6 +38,32 @@
 # express at 42nd Street. If you choose to get on the express, you will have
 # to get off at 96th Street.
 #
+# Stations:
+# 242nd St (1) = 101
+# 238th St (1) = 103
+# 231th St (1) = 104
+# 225th St (1) = 106
+# 215th St (1) = 107
+# 207nd St (1) = 108
+# Dyckman St (1) = 109
+# 191st St (1) = 110
+# 181st St (1) = 111
+# 168th St (1) = 112
+# 157th St (1) = 113
+# 145th St (1) = 114
+# 137th St (1) = 115
+# 125th St (1) = 116
+# 116th St (1) = 117
+# 110th St (1) = 118
+# 96th St (1,2,3) = 120
+# 86th St (1) = 121
+# 79th St (1) = 122
+# 72nd St (1,2,3) = 123
+# 66th St (1) = 124
+# 59th St (1) = 125
+# 50th St (1) = 126
+# 42nd St (1,2,3) = 127
+#
 
 import time
 
@@ -182,13 +208,76 @@ def list_earliest(speed, direction, t_delta=0):
         print "Error listing earliest train"
 
 # Print time taken to reach destination station on a local or express train
-# from source station
-def time_to_times_square(train_type, source, destination):
+# from source station. The options are below:
+def time_to(speed, source, destination):
     try:
-
-        return True
+        t = None
+        if int(destination) > int(source):
+            direction = 'S'
+        elif int(destination) < int(source):
+            direction = 'N'
+        else:
+            print "destination and source are the same"
+            return False
+        if speed == 'local':
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('1')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find(str(source) + direction)
+                if x != -1:
+                    y = out.find(str(destination) + direction)
+                    if y != -1:
+                        t_source = int(out[x-23:x-13])
+                        t_destination = int(out[y-23:y-13])
+                        t = t_destination - t_source
+        if speed == 'express':
+            if str(source) != '120' and str(source) != '123' and str(source) != '127':
+                print "not an express source"
+                return False
+            if str(destination)!='120' and str(destination)!='123' and str(destination)!='127':
+                print "not an express destination"
+                return False
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('2')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find(str(source) + direction)
+                if x != -1:
+                    y = out.find(str(destination) + direction)
+                    if y != -1:
+                        t_source = int(out[x-23:x-13])
+                        t_destination = int(out[y-23:y-13])
+                        t_2 = t_destination - t_source
+            response = table.scan(
+                FilterExpression=Attr('routeId').eq('3')
+            )
+            items = response['Items']
+            for n in items:
+                out = n['futureStopData']
+                x = out.find(str(source) + direction)
+                if x != -1:
+                    y = out.find(str(destination) + direction)
+                    if y != -1:
+                        t_source = int(out[x-23:x-13])
+                        t_destination = int(out[y-23:y-13])
+                        t_3 = t_destination - t_source
+            if t_2 < t_3:
+                t = t_2
+            elif t_3 < t_2:
+                t = t_3
+            else:
+                t = t_2
+        return t
     except KeyboardInterrupt:
         exit
+    except ClientError:
+        get_resource()
+        print "Token Updated, Retry"
     except:
         print "Error getting time to"
 

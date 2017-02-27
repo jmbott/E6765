@@ -112,10 +112,18 @@ def list_trains(speed):
         print "Error listing trains"
 
 # Find and display tripId of earliest train reaching the 96th street station
-def list_earliest(speed, direction):
+# after a designated time t_delta (for travel time to 96th)
+#
+#  t_arrival    t_delta    t_current
+#      |<--------------------->|
+#
+def list_earliest(speed, direction, t_delta=0):
     try:
-        t = None
+        t_arrival = 9999999999
         i = None
+        if t_delta < 0:
+            print "t_delta must be greater than zero"
+            return False
         if direction == 'north':
             d = 'N'
         elif direction == 'south':
@@ -133,12 +141,9 @@ def list_earliest(speed, direction):
                 x = out.find('120' + d)
                 if x != -1:
                     t_new = int(out[x-23:x-13])
-                    if t != None:
-                        if t > t_new:
-                            t = t_new
-                            i = n['tripId']
-                    else:
-                        t = t_new
+                    t_current = n['ts']
+                    if t_current + t_delta < t_new and t_arrival > t_new:
+                        t_arrival = t_new
                         i = n['tripId']
         if speed == 'express':
             response = table.scan(
@@ -150,12 +155,9 @@ def list_earliest(speed, direction):
                 x = out.find('120' + d)
                 if x != -1:
                     t_new = int(out[x-23:x-13])
-                    if t != None:
-                        if t > t_new:
-                            t = t_new
-                            i = n['tripId']
-                    else:
-                        t = t_new
+                    t_current = n['ts']
+                    if t_current + t_delta < t_new and t_arrival > t_new:
+                        t_arrival = t_new
                         i = n['tripId']
             response = table.scan(
                 FilterExpression=Attr('routeId').eq('3')
@@ -166,14 +168,11 @@ def list_earliest(speed, direction):
                 x = out.find('120' + d)
                 if x != -1:
                     t_new = int(out[x-23:x-13])
-                    if t != None:
-                        if t > t_new:
-                            t = t_new
-                            i = n['tripId']
-                    else:
-                        t = t_new
+                    t_current = n['ts']
+                    if t_current + t_delta < t_new and t_arrival > t_new:
+                        t_arrival = t_new
                         i = n['tripId']
-        return {'tripId':i, 'time':t}
+        return {'tripId':i, 'time':t_arrival}
     except KeyboardInterrupt:
             exit
     except ClientError:
@@ -182,8 +181,9 @@ def list_earliest(speed, direction):
     except:
         print "Error listing earliest train"
 
-# Print time taken to reach 42nd on a local or express train
-def time_to_times_square(train_type):
+# Print time taken to reach destination station on a local or express train
+# from source station
+def time_to_times_square(train_type, source, destination):
     try:
 
         return True

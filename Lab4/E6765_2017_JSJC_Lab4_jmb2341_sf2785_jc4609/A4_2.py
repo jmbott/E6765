@@ -167,7 +167,7 @@ def list_earliest(speed, direction, t_delta=0):
                 if x != -1:
                     t_new = int(out[x-23:x-13])
                     t_current = n['ts']
-                    if t_current + t_delta < t_new and t_arrival > t_new:
+                    if t_current + t_delta <= t_new and t_arrival > t_new:
                         t_arrival = t_new
                         i = n['tripId']
         if speed == 'express':
@@ -181,7 +181,7 @@ def list_earliest(speed, direction, t_delta=0):
                 if x != -1:
                     t_new = int(out[x-23:x-13])
                     t_current = n['ts']
-                    if t_current + t_delta < t_new and t_arrival > t_new:
+                    if t_current + t_delta <= t_new and t_arrival > t_new:
                         t_arrival = t_new
                         i = n['tripId']
             response = table.scan(
@@ -194,7 +194,7 @@ def list_earliest(speed, direction, t_delta=0):
                 if x != -1:
                     t_new = int(out[x-23:x-13])
                     t_current = n['ts']
-                    if t_current + t_delta < t_new and t_arrival > t_new:
+                    if t_current + t_delta <= t_new and t_arrival > t_new:
                         t_arrival = t_new
                         i = n['tripId']
         return {'tripId':i, 'time':t_arrival}
@@ -210,7 +210,8 @@ def list_earliest(speed, direction, t_delta=0):
 # from source station. The options are below:
 def time_to(speed, source, destination, t_delta=0):
     try:
-        t = None
+        t = 9999999999
+        t_2 = t_3 = t
         if t_delta < 0:
             print "t_delta must be greater than or equal to zero"
             return False
@@ -234,7 +235,10 @@ def time_to(speed, source, destination, t_delta=0):
                     if y != -1:
                         t_source = int(out[x-23:x-13])
                         t_destination = int(out[y-23:y-13])
-                        t = t_destination - t_source
+                        t_new = t_destination - t_source
+                        t_current = n['ts']
+                        if t_current + t_delta <= t_source and t > t_new:
+                            t = t_new
         if speed == 'express':
             if str(source) != '120' and str(source) != '123' and str(source) != '127':
                 print "not an express source"
@@ -254,7 +258,10 @@ def time_to(speed, source, destination, t_delta=0):
                     if y != -1:
                         t_source = int(out[x-23:x-13])
                         t_destination = int(out[y-23:y-13])
-                        t_2 = t_destination - t_source
+                        t_new = t_destination - t_source
+                        t_current = n['ts']
+                        if t_current + t_delta <= t_source and t_2 > t_new:
+                            t_2 = t_new
             response = table.scan(
                 FilterExpression=Attr('routeId').eq('3')
             )
@@ -267,7 +274,10 @@ def time_to(speed, source, destination, t_delta=0):
                     if y != -1:
                         t_source = int(out[x-23:x-13])
                         t_destination = int(out[y-23:y-13])
-                        t_3 = t_destination - t_source
+                        t_new = t_destination - t_source
+                        t_current = n['ts']
+                        if t_current + t_delta <= t_source and t_3 > t_new:
+                            t_3 = t_new
             if t_2 < t_3:
                 t = t_2
             elif t_3 < t_2:
@@ -286,6 +296,7 @@ def time_to(speed, source, destination, t_delta=0):
 # Flexible decision whether or not to switch at 96th st
 def switch_decision(source,destination):
     try:
+        tl = te = None
         if int(destination) > int(source):
             direction = 'S'
         elif int(destination) < int(source):
@@ -293,22 +304,68 @@ def switch_decision(source,destination):
         else:
             print "destination and source are the same"
             return False
-        #if str(source) != '120' and str(source) != '123' and str(source) != '127':
-        #    # not an express source
-        #    pass
         if int(source) < 120 and direction == 'N':
             decision = "Stay on in the Local Train"
         elif int(source) < 120 and direction == 'S' and int(destination) <= 120:
             decision = "Stay on in the Local Train"
         elif int(source) < 120 and direction == 'S' and int(destination) >= 120:
             t_d1 = time_to('local', source, '120')
-            t_d2l = time_to('local', '120', str(destination))
-            t_d2e = time_to('express', '120', str(destination))
-
-
+            t_d2l = time_to('local', '120', str(destination), t_d1)
+            t_d2e = time_to('express', '120', str(destination), t_d1)
+            if int(destination) < 123:
+                decision = "Stay on in the Local Train"
+            elif t_d2l < t_d2e:
+                decision = "Stay on in the Local Train"
+            elif t_d2l > t_d2e:
+                decision = "Switch to Express Train"
+            else:
+                decision = "Tie, Stay on in the Local Train"
+        elif int(source) == 127 and direction == 'N':
+            if int(destination) > 123:
+                decision = "Stay on in the Local Train"
+            elif int(destination) <= 120:
+                tl = time_to('local', '127', '120', 0)
+                te = time_to('express', '127', '120', 0)
+            elif int(destination) == 123:
+                tl = time_to('local', '127', '123', 0)
+                te = time_to('express', '127', '123', 0)
+            else:
+                decision = "Stay on in the Local Train"
+            if tl < te:
+                decision = "Stay on in the Local Train"
+            elif tl > te:
+                decision = "Switch to Express Train"
+            else:
+                decision = "Tie, Stay on in the Local Train"
+        elif int(source) == 120 and direction == 'S':
+            if int(destination) < 123:
+                decision = "Stay on in the Local Train"r
+            elif int(destination) >= 127:
+                tl = time_to('local', '120', '127', 0)
+                te = time_to('express', '120', '127', 0)
+            elif int(destination) == 123:
+                tl = time_to('local', '120', '123', 0)
+                te = time_to('express', '120', '123', 0)
+            else:
+                decision = "Stay on in the Local Train"
+            if tl < te:
+                decision = "Stay on in the Local Train"
+            elif tl > te:
+                decision = "Switch to Express Train"
+            else:
+                decision = "Tie, Stay on in the Local Train"
+        elif int(source) < 127 and int(source) > 120:
+            decision = "Too few stops, Stay on in the Local Train"
+        elif int(source) == 127 and direction == 'S':
+            decision = "Out of Range"
+        elif int(source) > 127:
+            decision = "Out of Range"
         return decision
     except KeyboardInterrupt:
         exit
+    except ClientError:
+        get_resource()
+        print "Token Updated, Retry"
     except:
         print "Error in switch decision"
 

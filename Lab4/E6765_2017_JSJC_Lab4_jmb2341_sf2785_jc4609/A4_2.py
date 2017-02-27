@@ -339,7 +339,7 @@ def switch_decision(source,destination):
                 decision = "Tie, Stay on in the Local Train"
         elif int(source) == 120 and direction == 'S':
             if int(destination) < 123:
-                decision = "Stay on in the Local Train"r
+                decision = "Stay on in the Local Train"
             elif int(destination) >= 127:
                 tl = time_to('local', '120', '127', 0)
                 te = time_to('express', '120', '127', 0)

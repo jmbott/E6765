@@ -411,7 +411,7 @@ try:
             speed=raw_input("On local or express train?")
             print ""
             source=raw_input("From what station?")
-            time_to(speed, source, '127', t_delta=0):
+            time_to(speed, source, '127', t_delta=0)
             print ""
         # "Switch to Express Train" or "Stay on in the Local Train"
         # Send to SNS subscribers

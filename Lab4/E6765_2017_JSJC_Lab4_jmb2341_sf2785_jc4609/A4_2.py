@@ -75,7 +75,7 @@ from utils import aws
 # Get the service resource.
 def get_resource():
     try:
-        global dynamodb, table
+        global dynamodb, table, client
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
         table = dynamodb.Table("mtaData")
         client = aws.getClient('sns', 'us-east-1')

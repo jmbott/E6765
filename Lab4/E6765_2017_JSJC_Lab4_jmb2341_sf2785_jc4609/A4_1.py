@@ -14,7 +14,6 @@ import mraa
 import time
 import math
 import boto3
-import logging
 from utils import aws
 
 # Create the temperature sensor object using AIO pin 0

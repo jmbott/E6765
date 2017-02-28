@@ -78,6 +78,7 @@ def get_resource():
         global dynamodb, table
         dynamodb = aws.getResource('dynamodb', 'us-east-1')
         table = dynamodb.Table("mtaData")
+        client = aws.getClient('sns', 'us-east-1')
     except KeyboardInterrupt:
         exit
     except:
@@ -375,9 +376,9 @@ def publish(subject,message):
         print "Error Publishing"
 
 menu = {}
-menu['1']="List trains passing 96th going south from 116th"
-menu['2']="List tripId of earliest train at 96th going south from 116th"
-menu['3']="Time to reach 42nd going south from 116th"
+menu['1']="List trains passing 96th"
+menu['2']="List tripId of earliest train at 96th"
+menu['3']="Time to reach 42nd"
 menu['4']="Send trip decision to SNS subscribers"
 menu['5']="Print switch decision"
 menu['6']="Exit"
@@ -424,13 +425,13 @@ try:
             destination=raw_input("To what station?")
             print ""
             decision = switch_decision(source,destination)
-            if destination == "Stay on in the Local Train":
+            if decision == "Stay on in the Local Train":
                 print "Stay on in the Local Train"
                 publish("Train Choice","Stay on in the Local Train")
-            elif destination == "Switch to Express Train":
+            elif decision == "Switch to Express Train":
                 print "Switch to Express Train"
                 publish("Train Choice","Switch to Express Train")
-            elif destination == "Tie, Stay on in the Local Train":
+            elif decision == "Tie, Stay on in the Local Train":
                 print "Tie, Stay on in the Local Train"
                 publish("Train Choice","Tie, Stay on in the Local Train")
             else:

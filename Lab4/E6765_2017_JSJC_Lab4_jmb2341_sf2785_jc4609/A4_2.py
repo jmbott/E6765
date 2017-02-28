@@ -443,7 +443,7 @@ try:
             switch_decision(source,destination)
             print ""
         # exit
-    elif selection == '6':
+        elif selection == '6':
             break
         else:
             print "Unknown Option Selected!"

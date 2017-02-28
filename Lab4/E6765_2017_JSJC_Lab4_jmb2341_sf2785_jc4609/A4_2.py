@@ -396,7 +396,8 @@ try:
         if selection =='1':
             speed=raw_input("List local or express trains?")
             print ""
-            list_trains(speed)
+            out = list_trains(speed)
+            print out
             print ""
         # Find and display tripId of earliest train reaching the 96th station
         elif selection == '2':
@@ -404,14 +405,16 @@ try:
             print ""
             direction=raw_input("Going north or south?")
             print ""
-            list_earliest(speed, direction, t_delta=0)
+            out = list_earliest(speed, direction, t_delta=0)
+            print out
             print ""
         # Print time taken to reach 42nd for local or express train
         elif selection == '3':
             speed=raw_input("On local or express train?")
             print ""
             source=raw_input("From what station?")
-            time_to(speed, source, '127', t_delta=0)
+            out = time_to(speed, source, '127', t_delta=0)
+            print out
             print ""
         # "Switch to Express Train" or "Stay on in the Local Train"
         # Send to SNS subscribers
@@ -440,7 +443,8 @@ try:
             print ""
             destination=raw_input("To what station?")
             print ""
-            switch_decision(source,destination)
+            out = switch_decision(source,destination)
+            print out
             print ""
         # exit
         elif selection == '6':

@@ -395,34 +395,34 @@ try:
         print ""
         # list trains passing 96th
         if selection =='1':
-            speed=raw_input("List local or express trains?")
+            speed=raw_input("List local or express trains? ")
             print ""
             out = list_trains(speed)
             print out
             print ""
         # Find and display tripId of earliest train reaching the 96th station
         elif selection == '2':
-            speed=raw_input("On local or express train?")
+            speed=raw_input("On local or express train? ")
             print ""
-            direction=raw_input("Going north or south?")
+            direction=raw_input("Going north or south? ")
             print ""
             out = list_earliest(speed, direction, t_delta=0)
             print out
             print ""
         # Print time taken to reach 42nd for local or express train
         elif selection == '3':
-            speed=raw_input("On local or express train?")
+            speed=raw_input("On local or express train? ")
             print ""
-            source=raw_input("From what station?")
+            source=raw_input("From what station? ")
             out = time_to(speed, source, '127', t_delta=0)
             print out
             print ""
         # "Switch to Express Train" or "Stay on in the Local Train"
         # Send to SNS subscribers
         elif selection == '4':
-            source=raw_input("From what station?")
+            source=raw_input("From what station? ")
             print ""
-            destination=raw_input("To what station?")
+            destination=raw_input("To what station? ")
             print ""
             decision = switch_decision(source,destination)
             if decision == "Stay on in the Local Train":
@@ -440,9 +440,9 @@ try:
             print ""
         # Flexible decision whether or not to switch trains
         elif selection == '5':
-            source=raw_input("From what station?")
+            source=raw_input("From what station? ")
             print ""
-            destination=raw_input("To what station?")
+            destination=raw_input("To what station? ")
             print ""
             out = switch_decision(source,destination)
             print out
@@ -457,7 +457,3 @@ except KeyboardInterrupt:
         exit
 except:
     print "Error in Main Loop"
-
-
-# Deal with it if there is nothing in the database
-# Deal with it if there is not a database

@@ -51,9 +51,11 @@ class mtaUpdates:
         self.nytime = datetime.fromtimestamp(self.timestamp,self.TIMEZONE)
         try:
             dynamodb = aws.getResource('dynamodb', 'us-east-1')
-            table = dynamodb.Table("mtaData")
+            table = dynamodb.Table("mtadata5")
             for entity in feed.entity:
                 try:
+                    mark_96 = 0
+                    mark_42 = 0
                     if entity.HasField('vehicle'):
                         # timeStamp: Feed timestamp [EDIT: This timestamp can be
                         #  obtained from the mta feed's header message]
@@ -81,45 +83,96 @@ class mtaUpdates:
                         # 040550.
                         # minutes past midnight
                         self.D['tripId'] = float(tripid[0:5])*0.01
-
-
-
-                        # currentStopId: Applicable to vehicle messages, stop ID info.
-                        self.D['currentStopId'] = e.vehicle.stop_id
-
-                        # currentStopStatus:
-                        #  {0:"INCOMING_AT", 1:"STOPPED_AT", 2:"IN_TRANSIT_TO"},
-                        #  refer manual for more details.
-                        self.D['currentStopStatus'] = e.vehicle.current_status
-
-                        # vehicleTimeStamp: The time stamp obtained from the vehicle
-                        self.D['vehicleTimeStamp'] = e.vehicle.timestamp
-
-                        # Post dict
-                        try:
-                            table.update_item(
-                                Key={
-                                    'tripId':self.D['tripId']
-                                },
-                                UpdateExpression=
-                                    "set ts = :a,currentStopId=:b,currentStopStatus=:c,vehicleTimeStamp=:d",
-                                ExpressionAttributeValues={
-                                    ':a':self.D['ts'],
-                                    ':b':self.D['currentStopId'],
-                                    ':c':self.D['currentStopStatus'],
-                                    ':d':self.D['vehicleTimeStamp']
-                                }
-                            )
-                        except KeyboardInterrupt:
-                            exit
-                        except:
-                            print "Update Error 1"
+                        # Time at which it reaches express station (at 96th street)
+                        # taken from the "vehicle message" of the MTA feed when possible
+                        # alt from "arrival time" from the 'trip_update' message
+                        current_stop = e.vehicle.stop_id
+                        if current_stop == "120S":
+                            ts = e.vehicle.timestamp
+                            hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H'))
+                            minute = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%M'))
+                            m = hour*60 + minute
+                            mark_96 = 1
+                            self.D['96_arrive'] = m
+                        # Time at which it reaches the destination (at 42nd Street)
+                        # taken from the "vehicle message" of the MTA feed when possible
+                        # alt from "arrival time" from the 'trip_update' message
+                        if current_stop == "127S":
+                            ts = e.vehicle.timestamp
+                            hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H'))
+                            minute = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%M'))
+                            m = hour*60 + minute
+                            mark_42 = 1
+                            self.D['42_arrive'] = m
+                        if mark_42 == 1:
+                            # Post dict
+                            try:
+                                table.update_item(
+                                    Key={
+                                        'tripId':self.D['tripId']
+                                    },
+                                    UpdateExpression=
+                                        "set ts = :a,day=:b,tripId=:c,96_arrive=:d",
+                                    ExpressionAttributeValues={
+                                        ':a':self.D['ts'],
+                                        ':b':self.D['day'],
+                                        ':c':self.D['tripId'],
+                                        ':d':self.D['96_arrive']
+                                    }
+                                )
+                            except KeyboardInterrupt:
+                                exit
+                            except:
+                                print "Update Error 1"
+                        elif mark_96 == 1:
+                            # Post dict
+                            try:
+                                table.update_item(
+                                    Key={
+                                        'tripId':self.D['tripId']
+                                    },
+                                    UpdateExpression=
+                                        "set ts = :a,day=:b,tripId=:c,42_arrive=:d",
+                                    ExpressionAttributeValues={
+                                        ':a':self.D['ts'],
+                                        ':b':self.D['day'],
+                                        ':c':self.D['tripId'],
+                                        ':d':self.D['42_arrive']
+                                    }
+                                )
+                            except KeyboardInterrupt:
+                                exit
+                            except:
+                                print "Update Error 2"
+                        else:
+                            # Post dict
+                            try:
+                                table.update_item(
+                                    Key={
+                                        'tripId':self.D['tripId']
+                                    },
+                                    UpdateExpression=
+                                        "set ts = :a,day=:b,tripId=:c",
+                                    ExpressionAttributeValues={
+                                        ':a':self.D['ts'],
+                                        ':b':self.D['day'],
+                                        ':c':self.D['tripId']
+                                    }
+                                )
+                            except KeyboardInterrupt:
+                                exit
+                            except:
+                                print "Update Error 3"
                     if entity.HasField('trip_update'):
-
                         # timeStamp: Feed timestamp [EDIT: This timestamp can be
                         #  obtained from the mta feed's header message]
-                        self.D['ts'] = feed.header.timestamp
-
+                        ts = feed.header.timestamp
+                        # Unix time is # of seconds since January 1, 1970 00:00 UTC
+                        hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H'))
+                        minute = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%M'))
+                        # Timestamp in minutes past midnight
+                        m = hour*60 + minute
+                        self.D['ts'] = m
                         e = entity
                         # tripId: The unique trip identifier
                         tripid = e.trip_update.trip.trip_id
@@ -130,18 +183,14 @@ class mtaUpdates:
                         # minutes past midnight
                         self.D['tripId'] = float(tripid[0:5])*0.01
 
-
                         # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
                         #  Shuttle Service between Times Square & Grand Central
                         self.D['routeId'] = e.trip_update.trip.route_id
 
+
                         # startDate: Journey Start Date
                         self.D['startDate'] = e.trip_update.trip.start_date
 
-                        # direction: "N" or "S" depending on whether the journey is
-                        #  uptown or downtown, respectively. (on the Grand Central
-                        #  Shuttle, N: Times Square to Grand Central, S: reverse trip)
-                        self.D['direction'] = e.trip_update.trip.trip_id[10:11]
 
                         # Message feed, regarding the message itself.
                         # futureStopData: Information from the trip_update message.

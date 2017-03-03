@@ -57,6 +57,7 @@ class mtaUpdates:
                     if entity.HasField('vehicle'):
                         mark_96 = 0
                         mark_42 = 0
+                        write = 0
                         # timeStamp: Feed timestamp [EDIT: This timestamp can be
                         #  obtained from the mta feed's header message]
                         ts = feed.header.timestamp
@@ -68,7 +69,7 @@ class mtaUpdates:
                         self.D['ts'] = m
                         # day of the week
                         today = date.fromtimestamp(ts)
-                        date.weekday(today)
+                        day = date.weekday(today)
                         if day == 6 or day == 7:
                             day = "weekend"
                         else:
@@ -82,6 +83,9 @@ class mtaUpdates:
                         # minutes past midnight, six digits 0 padded. So, 6:45:30am would be
                         # 040550.
                         # minutes past midnight
+                        self.num = tripid[7:8]
+                        if self.num != '1' or self.num != '2' or self.num != '3':
+                            write = 1
                         self.D['tripId'] = str(float(tripid[0:5])*0.01)
                         # Time at which it reaches express station (at 96th street)
                         # taken from the "vehicle message" of the MTA feed when possible
@@ -104,7 +108,9 @@ class mtaUpdates:
                             m = hour*60 + minute
                             mark_42 = 1
                             self.D['42_arrive'] = m
-                        if mark_42 == 1:
+                        if write == 1:
+                            pass
+                        elif mark_42 == 1:
                             # Post dict
                             try:
                                 table.update_item(
@@ -166,6 +172,7 @@ class mtaUpdates:
                     if entity.HasField('trip_update'):
                         mark_96 = 0
                         mark_42 = 0
+                        write = 0
                         # timeStamp: Feed timestamp [EDIT: This timestamp can be
                         #  obtained from the mta feed's header message]
                         ts = feed.header.timestamp
@@ -177,7 +184,7 @@ class mtaUpdates:
                         self.D['ts'] = m
                         # day of the week
                         today = date.fromtimestamp(ts)
-                        date.weekday(today)
+                        day = date.weekday(today)
                         if day == 6 or day == 7:
                             day = "weekend"
                         else:
@@ -195,6 +202,8 @@ class mtaUpdates:
                         # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
                         #  Shuttle Service between Times Square & Grand Central
                         self.D['routeId'] = e.trip_update.trip.route_id
+                        if self.D['routeId'] != '1' or self.D['routeId'] != '2' or self.D['routeId'] != '3':
+                            write = 1
                         # Message feed, regarding the message itself.
                         # futureStopData: Information from the trip_update message.
                         #  Should contain:
@@ -205,20 +214,24 @@ class mtaUpdates:
                         z = out.find('stop_id')
                         x = out.find('120S')
                         y = out.find('127S')
-                        if x != -1:
-                            mark_96 = 1
-                        if y != -1:
-                            mark_42 = 1
-                        if y = -1:
-                            print "None"
-
+                        if z != -1:
+                            i = out[z+5:z+8]
+                            if i == '120S':
+                                mark_96 = 1
+                            elif i == '127S':
+                                mark_42 = 1
+                            elif y = -1:
+                                mark_42 = 1
+                            elif x = -1:
+                                mark_96 = 1
                         # Time at which it reaches the destination
                         # taken from the "vehicle message" of the MTA feed when possible
                         # alt from "arrival time" from the 'trip_update' message
-                        self.D['42_arrive'] =
-                        self.D['96_arrive'] =
-
-                        if mark_42 == 1:
+                        self.D['42_arrive'] = out[y-15:y-6]
+                        self.D['96_arrive'] = out[x-15:x-6]
+                        if write == 1:
+                            pass
+                        elif mark_42 == 1:
                             # Post dict
                             try:
                                 table.update_item(
@@ -226,13 +239,12 @@ class mtaUpdates:
                                         'tripId':self.D['tripId']
                                     },
                                     UpdateExpression=
-                                        "set ts = :a,day=:b,tripId=:c,routeId=:d,96_arrive=:e",
+                                        "set ts = :a,day=:b,tripId=:c,routeId=:d",
                                     ExpressionAttributeValues={
                                         ':a':self.D['ts'],
                                         ':b':self.D['day'],
                                         ':c':self.D['tripId'],
                                         ':d':self.D['routeId'],
-                                        ':e':self.D['96_arrive']
                                     }
                                 )
                             except KeyboardInterrupt:

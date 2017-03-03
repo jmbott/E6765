@@ -8,6 +8,7 @@ import google.protobuf
 import sys
 import time
 import datetime
+from datetime import date
 
 import boto3
 from boto3.dynamodb.conditions import Key,Attr
@@ -29,7 +30,7 @@ class mtaUpdates:
         self.D['ts'] = 'None'
         self.D['tripId'] = 'None'
         self.D['routeId'] = 'None'
-        self.D['day'] = 'None'
+        self.D['dow'] = 'None'
         self.D['96_arrive'] = 'None'
         self.D['42_arrive'] = 'None'
     # Method to get trip updates from mta real time feed
@@ -62,19 +63,19 @@ class mtaUpdates:
                         #  obtained from the mta feed's header message]
                         ts = feed.header.timestamp
                         # Unix time is # of seconds since January 1, 1970 00:00 UTC
-                        hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H'))
+                        hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
                         minute = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%M'))
                         # Timestamp in minutes past midnight
                         m = hour*60 + minute
                         self.D['ts'] = m
                         # day of the week
                         today = date.fromtimestamp(ts)
-                        day = date.weekday(today)
-                        if day == 6 or day == 7:
-                            day = "weekend"
+                        dow = date.weekday(today)
+                        if dow == 6 or dow == 7:
+                            dow = "weekend"
                         else:
-                            day = "weekday"
-                        self.D['day'] = day
+                            dow = "weekday"
+                        self.D['dow'] = dow
                         e = entity
                         # tripId: The unique trip identifier
                         tripid = e.vehicle.trip.trip_id
@@ -84,16 +85,16 @@ class mtaUpdates:
                         # 040550.
                         # minutes past midnight
                         self.num = tripid[7:8]
-                        if self.num != '1' or self.num != '2' or self.num != '3':
+                        if self.num != '1' and self.num != '2' and self.num != '3':
                             write = 1
-                        self.D['tripId'] = str(float(tripid[0:5])*0.01)
+                        self.D['tripId'] = str(float(tripid[0:6])*0.01)
                         # Time at which it reaches express station (at 96th street)
                         # taken from the "vehicle message" of the MTA feed when possible
                         # alt from "arrival time" from the 'trip_update' message
                         current_stop = e.vehicle.stop_id
                         if current_stop == "120S":
                             ts = e.vehicle.timestamp
-                            hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H'))
+                            hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
                             minute = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%M'))
                             m = hour*60 + minute
                             mark_96 = 1
@@ -103,7 +104,7 @@ class mtaUpdates:
                         # alt from "arrival time" from the 'trip_update' message
                         if current_stop == "127S":
                             ts = e.vehicle.timestamp
-                            hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H'))
+                            hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
                             minute = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%M'))
                             m = hour*60 + minute
                             mark_42 = 1
@@ -118,12 +119,11 @@ class mtaUpdates:
                                         'tripId':self.D['tripId']
                                     },
                                     UpdateExpression=
-                                        "set ts = :a,day=:b,tripId=:c,96_arrive=:d",
+                                        "set ts =:a,dow=:b,96_arrive=:c",
                                     ExpressionAttributeValues={
                                         ':a':self.D['ts'],
-                                        ':b':self.D['day'],
-                                        ':c':self.D['tripId'],
-                                        ':d':self.D['96_arrive']
+                                        ':b':self.D['dow'],
+                                        ':c':self.D['96_arrive']
                                     }
                                 )
                             except KeyboardInterrupt:
@@ -138,12 +138,11 @@ class mtaUpdates:
                                         'tripId':self.D['tripId']
                                     },
                                     UpdateExpression=
-                                        "set ts = :a,day=:b,tripId=:c,42_arrive=:d",
+                                        "set ts =:a,dow=:b,42_arrive=:c",
                                     ExpressionAttributeValues={
                                         ':a':self.D['ts'],
-                                        ':b':self.D['day'],
-                                        ':c':self.D['tripId'],
-                                        ':d':self.D['42_arrive']
+                                        ':b':self.D['dow'],
+                                        ':c':self.D['42_arrive']
                                     }
                                 )
                             except KeyboardInterrupt:
@@ -158,11 +157,10 @@ class mtaUpdates:
                                         'tripId':self.D['tripId']
                                     },
                                     UpdateExpression=
-                                        "set ts = :a,day=:b,tripId=:c",
+                                        "set ts = :a,dow=:b",
                                     ExpressionAttributeValues={
                                         ':a':self.D['ts'],
-                                        ':b':self.D['day'],
-                                        ':c':self.D['tripId']
+                                        ':b':self.D['dow']
                                     }
                                 )
                             except KeyboardInterrupt:
@@ -177,19 +175,19 @@ class mtaUpdates:
                         #  obtained from the mta feed's header message]
                         ts = feed.header.timestamp
                         # Unix time is # of seconds since January 1, 1970 00:00 UTC
-                        hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H'))
+                        hour = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
                         minute = int(datetime.datetime.fromtimestamp(int(ts)).strftime('%M'))
                         # Timestamp in minutes past midnight
                         m = hour*60 + minute
                         self.D['ts'] = m
                         # day of the week
                         today = date.fromtimestamp(ts)
-                        day = date.weekday(today)
-                        if day == 6 or day == 7:
-                            day = "weekend"
+                        dow = date.weekday(today)
+                        if dow == 6 or dow == 7:
+                            dow = "weekend"
                         else:
-                            day = "weekday"
-                        self.D['day'] = day
+                            dow = "weekday"
+                        self.D['dow'] = dow
                         e = entity
                         # tripId: The unique trip identifier
                         tripid = e.trip_update.trip.trip_id
@@ -198,11 +196,11 @@ class mtaUpdates:
                         # minutes past midnight, six digits 0 padded. So, 6:45:30am would be
                         # 040550.
                         # minutes past midnight
-                        self.D['tripId'] = str(float(tripid[0:5])*0.01)
+                        self.D['tripId'] = str(float(tripid[0:6])*0.01)
                         # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
                         #  Shuttle Service between Times Square & Grand Central
                         self.D['routeId'] = e.trip_update.trip.route_id
-                        if self.D['routeId'] != '1' or self.D['routeId'] != '2' or self.D['routeId'] != '3':
+                        if self.D['routeId'] != '1' and self.D['routeId'] != '2' and self.D['routeId'] != '3':
                             write = 1
                         # Message feed, regarding the message itself.
                         # futureStopData: Information from the trip_update message.
@@ -239,12 +237,11 @@ class mtaUpdates:
                                         'tripId':self.D['tripId']
                                     },
                                     UpdateExpression=
-                                        "set ts = :a,day=:b,tripId=:c,routeId=:d",
+                                        "set ts = :a,dow=:b,routeId=:c",
                                     ExpressionAttributeValues={
                                         ':a':self.D['ts'],
-                                        ':b':self.D['day'],
-                                        ':c':self.D['tripId'],
-                                        ':d':self.D['routeId'],
+                                        ':b':self.D['dow'],
+                                        ':c':self.D['routeId']
                                     }
                                 )
                             except KeyboardInterrupt:
@@ -259,13 +256,12 @@ class mtaUpdates:
                                         'tripId':self.D['tripId']
                                     },
                                     UpdateExpression=
-                                        "set ts = :a,day=:b,tripId=:c,routeId=:d,42_arrive=:e",
+                                        "set ts = :a,dow=:b,routeId=:c,42_arrive=:d",
                                     ExpressionAttributeValues={
                                         ':a':self.D['ts'],
-                                        ':b':self.D['day'],
-                                        ':c':self.D['tripId'],
-                                        ':d':self.D['routeId'],
-                                        ':e':self.D['42_arrive']
+                                        ':b':self.D['dow'],
+                                        ':c':self.D['routeId'],
+                                        ':d':self.D['42_arrive']
                                     }
                                 )
                             except KeyboardInterrupt:
@@ -280,14 +276,13 @@ class mtaUpdates:
                                         'tripId':self.D['tripId']
                                     },
                                     UpdateExpression=
-                                        "set ts = :a,day=:b,tripId=:c,routeId=:d,42_arrive=:e,96_arrive=:f",
+                                        "set ts = :a,dow=:b,routeId=:c,42_arrive=:d,96_arrive=:e",
                                     ExpressionAttributeValues={
                                         ':a':self.D['ts'],
-                                        ':b':self.D['day'],
-                                        ':c':self.D['tripId'],
-                                        ':d':self.D['routeId'],
-                                        ':e':self.D['42_arrive'],
-                                        ':f':self.D['96_arrive']
+                                        ':b':self.D['dow'],
+                                        ':c':self.D['routeId'],
+                                        ':d':self.D['42_arrive'],
+                                        ':e':self.D['96_arrive']
                                     }
                                 )
                             except KeyboardInterrupt:

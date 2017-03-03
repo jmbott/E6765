@@ -289,12 +289,12 @@ class mtaUpdates:
                             exit
                         except:
                             print "Update Error 6"
-            except KeyboardInterrupt:
-                exit
-            except:
-                print "For Loop Error 1"
+            #except KeyboardInterrupt:
+            #    exit
+            #except:
+            #    print "For Loop Error 1"
 
-    #except KeyboardInterrupt:
-    #    exit
-    #except:
-    #    print "mtaUpdates Error"
+        except KeyboardInterrupt:
+            exit
+        except:
+            print "mtaUpdates Error"

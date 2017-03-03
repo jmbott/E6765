@@ -8,7 +8,7 @@ import google.protobuf
 import sys
 import time
 import datetime
-from datetime import date
+from datetime import date, datetime
 
 import boto3
 from boto3.dynamodb.conditions import Key,Attr

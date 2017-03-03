@@ -213,20 +213,20 @@ class mtaUpdates:
                         x = out.find('120S')
                         y = out.find('127S')
                         if z != -1:
-                            i = out[z+5:z+8]
+                            i = out[z+10:z+14]
                             if i == '120S':
                                 mark_96 = 1
                             elif i == '127S':
                                 mark_42 = 1
-                            elif y = -1:
+                            elif y == -1:
                                 mark_42 = 1
-                            elif x = -1:
+                            elif x == -1:
                                 mark_96 = 1
                         # Time at which it reaches the destination
                         # taken from the "vehicle message" of the MTA feed when possible
                         # alt from "arrival time" from the 'trip_update' message
-                        self.D['42_arrive'] = out[y-15:y-6]
-                        self.D['96_arrive'] = out[x-15:x-6]
+                        self.D['42_arrive'] = out[y-29:y-19]
+                        self.D['96_arrive'] = out[x-29:x-19]
                         if write == 1:
                             pass
                         elif mark_42 == 1:

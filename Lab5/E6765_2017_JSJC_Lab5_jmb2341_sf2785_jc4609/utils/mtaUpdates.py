@@ -222,6 +222,11 @@ class mtaUpdates:
                         self.mark_96 = 1
                 else:
                     print "error, no stop_id"
+                # direction: "N" or "S" depending on whether the journey is
+                # uptown or downtown, respectively.
+                self.direction = e.trip_update.trip.trip_id[10:11]
+                if self.direction == 'N':
+                    self.write = 1
                 # Time at which it reaches the destination
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
@@ -233,7 +238,7 @@ class mtaUpdates:
                     self.D['42_arrive'] = str(self.m)
                 elif self.mark_42 == 1:
                     pass
-                else:
+                elif self.write == 0:
                     self.ts = self.out[self.y-23:self.y-13]
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
@@ -244,11 +249,6 @@ class mtaUpdates:
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
                     self.D['96_arrive'] = str(self.m)
-                # direction: "N" or "S" depending on whether the journey is
-                # uptown or downtown, respectively.
-                self.direction = e.trip_update.trip.trip_id[10:11]
-                if self.direction == 'N':
-                    self.write = 1
                 if self.write == 1:
                     pass
                 elif self.mark_42 == 1:

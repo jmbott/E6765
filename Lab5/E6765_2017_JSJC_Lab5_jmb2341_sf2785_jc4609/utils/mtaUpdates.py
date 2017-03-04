@@ -263,12 +263,11 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c,future=:d",
+                            "set ts=:a,dow=:b,routeId=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
-                            ':c':self.D['routeId'],
-                            ':d':self.D['futureStopData']
+                            ':c':self.D['routeId']
                         }
                     )
                     #except KeyboardInterrupt:
@@ -283,13 +282,12 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,future=:e",
+                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
                             ':c':self.D['routeId'],
-                            ':d':self.D['42_arrive'],
-                            ':e':self.D['futureStopData']
+                            ':d':self.D['42_arrive']
                         }
                     )
                     #except KeyboardInterrupt:
@@ -304,14 +302,13 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,NinetySixArrive=:e,future=:f",
+                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,NinetySixArrive=:e",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
                             ':c':self.D['routeId'],
                             ':d':self.D['42_arrive'],
-                            ':e':self.D['96_arrive'],
-                            ':f':self.D['futureStopData']
+                            ':e':self.D['96_arrive']
                         }
                     )
                     #except KeyboardInterrupt:

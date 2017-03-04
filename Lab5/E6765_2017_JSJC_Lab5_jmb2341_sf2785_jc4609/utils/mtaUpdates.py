@@ -70,7 +70,7 @@ class mtaUpdates:
                 # day of the week
                 self.today = date.fromtimestamp(self.ts)
                 self.dow = date.weekday(self.today)
-                if self.dow == '5' or self.dow == '6':
+                if self.dow == 5 or self.dow == 6:
                     self.dow = "weekend"
                 else:
                     self.dow = "weekday"
@@ -108,6 +108,12 @@ class mtaUpdates:
                     self.m = self.hour*60 + self.minute
                     self.mark_42 = 1
                     self.D['42_arrive'] = str(self.m)
+                # direction: "N" or "S" depending on whether the journey is
+                # uptown or downtown, respectively.
+                self.direction = self.tripid[7:8]
+                print self.direction
+                if self.direction == 'N':
+                    self.write = 1
                 if self.write == 1:
                     pass
                 elif self.mark_42 == 1:
@@ -182,7 +188,7 @@ class mtaUpdates:
                 # day of the week
                 self.today = date.fromtimestamp(self.ts)
                 self.dow = date.weekday(self.today)
-                if self.dow == '5' or self.dow == '6':
+                if self.dow == 5 or self.dow == 6:
                     self.dow = "weekend"
                 else:
                     self.dow = "weekday"
@@ -238,6 +244,12 @@ class mtaUpdates:
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
                     self.D['96_arrive'] = str(self.m)
+                # direction: "N" or "S" depending on whether the journey is
+                # uptown or downtown, respectively.
+                self.direction = e.trip_update.trip.trip_id[10:11]
+                print self.direction
+                if self.direction == 'N':
+                    self.write = 1
                 if self.write == 1:
                     pass
                 elif self.mark_42 == 1:

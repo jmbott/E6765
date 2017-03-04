@@ -24,7 +24,6 @@ class mtaUpdates:
     def __init__(self, FEED=1):
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.APIKEY
-        print self.FEED_URL
         self.D = OrderedDict()
     # Method to get trip updates from mta real time feed
     def getTripUpdates(self):
@@ -249,6 +248,9 @@ class mtaUpdates:
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
                     self.D['96_arrive'] = str(self.m)
+
+                self.D['futureStopData'] = str(e.trip_update.stop_time_update)
+
                 if self.write == 1:
                     pass
                 elif self.mark_42 == 1:
@@ -259,11 +261,12 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c",
+                            "set ts=:a,dow=:b,routeId=:c,future=:d",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
-                            ':c':self.D['routeId']
+                            ':c':self.D['routeId'],
+                            ':d':self.D['futureStopData']
                         }
                     )
                     #except KeyboardInterrupt:
@@ -278,12 +281,13 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d",
+                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,future=:e",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
                             ':c':self.D['routeId'],
-                            ':d':self.D['42_arrive']
+                            ':d':self.D['42_arrive'],
+                            ':e':self.D['futureStopData']
                         }
                     )
                     #except KeyboardInterrupt:
@@ -298,13 +302,14 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,NinetySixArrive=:e",
+                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,NinetySixArrive=:e,future=:f",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
                             ':c':self.D['routeId'],
                             ':d':self.D['42_arrive'],
-                            ':e':self.D['96_arrive']
+                            ':e':self.D['96_arrive'],
+                            ':f':self.D['futureStopData']
                         }
                     )
                     #except KeyboardInterrupt:

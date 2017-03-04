@@ -217,9 +217,11 @@ class mtaUpdates:
                     elif self.i == '127S':
                         self.mark_42 = 1
                     elif self.y == -1:
-                        self.mark_42 = 1
+                        self.write = 1
                     elif self.x == -1:
                         self.mark_96 = 1
+                else:
+                    print "error, no stop_id"
                 # Time at which it reaches the destination
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
@@ -232,6 +234,11 @@ class mtaUpdates:
                 elif self.mark_42 == 1:
                     pass
                 else:
+                    self.ts = self.out[self.y-23:self.y-13]
+                    self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
+                    self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
+                    self.m = self.hour*60 + self.minute
+                    self.D['42_arrive'] = str(self.m)
                     self.ts = self.out[self.x-23:self.x-13]
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))

@@ -324,4 +324,4 @@ class mtaUpdates:
             exit
         except:
             print "mtaUpdates Error"
-        return True
+        return time.time()

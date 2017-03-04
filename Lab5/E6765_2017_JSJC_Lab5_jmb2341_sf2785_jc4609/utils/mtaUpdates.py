@@ -96,7 +96,7 @@ class mtaUpdates:
                     minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
                     m = hour*60 + minute
                     mark_96 = 1
-                    self.D['96_arrive'] = m
+                    self.D['96_arrive'] = str(m)
                 # Time at which it reaches the destination (at 42nd Street)
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
@@ -106,7 +106,7 @@ class mtaUpdates:
                     minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
                     m = hour*60 + minute
                     mark_42 = 1
-                    self.D['42_arrive'] = m
+                    self.D['42_arrive'] = str(m)
                 if write == 1:
                     pass
                 elif mark_42 == 1:
@@ -117,7 +117,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts =:a,dow=:b,42_arrive=:c",
+                            "set ts=:a,dow=:b,42_arrive=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
@@ -136,7 +136,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts =:a,dow=:b,96_arrive=:c",
+                            "set ts=:a,dow=:b,96_arrive=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
@@ -155,7 +155,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts = :a,dow=:b",
+                            "set ts=:a,dow=:b",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow']
@@ -235,7 +235,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts = :a,dow=:b,routeId=:c",
+                            "set ts=:a,dow=:b,routeId=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
@@ -254,7 +254,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts = :a,dow=:b,routeId=:c,42_arrive=:d",
+                            "set ts=:a,dow=:b,routeId=:c,42_arrive=:d",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
@@ -274,7 +274,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts = :a,dow=:b,routeId=:c,42_arrive=:d,96_arrive=:e",
+                            "set ts=:a,dow=:b,routeId=:c,42_arrive=:d,96_arrive=:e",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],

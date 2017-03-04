@@ -110,7 +110,7 @@ class mtaUpdates:
                     self.D['42_arrive'] = str(self.m)
                 # direction: "N" or "S" depending on whether the journey is
                 # uptown or downtown, respectively.
-                self.direction = self.tripid[9:10]
+                self.direction = self.tripid[10:11]
                 print self.direction
                 if self.direction == 'N':
                     self.write = 1

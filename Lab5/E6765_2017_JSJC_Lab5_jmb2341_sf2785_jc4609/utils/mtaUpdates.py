@@ -26,12 +26,6 @@ class mtaUpdates:
         self.FEED_URL = self.MTA_FEED + self.APIKEY
         print self.FEED_URL
         self.D = OrderedDict()
-        self.D['ts'] = 'None'
-        self.D['tripId'] = 'None'
-        self.D['routeId'] = 'None'
-        self.D['dow'] = 'None'
-        self.D['96_arrive'] = 'None'
-        self.D['42_arrive'] = 'None'
     # Method to get trip updates from mta real time feed
     def getTripUpdates(self):
         ## Using the gtfs_realtime_pb2 file created by the
@@ -111,7 +105,6 @@ class mtaUpdates:
                 # direction: "N" or "S" depending on whether the journey is
                 # uptown or downtown, respectively.
                 self.direction = self.tripid[10:11]
-                print self.direction
                 if self.direction == 'N':
                     self.write = 1
                 if self.write == 1:
@@ -247,7 +240,6 @@ class mtaUpdates:
                 # direction: "N" or "S" depending on whether the journey is
                 # uptown or downtown, respectively.
                 self.direction = e.trip_update.trip.trip_id[10:11]
-                print self.direction
                 if self.direction == 'N':
                     self.write = 1
                 if self.write == 1:

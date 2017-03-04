@@ -55,62 +55,62 @@ class mtaUpdates:
         for entity in feed.entity:
             #try:
             if entity.HasField('vehicle'):
-                mark_96 = 0
-                mark_42 = 0
-                write = 0
+                self.mark_96 = 0
+                self.mark_42 = 0
+                self.write = 0
                 # timeStamp: Feed timestamp [EDIT: This timestamp can be
                 #  obtained from the mta feed's header message]
-                ts = feed.header.timestamp
+                self.ts = feed.header.timestamp
                 # Unix time is # of seconds since January 1, 1970 00:00 UTC
-                hour = int(datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
-                minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
+                self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
+                self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                 # Timestamp in minutes past midnight
-                m = hour*60 + minute
-                self.D['ts'] = m
+                self.m = self.hour*60 + self.minute
+                self.D['ts'] = self.m
                 # day of the week
-                today = date.fromtimestamp(ts)
-                dow = date.weekday(today)
-                if dow == 6 or dow == 7:
-                    dow = "weekend"
+                self.today = date.fromtimestamp(self.ts)
+                self.dow = date.weekday(self.today)
+                if self.dow == 6 or self.dow == 7:
+                    self.dow = "weekend"
                 else:
-                    dow = "weekday"
-                self.D['dow'] = dow
+                    self.dow = "weekday"
+                self.D['dow'] = self.dow
                 e = entity
                 # tripId: The unique trip identifier
-                tripid = e.vehicle.trip.trip_id
+                self.tripid = e.vehicle.trip.trip_id
                 # tripId: Constructed from the scheduled start time of the trip and a shape_id:
                 # <start time>_<shape_id>. The start time is represented as hundredths of
                 # minutes past midnight, six digits 0 padded. So, 6:45:30am would be
                 # 040550.
                 # minutes past midnight
-                self.num = tripid[7:8]
+                self.num = self.tripid[7:8]
                 if self.num != '1' and self.num != '2' and self.num != '3':
-                    write = 1
-                self.D['tripId'] = str(float(tripid[0:6])*0.01)
+                    self.write = 1
+                self.D['tripId'] = str(float(self.tripid[0:6])*0.01)
                 # Time at which it reaches express station (at 96th street)
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
-                current_stop = e.vehicle.stop_id
-                if current_stop == "120S":
-                    ts = e.vehicle.timestamp
-                    hour = int(datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
-                    minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
-                    m = hour*60 + minute
-                    mark_96 = 1
-                    self.D['96_arrive'] = str(m)
+                self.current_stop = e.vehicle.stop_id
+                if self.current_stop == "120S":
+                    self.ts = e.vehicle.timestamp
+                    self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
+                    self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
+                    self.m = self.hour*60 + self.minute
+                    self.mark_96 = 1
+                    self.D['96_arrive'] = str(self.m)
                 # Time at which it reaches the destination (at 42nd Street)
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
-                if current_stop == "127S":
-                    ts = e.vehicle.timestamp
-                    hour = int(datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
-                    minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
-                    m = hour*60 + minute
-                    mark_42 = 1
-                    self.D['42_arrive'] = str(m)
-                if write == 1:
+                if self.current_stop == "127S":
+                    self.ts = e.vehicle.timestamp
+                    self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
+                    self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
+                    self.m = self.hour*60 + self.minute
+                    self.mark_42 = 1
+                    self.D['42_arrive'] = str(self.m)
+                if self.write == 1:
                     pass
-                elif mark_42 == 1:
+                elif self.mark_42 == 1:
                     # Post dict
                     #try:
                     table.update_item(
@@ -118,7 +118,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,42_arrive=:c",
+                            "set ts=:a,dow=:b,TimesSquareArrive=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
@@ -129,7 +129,7 @@ class mtaUpdates:
                     #    exit
                     #except:
                     #    print "Update Error 1"
-                elif mark_96 == 1:
+                elif self.mark_96 == 1:
                     # Post dict
                     #try:
                     table.update_item(
@@ -137,7 +137,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,96_arrive=:c",
+                            "set ts=:a,dow=:b,NinetySixArrive=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
@@ -167,68 +167,68 @@ class mtaUpdates:
                     #except:
                     #    print "Update Error 3"
             if entity.HasField('trip_update'):
-                mark_96 = 0
-                mark_42 = 0
-                write = 0
+                self.mark_96 = 0
+                self.mark_42 = 0
+                self.write = 0
                 # timeStamp: Feed timestamp [EDIT: This timestamp can be
                 #  obtained from the mta feed's header message]
-                ts = feed.header.timestamp
+                self.ts = feed.header.timestamp
                 # Unix time is # of seconds since January 1, 1970 00:00 UTC
-                hour = int(datetime.fromtimestamp(int(ts)).strftime('%H')) - 5
-                minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
+                self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
+                self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                 # Timestamp in minutes past midnight
-                m = hour*60 + minute
-                self.D['ts'] = m
+                self.m = self.hour*60 + self.minute
+                self.D['ts'] = self.m
                 # day of the week
-                today = date.fromtimestamp(ts)
-                dow = date.weekday(today)
-                if dow == 6 or dow == 7:
-                    dow = "weekend"
+                self.today = date.fromtimestamp(self.ts)
+                self.dow = date.weekday(self.today)
+                if self.dow == 6 or self.dow == 7:
+                    self.dow = "weekend"
                 else:
-                    dow = "weekday"
-                self.D['dow'] = dow
+                    self.dow = "weekday"
+                self.D['dow'] = self.dow
                 e = entity
                 # tripId: The unique trip identifier
-                tripid = e.trip_update.trip.trip_id
+                self.tripid = e.trip_update.trip.trip_id
                 # tripId: Constructed from the scheduled start time of the trip and a shape_id:
                 # <start time>_<shape_id>. The start time is represented as hundredths of
                 # minutes past midnight, six digits 0 padded. So, 6:45:30am would be
                 # 040550.
                 # minutes past midnight
-                self.D['tripId'] = str(float(tripid[0:6])*0.01)
+                self.D['tripId'] = str(float(self.tripid[0:6])*0.01)
                 # routeId: Train Route, eg, 1, 2, 3 etc. or "S" for the Grand
                 #  Shuttle Service between Times Square & Grand Central
                 self.D['routeId'] = e.trip_update.trip.route_id
                 if self.D['routeId'] != '1' and self.D['routeId'] != '2' and self.D['routeId'] != '3':
-                    write = 1
+                    self.write = 1
                 # Message feed, regarding the message itself.
                 # futureStopData: Information from the trip_update message.
                 #  Should contain:
                 #  {<stop_id>: ["arrivaltime": <arrival_at_stop>, "departuretime": <departure_from_stop>]}
                 #  for eg.
                 #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
-                out = str(e.trip_update.stop_time_update)
-                z = out.find('stop_id')
-                x = out.find('120S')
-                y = out.find('127S')
-                if z != -1:
-                    i = out[z+10:z+14]
-                    if i == '120S':
-                        mark_96 = 1
-                    elif i == '127S':
-                        mark_42 = 1
-                    elif y == -1:
-                        mark_42 = 1
-                    elif x == -1:
-                        mark_96 = 1
+                self.out = str(e.trip_update.stop_time_update)
+                self.z = out.find('stop_id')
+                self.x = out.find('120S')
+                self.y = out.find('127S')
+                if self.z != -1:
+                    self.i = self.out[self.z+10:self.z+14]
+                    if self.i == '120S':
+                        self.mark_96 = 1
+                    elif self.i == '127S':
+                        self.mark_42 = 1
+                    elif self.y == -1:
+                        self.mark_42 = 1
+                    elif self.x == -1:
+                        self.mark_96 = 1
                 # Time at which it reaches the destination
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
-                self.D['42_arrive'] = out[y-29:y-19]
-                self.D['96_arrive'] = out[x-29:x-19]
-                if write == 1:
+                self.D['42_arrive'] = self.out[self.y-29:self.y-19]
+                self.D['96_arrive'] = self.out[self.x-29:self.x-19]
+                if self.write == 1:
                     pass
-                elif mark_42 == 1:
+                elif self.mark_42 == 1:
                     # Post dict
                     #try:
                     table.update_item(
@@ -247,7 +247,7 @@ class mtaUpdates:
                     #    exit
                     #except:
                     #    print "Update Error 4"
-                elif mark_96 == 1:
+                elif self.mark_96 == 1:
                     # Post dict
                     #try:
                     table.update_item(
@@ -255,7 +255,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c,42_arrive=:d",
+                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
@@ -275,7 +275,7 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts=:a,dow=:b,routeId=:c,42_arrive=:d,96_arrive=:e",
+                            "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,NinetySixArrive=:e",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],

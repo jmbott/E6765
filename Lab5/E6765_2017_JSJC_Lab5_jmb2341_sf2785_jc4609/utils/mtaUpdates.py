@@ -117,11 +117,11 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts =:a,dow=:b,96_arrive=:c",
+                            "set ts =:a,dow=:b,42_arrive=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
-                            ':c':self.D['96_arrive']
+                            ':c':self.D['42_arrive']
                         }
                     )
                     #except KeyboardInterrupt:
@@ -136,11 +136,11 @@ class mtaUpdates:
                             'tripId':self.D['tripId']
                         },
                         UpdateExpression=
-                            "set ts =:a,dow=:b,42_arrive=:c",
+                            "set ts =:a,dow=:b,96_arrive=:c",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
                             ':b':self.D['dow'],
-                            ':c':self.D['42_arrive']
+                            ':c':self.D['96_arrive']
                         }
                     )
                     #except KeyboardInterrupt:

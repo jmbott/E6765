@@ -208,9 +208,9 @@ class mtaUpdates:
                 #  for eg.
                 #  {"247N": [{"arrivalTime":1454802090}, {"departureTime": 1454802090}], "246N": [{"arrivalTime": 1454802210}, {"departureTime": 1454802210}]}
                 self.out = str(e.trip_update.stop_time_update)
-                self.z = out.find('stop_id')
-                self.x = out.find('120S')
-                self.y = out.find('127S')
+                self.z = self.out.find('stop_id')
+                self.x = self.out.find('120S')
+                self.y = self.out.find('127S')
                 if self.z != -1:
                     self.i = self.out[self.z+10:self.z+14]
                     if self.i == '120S':

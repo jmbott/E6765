@@ -12,5 +12,10 @@
 #
 
 from utils import mtaUpdates
+import time
 
-mtaUpdates.mtaUpdates().getTripUpdates()
+while True:
+
+    update = mtaUpdates.mtaUpdates().getTripUpdates()
+    print update
+    time.sleep(60)

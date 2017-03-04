@@ -111,60 +111,60 @@ class mtaUpdates:
                     pass
                 elif mark_42 == 1:
                     # Post dict
-                    try:
-                        table.update_item(
-                            Key={
-                                'tripId':self.D['tripId']
-                            },
-                            UpdateExpression=
-                                "set ts =:a,dow=:b,96_arrive=:c",
-                            ExpressionAttributeValues={
-                                ':a':self.D['ts'],
-                                ':b':self.D['dow'],
-                                ':c':self.D['96_arrive']
-                            }
-                        )
-                    except KeyboardInterrupt:
-                        exit
-                    except:
-                        print "Update Error 1"
+                    #try:
+                    table.update_item(
+                        Key={
+                            'tripId':self.D['tripId']
+                        },
+                        UpdateExpression=
+                            "set ts =:a,dow=:b,96_arrive=:c",
+                        ExpressionAttributeValues={
+                            ':a':self.D['ts'],
+                            ':b':self.D['dow'],
+                            ':c':self.D['96_arrive']
+                        }
+                    )
+                    #except KeyboardInterrupt:
+                    #    exit
+                    #except:
+                    #    print "Update Error 1"
                 elif mark_96 == 1:
                     # Post dict
-                    try:
-                        table.update_item(
-                            Key={
-                                'tripId':self.D['tripId']
-                            },
-                            UpdateExpression=
-                                "set ts =:a,dow=:b,42_arrive=:c",
-                            ExpressionAttributeValues={
-                                ':a':self.D['ts'],
-                                ':b':self.D['dow'],
-                                ':c':self.D['42_arrive']
-                            }
-                        )
-                    except KeyboardInterrupt:
-                        exit
-                    except:
-                        print "Update Error 2"
+                    #try:
+                    table.update_item(
+                        Key={
+                            'tripId':self.D['tripId']
+                        },
+                        UpdateExpression=
+                            "set ts =:a,dow=:b,42_arrive=:c",
+                        ExpressionAttributeValues={
+                            ':a':self.D['ts'],
+                            ':b':self.D['dow'],
+                            ':c':self.D['42_arrive']
+                        }
+                    )
+                    #except KeyboardInterrupt:
+                    #    exit
+                    #except:
+                    #    print "Update Error 2"
                 else:
                     # Post dict
-                    try:
-                        table.update_item(
-                            Key={
-                                'tripId':self.D['tripId']
-                            },
-                            UpdateExpression=
-                                "set ts = :a,dow=:b",
-                            ExpressionAttributeValues={
-                                ':a':self.D['ts'],
-                                ':b':self.D['dow']
-                            }
-                        )
-                    except KeyboardInterrupt:
-                        exit
-                    except:
-                        print "Update Error 3"
+                    #try:
+                    table.update_item(
+                        Key={
+                            'tripId':self.D['tripId']
+                        },
+                        UpdateExpression=
+                            "set ts = :a,dow=:b",
+                        ExpressionAttributeValues={
+                            ':a':self.D['ts'],
+                            ':b':self.D['dow']
+                        }
+                    )
+                    #except KeyboardInterrupt:
+                    #    exit
+                    #except:
+                    #    print "Update Error 3"
             if entity.HasField('trip_update'):
                 mark_96 = 0
                 mark_42 = 0
@@ -229,64 +229,64 @@ class mtaUpdates:
                     pass
                 elif mark_42 == 1:
                     # Post dict
-                    try:
-                        table.update_item(
-                            Key={
-                                'tripId':self.D['tripId']
-                            },
-                            UpdateExpression=
-                                "set ts = :a,dow=:b,routeId=:c",
-                            ExpressionAttributeValues={
-                                ':a':self.D['ts'],
-                                ':b':self.D['dow'],
-                                ':c':self.D['routeId']
-                            }
-                        )
-                    except KeyboardInterrupt:
-                        exit
-                    except:
-                        print "Update Error 4"
+                    #try:
+                    table.update_item(
+                        Key={
+                            'tripId':self.D['tripId']
+                        },
+                        UpdateExpression=
+                            "set ts = :a,dow=:b,routeId=:c",
+                        ExpressionAttributeValues={
+                            ':a':self.D['ts'],
+                            ':b':self.D['dow'],
+                            ':c':self.D['routeId']
+                        }
+                    )
+                    #except KeyboardInterrupt:
+                    #    exit
+                    #except:
+                    #    print "Update Error 4"
                 elif mark_96 == 1:
                     # Post dict
-                    try:
-                        table.update_item(
-                            Key={
-                                'tripId':self.D['tripId']
-                            },
-                            UpdateExpression=
-                                "set ts = :a,dow=:b,routeId=:c,42_arrive=:d",
-                            ExpressionAttributeValues={
-                                ':a':self.D['ts'],
-                                ':b':self.D['dow'],
-                                ':c':self.D['routeId'],
-                                ':d':self.D['42_arrive']
-                            }
-                        )
-                    except KeyboardInterrupt:
-                        exit
-                    except:
-                        print "Update Error 5"
+                    #try:
+                    table.update_item(
+                        Key={
+                            'tripId':self.D['tripId']
+                        },
+                        UpdateExpression=
+                            "set ts = :a,dow=:b,routeId=:c,42_arrive=:d",
+                        ExpressionAttributeValues={
+                            ':a':self.D['ts'],
+                            ':b':self.D['dow'],
+                            ':c':self.D['routeId'],
+                            ':d':self.D['42_arrive']
+                        }
+                    )
+                    #except KeyboardInterrupt:
+                    #    exit
+                    #except:
+                    #    print "Update Error 5"
                 else:
                     # Post dict
-                    try:
-                        table.update_item(
-                            Key={
-                                'tripId':self.D['tripId']
-                            },
-                            UpdateExpression=
-                                "set ts = :a,dow=:b,routeId=:c,42_arrive=:d,96_arrive=:e",
-                            ExpressionAttributeValues={
-                                ':a':self.D['ts'],
-                                ':b':self.D['dow'],
-                                ':c':self.D['routeId'],
-                                ':d':self.D['42_arrive'],
-                                ':e':self.D['96_arrive']
-                            }
-                        )
-                    except KeyboardInterrupt:
-                        exit
-                    except:
-                        print "Update Error 6"
+                    #try:
+                    table.update_item(
+                        Key={
+                            'tripId':self.D['tripId']
+                        },
+                        UpdateExpression=
+                            "set ts = :a,dow=:b,routeId=:c,42_arrive=:d,96_arrive=:e",
+                        ExpressionAttributeValues={
+                            ':a':self.D['ts'],
+                            ':b':self.D['dow'],
+                            ':c':self.D['routeId'],
+                            ':d':self.D['42_arrive'],
+                            ':e':self.D['96_arrive']
+                        }
+                    )
+                    #except KeyboardInterrupt:
+                    #    exit
+                    #except:
+                    #    print "Update Error 6"
         #except KeyboardInterrupt:
         #    exit
         #except:

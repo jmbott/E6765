@@ -223,8 +223,7 @@ class mtaUpdates:
                         self.mark_96 = 1
                 # Time at which it reaches the destination
                 # taken from the "vehicle message" of the MTA feed when possible
-                # alt from "arrival time" from th
-                e 'trip_update' message
+                # alt from "arrival time" from the 'trip_update' message
                 if self.mark_96 == 1:
                     self.ts = self.out[self.y-23:self.y-13]
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
@@ -291,7 +290,6 @@ class mtaUpdates:
                             "set ts=:a,dow=:b,routeId=:c,TimesSquareArrive=:d,NinetySixArrive=:e",
                         ExpressionAttributeValues={
                             ':a':self.D['ts'],
-
                             ':b':self.D['dow'],
                             ':c':self.D['routeId'],
                             ':d':self.D['42_arrive'],

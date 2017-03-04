@@ -24,6 +24,7 @@ class mtaUpdates:
     def __init__(self, FEED=1):
         self.FEED = str(FEED)
         self.FEED_URL = self.MTA_FEED + self.APIKEY
+        print self.FEED_URL
         self.D = OrderedDict()
         self.D['ts'] = 'None'
         self.D['tripId'] = 'None'

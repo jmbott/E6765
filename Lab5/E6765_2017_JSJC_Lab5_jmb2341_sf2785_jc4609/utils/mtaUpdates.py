@@ -53,7 +53,7 @@ class mtaUpdates:
                 self.write = 0
                 # timeStamp: Feed timestamp [EDIT: This timestamp can be
                 #  obtained from the mta feed's header message]
-                self.ts = int(feed.header.timestamp) - 300
+                self.ts = int(feed.header.timestamp) - 18000
                 # Unix time is # of seconds since January 1, 1970 00:00 UTC
                 self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H'))
                 self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
@@ -85,7 +85,7 @@ class mtaUpdates:
                 # alt from "arrival time" from the 'trip_update' message
                 self.current_stop = e.vehicle.stop_id
                 if self.current_stop == "120S":
-                    self.ts = int(e.vehicle.timestamp) - 300
+                    self.ts = int(e.vehicle.timestamp) - 18000
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H'))
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
@@ -95,7 +95,7 @@ class mtaUpdates:
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
                 elif self.current_stop == "127S":
-                    self.ts = int(e.vehicle.timestamp) - 300
+                    self.ts = int(e.vehicle.timestamp) - 18000
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H'))
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
@@ -172,7 +172,7 @@ class mtaUpdates:
                 self.write = 0
                 # timeStamp: Feed timestamp [EDIT: This timestamp can be
                 #  obtained from the mta feed's header message]
-                self.ts = int(feed.header.timestamp) - 300
+                self.ts = int(feed.header.timestamp) - 18000
                 # Unix time is # of seconds since January 1, 1970 00:00 UTC
                 self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H'))
                 self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
@@ -232,7 +232,7 @@ class mtaUpdates:
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
                 if self.mark_96 == 1:
-                    self.ts = int(self.out[self.y-23:self.y-13]) - 300
+                    self.ts = int(self.out[self.y-23:self.y-13]) - 18000
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H'))
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
@@ -240,12 +240,12 @@ class mtaUpdates:
                 elif self.mark_42 == 1:
                     pass
                 elif self.write == 0:
-                    self.ts = int(self.out[self.y-23:self.y-13]) - 300
+                    self.ts = int(self.out[self.y-23:self.y-13]) - 18000
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H'))
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
                     self.D['42_arrive'] = str(self.m)
-                    self.ts = int(self.out[self.x-23:self.x-13]) - 300
+                    self.ts = int(self.out[self.x-23:self.x-13]) - 18000
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H'))
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute

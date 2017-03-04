@@ -94,13 +94,15 @@ class mtaUpdates:
                 # Time at which it reaches the destination (at 42nd Street)
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
-                if self.current_stop == "127S":
+                elif self.current_stop == "127S":
                     self.ts = e.vehicle.timestamp
                     self.hour = int(datetime.fromtimestamp(int(self.ts)).strftime('%H')) - 5
                     self.minute = int(datetime.fromtimestamp(int(self.ts)).strftime('%M'))
                     self.m = self.hour*60 + self.minute
                     self.mark_42 = 1
                     self.D['42_arrive'] = str(self.m)
+                else:
+                    self.write = 1
                 # direction: "N" or "S" depending on whether the journey is
                 # uptown or downtown, respectively.
                 self.direction = self.tripid[10:11]

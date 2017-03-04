@@ -70,7 +70,7 @@ class mtaUpdates:
                 # day of the week
                 self.today = date.fromtimestamp(self.ts)
                 self.dow = date.weekday(self.today)
-                if self.dow == 6 or self.dow == 7:
+                if self.dow == '6' or self.dow == '7':
                     self.dow = "weekend"
                 else:
                     self.dow = "weekday"
@@ -182,7 +182,7 @@ class mtaUpdates:
                 # day of the week
                 self.today = date.fromtimestamp(self.ts)
                 self.dow = date.weekday(self.today)
-                if self.dow == 6 or self.dow == 7:
+                if self.dow == '6' or self.dow == '7':
                     self.dow = "weekend"
                 else:
                     self.dow = "weekday"
@@ -224,8 +224,8 @@ class mtaUpdates:
                 # Time at which it reaches the destination
                 # taken from the "vehicle message" of the MTA feed when possible
                 # alt from "arrival time" from the 'trip_update' message
-                self.D['42_arrive'] = self.out[self.y-29:self.y-19]
-                self.D['96_arrive'] = self.out[self.x-29:self.x-19]
+                self.D['42_arrive'] = self.out[self.y-23:self.y-13]
+                self.D['96_arrive'] = self.out[self.x-23:self.x-13]
                 if self.write == 1:
                     pass
                 elif self.mark_42 == 1:

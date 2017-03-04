@@ -13,9 +13,14 @@
 
 from utils import mtaUpdates
 import time
+import sys
+
+update = []
 
 while True:
 
-    update = mtaUpdates.mtaUpdates().getTripUpdates()
-    print update
+    f = open("A5_1.out", 'w')
+    update.append(mtaUpdates.mtaUpdates().getTripUpdates())
+    print >> f, update
+    f.close()
     time.sleep(60)

@@ -2,26 +2,26 @@
   "version" : "1.0",
   "rowId" : null,
   "rowWeight" : null,
-  "targetAttributeName" : "TimesSquareArrive",
+  "targetAttributeName" : "TimesSquareArrive (S)",
   "dataFormat" : "CSV",
   "dataFileContainsHeader" : true,
   "attributes" : [ {
-    "attributeName" : "tripId",
+    "attributeName" : "tripId (S)",
     "attributeType" : "NUMERIC"
   }, {
-    "attributeName" : "NinetySixArrive",
+    "attributeName" : "NinetySixArrive (S)",
     "attributeType" : "NUMERIC"
   }, {
-    "attributeName" : "TimesSquareArrive",
+    "attributeName" : "TimesSquareArrive (S)",
     "attributeType" : "NUMERIC"
   }, {
-    "attributeName" : "dow",
+    "attributeName" : "dow (S)",
     "attributeType" : "CATEGORICAL"
   }, {
-    "attributeName" : "routeId",
+    "attributeName" : "routeId (S)",
     "attributeType" : "CATEGORICAL"
   }, {
-    "attributeName" : "ts",
+    "attributeName" : "ts (N)",
     "attributeType" : "NUMERIC"
   } ],
   "excludedAttributeNames" : [ ]

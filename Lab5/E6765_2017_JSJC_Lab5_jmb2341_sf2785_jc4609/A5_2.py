@@ -39,7 +39,7 @@ def uploadData():
 
 import time,sys,random
 import boto3
-import aws
+from utils import aws
 
 TIMESTAMP  =  time.strftime('%Y-%m-%d-%H-%M-%S')
 S3_BUCKET_NAME = "mtaedisondata2341"
@@ -57,8 +57,8 @@ def create_datasource():
 		    DataSpec={
 		        'DataLocationS3': S3_URI,
 		        #'DataRearrangement': 'string',
-		        #'DataSchema': 'string',
-		        'DataSchemaLocationS3': DATA_SCHEMA
+		        'DataSchema': DATA_SCHEMA,
+		        #'DataSchemaLocationS3': 'string'
 		    },
 		    ComputeStatistics=True
 		)

@@ -16,8 +16,18 @@
 # your learned ML model report page. Scroll to the bottom of the page and and
 # click Create endpoint//. Note: this can only be done after creating your model.
 #
+# S3.S3('finalData.csv').uploadData()
 
 from utils import S3
+
+def uploadData():
+	try:
+		S3.S3('finalData.csv').uploadData()
+		return True
+	except KeyboardInterrupt:
+		exit
+	except:
+		print "Data Upload Error"
 
 # Factors that are important for deciding whether or not to switch at 96th:
 # number of people at the station, time of day,

@@ -32,4 +32,54 @@ def uploadData():
 # Factors that are important for deciding whether or not to switch at 96th:
 # number of people at the station, time of day,
 
+# Predict  ArriveTimesSquare based on categorical dow, catagorical route_id
+# and ArriveNinetySix time
+
 # AWS Machine Learning Model based on inputs and outputs
+
+import time,sys,random
+import boto3
+import aws
+
+TIMESTAMP  =  time.strftime('%Y-%m-%d-%H-%M-%S')
+S3_BUCKET_NAME = "mtaedisondata2341"
+S3_FILE_NAME = 'finalData.csv'
+S3_URI = "s3://{0}/{1}".format(S3_BUCKET_NAME, S3_FILE_NAME)
+DATA_SCHEMA = "aml.csv.schema"
+
+client = aws.getClient('machinelearning','us-east-1')
+
+def create_datasource():
+	try:
+		response = client.create_data_source_from_s3(
+		    DataSourceId='ds_id',
+		    DataSourceName='Final Data',
+		    DataSpec={
+		        'DataLocationS3': S3_URI,
+		        #'DataRearrangement': 'string',
+		        #'DataSchema': 'string',
+		        'DataSchemaLocationS3': DATA_SCHEMA
+		    },
+		    ComputeStatistics=True
+		)
+		return response
+	except KeyboardInterrupt:
+		exit
+
+
+def create_ml():
+	try:
+		source_id = create_datasource():
+		response = client.create_ml_model(
+		    MLModelId='ml_id',
+		    MLModelName='Final Data',
+		    MLModelType='REGRESSION',
+		    #Parameters={
+		    #    'string': 'string'
+		    #},
+		    TrainingDataSourceId=source_id,
+		    #Recipe='string',
+		    #RecipeUri='string'
+		)
+	except KeyboardInterrupt:
+		exit

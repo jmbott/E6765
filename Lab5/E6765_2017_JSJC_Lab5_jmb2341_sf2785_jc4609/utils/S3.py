@@ -7,7 +7,7 @@ import boto3
 
 from botocore.exceptions import ClientError
 
-sys.path.append('../utils')
+sys.path.append('./utils')
 import aws
 
 class S3(object):

@@ -12,7 +12,7 @@ import aws
 
 class S3(object):
 	S3 = None
-	S3_BUCKET_NAME = "mtaedisondata234"
+	S3_BUCKET_NAME = "mtaedisondata2341"
 	S3Bucket = None
 	trainingData = "finalData.csv"
 

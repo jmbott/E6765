@@ -41,7 +41,7 @@ def uploadData():
 import time,sys,random
 import boto3
 from utils import aws
-from datetime import datetime
+from datetime import datetime, date
 
 TIMESTAMP  =  time.strftime('%Y-%m-%d-%H-%M-%S')
 S3_BUCKET_NAME = "mtaedisondata2341"
@@ -49,7 +49,7 @@ S3_FILE_NAME = 'finalData.csv'
 S3_URI = "s3://{0}/{1}".format(S3_BUCKET_NAME, S3_FILE_NAME)
 DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
 SOURCE_ID = 'ds_id347' #+ str(random.randint(0,1000))
-MODEL_ID = 'ml_id37' #+ str(random.randint(0,1000))
+MODEL_ID = 'ml_id347' #+ str(random.randint(0,1000))
 EVAL_ID = 'ev_id'
 EVAL_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
 
@@ -98,7 +98,7 @@ def create_endpoint():
 			MLModelId=MODEL_ID
 		)
 		r = str(response)
-		END_URL = r[212:268]
+		END_URL = r[214:270]
 		return END_URL
 	except KeyboardInterrupt:
 		exit
@@ -124,21 +124,48 @@ def predict(num,mpm,dow):
 	)
 	return response
 
+def switch():
+	try:
+		create_ml()
+		ts = int(time.time()) - 18000
+		hour = int(datetime.fromtimestamp(int(ts)).strftime('%H'))
+		minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
+		# Timestamp in minutes past midnight
+		mpm = hour*60 + minute
+		today = date.fromtimestamp(ts)
+		dow = date.weekday(today)
+		if dow == 5 or dow == 6:
+			dow = "weekend"
+		else:
+			dow = "weekday"
+		r_1 = predict('1',mpm,dow)
+		r_2 = predict('2',mpm,dow)
+		r_3 = predict('3',mpm,dow)
+		r_1 = str(r_1)
+		r_2 = str(r_2)
+		r_3 = str(r_3)
+		a_1 = int(float(r_1[36:49]))
+		a_2 = int(float(r_2[36:49]))
+		a_3 = int(float(r_3[36:49]))
+		if a_1 >= a_2 and a_1 >= a_3:
+			o = a_1
+			m = "Stay on local"
+		elif a_2 >= a_3:
+			o = a_3
+			m = "Switch to express"
+		else:
+			o = a_2
+			m = "Switch to express"
+		out = o - mpm
+		print "estimated time in minutes from 96th to 42nd"
+		print out
+		return m
+	except KeyboardInterrupt:
+	    exit
+
 print "Press Ctrl+C to escape..."
 try:
-	create_ml()
-	num=raw_input("1, 2 or 3 train? ")
-	dow=raw_input("Is it the weekend or a weekday? ")
-	ts = int(time.time()) - 18000
-	hour = int(datetime.fromtimestamp(int(ts)).strftime('%H'))
-	minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
-	# Timestamp in minutes past midnight
-	mpm = hour*60 + minute
-	response = predict(num,mpm,dow)
-	r = str(response)
-	a = int(float(r[36:49]))
-	out = a - mpm
-	print "estimated time in minutes from 96th to 42nd"
+	out = switch()
 	print out
 except KeyboardInterrupt:
     exit

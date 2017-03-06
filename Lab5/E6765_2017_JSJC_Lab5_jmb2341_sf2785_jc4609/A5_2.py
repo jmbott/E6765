@@ -98,7 +98,7 @@ def create_endpoint():
 			MLModelId=MODEL_ID
 		)
 		r = str(response)
-		END_URL = r[211:267]
+		END_URL = r[212:268]
 		return END_URL
 	except KeyboardInterrupt:
 		exit

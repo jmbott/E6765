@@ -157,13 +157,14 @@ def switch():
 			o = a_2
 			m = "Switch to express"
 		out = o - mpm
-		print "estimated time in minutes from 96th to 42nd"
+		print "Estimated time in minutes from 96th to 42nd"
 		print out
+		print ""
 		return m
 	except KeyboardInterrupt:
 	    exit
 
-print "Press Ctrl+C to escape..."
+#print "Press Ctrl+C to escape..."
 try:
 	out = switch()
 	print out

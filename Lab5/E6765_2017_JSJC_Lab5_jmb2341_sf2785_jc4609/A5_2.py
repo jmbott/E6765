@@ -49,7 +49,7 @@ S3_FILE_NAME = 'finalData.csv'
 S3_URI = "s3://{0}/{1}".format(S3_BUCKET_NAME, S3_FILE_NAME)
 DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
 SOURCE_ID = 'ds_id347' #+ str(random.randint(0,1000))
-MODEL_ID = 'ml_id347' #+ str(random.randint(0,1000))
+MODEL_ID = 'ml_id37' #+ str(random.randint(0,1000))
 EVAL_ID = 'ev_id'
 EVAL_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
 

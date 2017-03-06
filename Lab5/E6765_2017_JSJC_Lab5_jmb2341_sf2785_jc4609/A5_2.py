@@ -41,6 +41,7 @@ def uploadData():
 import time,sys,random
 import boto3
 from utils import aws
+from datetime import datetime
 
 TIMESTAMP  =  time.strftime('%Y-%m-%d-%H-%M-%S')
 S3_BUCKET_NAME = "mtaedisondata2341"
@@ -133,12 +134,12 @@ try:
 	minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
 	# Timestamp in minutes past midnight
 	mpm = hour*60 + minute
-    response = predict(num,mpm,dow)
+	response = predict(num,mpm,dow)
 	r = str(response)
-	a = int(r[36:53])
+	a = int(float(r[36:53]))
 	out = a - mpm
 	print "estimated time in minutes from 96th to 42nd"
-	pint out
+	print out
 except KeyboardInterrupt:
     exit
 except:

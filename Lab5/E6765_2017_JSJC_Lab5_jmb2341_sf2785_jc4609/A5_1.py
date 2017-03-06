@@ -15,7 +15,7 @@
 # $ sed 1d "mtadata5 (1).csv" > file2noheader.csv
 # $ sed 1d "mtadata5 (2).csv" > file3noheader.csv
 # $ sed 1d "mtadata5 (3).csv" > file4noheader.csv
-# $ cat mtadata5.csv file2noheader.csv file3noheader.csv file4noheader.csv > finalData.csv
+# $ cat mtadata5.csv file2noheader.csv file3noheader.csv file4noheader.csv file4noheader.csv file5noheader.csv > finalData.csv
 #
 
 from utils import mtaUpdates

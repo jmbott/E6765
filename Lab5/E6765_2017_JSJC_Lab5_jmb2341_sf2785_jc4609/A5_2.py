@@ -110,15 +110,36 @@ def create_evaluation():
 	    EvaluationDataSourceId='string'
 	)
 
-def predict():
+def predict(num,mpm,dow):
 	END_URL = create_endpoint()
 	response = client.predict(
 	    MLModelId=MODEL_ID,
 	    Record={
-	        'NinetySixArrive (S)': '0',
-			'dow (S)': 'weekend',
-			'routeId (S)': '1'
+	        'NinetySixArrive (S)': str(mpm),
+			'dow (S)': str(dow),
+			'routeId (S)': str(num)
 	    },
 	    PredictEndpoint=END_URL
 	)
 	return response
+
+print "Press Ctrl+C to escape..."
+try:
+	create_ml()
+	num=raw_input("1, 2 or 3 train? ")
+	dow=raw_input("Is it the weekend or a weekday? ")
+	ts = int(time.time()) - 18000
+	hour = int(datetime.fromtimestamp(int(ts)).strftime('%H'))
+	minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
+	# Timestamp in minutes past midnight
+	mpm = hour*60 + minute
+    response = predict(num,mpm,dow)
+	r = str(response)
+	a = int(r[36:53])
+	out = a - mpm
+	print "estimated time in minutes from 96th to 42nd"
+	pint out
+except KeyboardInterrupt:
+    exit
+except:
+    print "Error"

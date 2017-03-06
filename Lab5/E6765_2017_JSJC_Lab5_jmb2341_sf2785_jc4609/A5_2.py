@@ -77,7 +77,6 @@ def create_datasource():
 def create_ml():
 	try:
 		response1 = create_datasource()
-		time.sleep(10)
 		response2 = client.create_ml_model(
 		    MLModelId=MODEL_ID,
 		    MLModelName='Final Data',
@@ -128,7 +127,6 @@ def predict(num,mpm,dow):
 print "Press Ctrl+C to escape..."
 try:
 	create_ml()
-	time.sleep(20)
 	num=raw_input("1, 2 or 3 train? ")
 	dow=raw_input("Is it the weekend or a weekday? ")
 	ts = int(time.time()) - 18000

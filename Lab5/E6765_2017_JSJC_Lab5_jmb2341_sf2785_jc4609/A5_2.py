@@ -136,7 +136,7 @@ try:
 	mpm = hour*60 + minute
 	response = predict(num,mpm,dow)
 	r = str(response)
-	a = int(float(r[36:53]))
+	a = int(float(r[36:49]))
 	out = a - mpm
 	print "estimated time in minutes from 96th to 42nd"
 	print out

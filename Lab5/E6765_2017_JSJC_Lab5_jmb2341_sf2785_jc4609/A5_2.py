@@ -47,11 +47,11 @@ TIMESTAMP  =  time.strftime('%Y-%m-%d-%H-%M-%S')
 S3_BUCKET_NAME = "mtaedisondata2341"
 S3_FILE_NAME = 'finalData.csv'
 S3_URI = "s3://{0}/{1}".format(S3_BUCKET_NAME, S3_FILE_NAME)
-DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"}],"excludedAttributeNames":["ts (N)"]}'
+DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"}],"excludedAttributeNames":[]}'
 SOURCE_ID = 'ds_id' + str(random.randint(0,1000))
 MODEL_ID = 'ml_id' + str(random.randint(0,1000))
 EVAL_ID = 'ev_id'
-EVAL_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"}],"excludedAttributeNames":["ts (N)"]}'
+EVAL_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"}],"excludedAttributeNames":[]}'
 
 
 client = aws.getClient('machinelearning','us-east-1')

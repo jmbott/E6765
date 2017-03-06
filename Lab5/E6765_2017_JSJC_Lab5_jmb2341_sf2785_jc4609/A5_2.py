@@ -158,8 +158,7 @@ def switch():
 			m = "Switch to express"
 		out = o - mpm
 		print ""
-		print "Estimated time in minutes from 96th to 42nd"
-		print out
+		print "Estimated number of minutes from 96th to 42nd: %d" % (out)
 		print ""
 		return m
 	except KeyboardInterrupt:

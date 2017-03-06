@@ -45,14 +45,15 @@ TIMESTAMP  =  time.strftime('%Y-%m-%d-%H-%M-%S')
 S3_BUCKET_NAME = "mtaedisondata2341"
 S3_FILE_NAME = 'finalData.csv'
 S3_URI = "s3://{0}/{1}".format(S3_BUCKET_NAME, S3_FILE_NAME)
-DATA_SCHEMA = "aml.csv.schema"
+DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
+SOURCE_ID = 'ds_id'
 
 client = aws.getClient('machinelearning','us-east-1')
 
 def create_datasource():
 	try:
 		response = client.create_data_source_from_s3(
-		    DataSourceId='ds_id',
+		    DataSourceId=SOURCE_ID,
 		    DataSourceName='Final Data',
 		    DataSpec={
 		        'DataLocationS3': S3_URI,
@@ -69,7 +70,7 @@ def create_datasource():
 
 def create_ml():
 	try:
-		source_id = create_datasource():
+		source_id = create_datasource()
 		response = client.create_ml_model(
 		    MLModelId='ml_id',
 		    MLModelName='Final Data',
@@ -77,7 +78,7 @@ def create_ml():
 		    #Parameters={
 		    #    'string': 'string'
 		    #},
-		    TrainingDataSourceId=source_id,
+		    TrainingDataSourceId=SOURCE_ID,
 		    #Recipe='string',
 		    #RecipeUri='string'
 		)

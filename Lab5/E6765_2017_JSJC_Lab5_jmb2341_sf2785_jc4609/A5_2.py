@@ -16,10 +16,10 @@
 # your learned ML model report page. Scroll to the bottom of the page and and
 # click Create endpoint//. Note: this can only be done after creating your model.
 #
-# S3.S3('finalData.csv').uploadData()
 
 from utils import S3
 
+# upload data from csv in repo to S3
 def uploadData():
 	try:
 		S3.S3('finalData.csv').uploadData()
@@ -31,10 +31,11 @@ def uploadData():
 
 # Factors that are important for deciding whether or not to switch at 96th:
 # number of people at the station, time of day,
-
+#
 # Predict  ArriveTimesSquare based on categorical dow, catagorical route_id
-# and ArriveNinetySix time
-
+# and NinetySixArrive time. Can estimate arrival at 96th based on
+# train estimates from 116th
+#
 # AWS Machine Learning Model based on inputs and outputs
 
 import time,sys,random
@@ -47,6 +48,10 @@ S3_FILE_NAME = 'finalData.csv'
 S3_URI = "s3://{0}/{1}".format(S3_BUCKET_NAME, S3_FILE_NAME)
 DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
 SOURCE_ID = 'ds_id'
+MODEL_ID = 'ml_id'
+EVAL_ID = 'ev_id'
+EVAL_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
+
 
 client = aws.getClient('machinelearning','us-east-1')
 
@@ -63,16 +68,16 @@ def create_datasource():
 		    },
 		    ComputeStatistics=True
 		)
-		return response
+		return True
 	except KeyboardInterrupt:
 		exit
 
 
 def create_ml():
 	try:
-		source_id = create_datasource()
-		response = client.create_ml_model(
-		    MLModelId='ml_id',
+		response1 = create_datasource()
+		response2 = client.create_ml_model(
+		    MLModelId=MODEL_ID,
 		    MLModelName='Final Data',
 		    MLModelType='REGRESSION',
 		    #Parameters={
@@ -82,5 +87,38 @@ def create_ml():
 		    #Recipe='string',
 		    #RecipeUri='string'
 		)
+		return True
 	except KeyboardInterrupt:
 		exit
+
+def create_endpoint():
+	try:
+		response = client.create_realtime_endpoint(
+			MLModelId=MODEL_ID
+		)
+		r = str(response)
+		END_URL = r[211:267]
+		return END_URL
+	except KeyboardInterrupt:
+		exit
+
+def create_evaluation():
+	response = client.create_evaluation(
+	    EvaluationId=EVAL_ID,
+	    EvaluationName='Final Data',
+	    MLModelId=MODEL_ID,
+	    EvaluationDataSourceId='string'
+	)
+
+def predict():
+	END_URL = create_endpoint()
+	response = client.predict(
+	    MLModelId=MODEL_ID,
+	    Record={
+	        'NinetySixArrive (S)': '0',
+			'dow (S)': 'weekend',
+			'routeId (S)': '1'
+	    },
+	    PredictEndpoint=END_URL
+	)
+	return response

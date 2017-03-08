@@ -8,7 +8,7 @@ import sys,csv,json
 import boto3
 
 sys.path.append('../utils')
-import aws
+from utils import aws
 
 
 KINESIS_STREAM_NAME = mtaStream

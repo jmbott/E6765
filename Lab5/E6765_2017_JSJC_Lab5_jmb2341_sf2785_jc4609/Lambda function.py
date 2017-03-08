@@ -1,11 +1,12 @@
-# able to run with test data:
+#read the data from stream and post the predictedvalue to dynamodb
+# data format:
 # {
 #   "Records": [
 #     {
 #       "eventID": "shardId-000000000000:49545115243490985018280067714973144582180062593244200961",
 #       "eventVersion": "1.0",
-#       "kinesis": {
-#       "NinetySixArrive (S)" : "1200",
+#       "Data": {
+#     "NinetySixArrive (S)" : "233",
 # 			"dow (S)": "weekend",
 # 			"routeId (S)":"3"
 #       },
@@ -27,12 +28,22 @@ print('Loading function')
 MODEL_ID = 'string'
 COGNITO_ID = "EdisonApp"
 def lambda_handler(event, context):
-    kinesis = '{}'.format(event["Records"][0]["kinesis"]['dow (S)']+
-    event["Records"][0]["kinesis"]['NinetySixArrive (S)']+
-    event["Records"][0]["kinesis"]['routeId (S)'])
+    kinesis = '{}'.format(event["Records"][0]["Data"]['dow (S)']+
+    event["Records"][0]["Data"]['NinetySixArrive (S)']+
+    event["Records"][0]["Data"]['routeId (S)'])
     client = getClient('machinelearning','us-east-1')
     r=predict(kinesis[7:-1],kinesis[:7],kinesis[-1],client)
-    return r
+    dynamodb = getResource('dynamodb', 'us-east-1')
+    table = dynamodb.Table("mta2")
+    table.update_item(
+                        Key={
+                            'NinetySixArrive':kinesis[7:-1]
+                            },
+                        UpdateExpression=
+                            "set predictedValue=:a",
+                            ExpressionAttributeValues={
+                            ':a':str(r['Prediction']['predictedValue'])
+                         })
          
     
 def create_endpoint(client):
@@ -80,3 +91,12 @@ def getClient(clientName,region):
 	        aws_secret_access_key=credentials['SecretAccessKey'],
 	        aws_session_token=credentials['SessionToken'])
 	return client
+	
+def getResource(resourceName,region):
+	credentials = getCredentials()
+	resource = boto3.resource(resourceName,
+			 region,
+	        aws_access_key_id= credentials['AccessKeyId'],
+	        aws_secret_access_key=credentials['SecretAccessKey'],
+	        aws_session_token=credentials['SessionToken'])
+	return resource

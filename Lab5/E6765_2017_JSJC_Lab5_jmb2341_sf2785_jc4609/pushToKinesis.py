@@ -11,7 +11,7 @@ sys.path.append('../utils')
 from utils import aws
 
 
-KINESIS_STREAM_NAME = mtaStream
+KINESIS_STREAM_NAME = 'mtaStream'
 
 
 def main(fileName):

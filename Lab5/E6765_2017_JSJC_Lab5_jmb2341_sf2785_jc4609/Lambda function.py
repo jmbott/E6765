@@ -1,3 +1,5 @@
+#read the data from stream and post the predictedvalue to dynamodb
+
 from __future__ import print_function
 import boto3
 import base64

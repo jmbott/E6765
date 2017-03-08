@@ -11,11 +11,11 @@ sys.path.append('../utils')
 import aws
 
 
-KINESIS_STREAM_NAME = <WHATEVER YOUR STREAM NAME IS>
+KINESIS_STREAM_NAME = mtaStream
 
 
 def main(fileName):
-    
+
     # connect to kinesis
     kinesis = aws.getClient('kinesis','us-east-1')
     data = [] # list of dictionaries will be sent to kinesis
@@ -24,7 +24,7 @@ def main(fileName):
         for row in dataReader:
             kinesis.put_record(StreamName=KINESIS_STREAM_NAME, Data=json.dumps(row), PartitionKey='0')
             break
-        f.close() 
+        f.close()
 
 
 

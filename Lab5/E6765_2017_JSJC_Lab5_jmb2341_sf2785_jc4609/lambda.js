@@ -3,17 +3,18 @@
 console.log('Loading event');
 exports.handler = function(event, context) {
   var AWS = require('aws-sdk');
-  var sns = new AWS.SNS();
+  //var sns = new AWS.SNS();
   var ml = new AWS.MachineLearning();
-  var endpointUrl = '';
+  var endpointUrl = 'https://realtime.machinelearning.us-east-1.amazonaws.com';
   var mlModelId = 'ml_id347';
-  var snsTopicArn = 'arn:aws:sns:{region}:{awsAccountId}:{snsTopic}';
-  var snsMessageSubject = 'Respond to tweet';
-  var snsMessagePrefix = 'ML model '+mlModelId+': Respond to this tweet: https://twitter.com/0/status/';
+  //var snsTopicArn = 'arn:aws:sns:{region}:{awsAccountId}:{snsTopic}';
+  //var snsMessageSubject = 'Respond to tweet';
+  //var snsMessagePrefix = 'ML model '+mlModelId+': Respond to this tweet: https://twitter.com/0/status/';
   var numMessagesProcessed = 0;
   var numMessagesToBeProcessed = event.Records.length;
   console.log("numMessagesToBeProcessed:"+numMessagesToBeProcessed);
 
+/*
   var updateSns = function(tweetData) {
     var params = {};
     params['TopicArn'] = snsTopicArn;
@@ -32,7 +33,7 @@ exports.handler = function(event, context) {
         }
       }
       );
-  }
+  }*/
 
   var callPredict = function(tweetData){
     console.log('calling predict');
@@ -49,12 +50,12 @@ exports.handler = function(event, context) {
         }
         else {
           console.log('Predict call succeeded');
-          if(data.Prediction.predictedLabel === '1'){
+          /*if(data.Prediction.predictedLabel === '1'){
             updateSns(tweetData);
           }
           else{
             context.done(null, "Tweet doesn't require response from customer service");
-          }
+          }*/
         }
       }
       );

@@ -1,5 +1,23 @@
 #read the data from stream and post the predictedvalue to dynamodb
-
+# data format:
+# {
+#   "Records": [
+#     {
+#       "eventID": "shardId-000000000000:49545115243490985018280067714973144582180062593244200961",
+#       "eventVersion": "1.0",
+#       "Data": {
+#     "NinetySixArrive (S)" : "233",
+# 			"dow (S)": "weekend",
+# 			"routeId (S)":"3"
+#       },
+#       "invokeIdentityArn": "arn:aws:iam::EXAMPLE",
+#       "eventName": "aws:kinesis:record",
+#       "eventSourceARN": "arn:aws:kinesis:EXAMPLE",
+#       "eventSource": "aws:kinesis",
+#       "awsRegion": "us-east-1"
+#     }
+#   ]
+# }
 from __future__ import print_function
 import boto3
 import base64

@@ -156,8 +156,8 @@ def switch():
 		else:
 			o = a_2
 			m = "Switch to express"
-		print "Current minutes past midnight(mpm): %d" % (out)
-		print "Estimated arrival at 42nd in mpm: %d" % (out)
+		print "Current minutes past midnight(mpm): %d" % (mpm)
+		print "Estimated arrival at 42nd in mpm: %d" % (o)
 		out = o - mpm
 		print ""
 		print "Estimated number of minutes from 96th to 42nd: %d" % (out)

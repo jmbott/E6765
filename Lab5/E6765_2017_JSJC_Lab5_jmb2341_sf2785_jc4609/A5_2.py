@@ -94,12 +94,12 @@ def create_ml():
 
 def create_endpoint():
 	try:
-response = client.create_realtime_endpoint(
-	MLModelId=MODEL_ID
-)
-r = str(response)
-END_URL = r[215:271]
-return END_URL
+		response = client.create_realtime_endpoint(
+			MLModelId=MODEL_ID
+		)
+		r = str(response)
+		END_URL = r[215:271]
+		return END_URL
 	except KeyboardInterrupt:
 		exit
 

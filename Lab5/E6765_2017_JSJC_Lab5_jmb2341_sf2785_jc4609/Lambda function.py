@@ -12,6 +12,7 @@ def lambda_handler(event, context):
     kinesis = base64.b64decode(kinesis)
     kinesis = json.loads(kinesis)
     client = getClient('machinelearning','us-east-1')
+    #change the input data here to fit different prediction model
     r = predict(kinesis["NinetySixArrive (S)"],kinesis["dow (S)"],kinesis["routeId (S)"],client)
     dynamodb = getResource('dynamodb', 'us-east-1')
     table = dynamodb.Table("mta2")

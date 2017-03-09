@@ -1,23 +1,3 @@
-#read the data from stream and post the predictedvalue to dynamodb
-# data format:
-# {
-#   "Records": [
-#     {
-#       "eventID": "shardId-000000000000:49545115243490985018280067714973144582180062593244200961",
-#       "eventVersion": "1.0",
-#       "Data": {
-#     "NinetySixArrive (S)" : "233",
-# 			"dow (S)": "weekend",
-# 			"routeId (S)":"3"
-#       },
-#       "invokeIdentityArn": "arn:aws:iam::EXAMPLE",
-#       "eventName": "aws:kinesis:record",
-#       "eventSourceARN": "arn:aws:kinesis:EXAMPLE",
-#       "eventSource": "aws:kinesis",
-#       "awsRegion": "us-east-1"
-#     }
-#   ]
-# }
 from __future__ import print_function
 import boto3
 import base64
@@ -25,19 +5,19 @@ import json
 
 print('Loading function')
 
-MODEL_ID = 'string'
+MODEL_ID = 'ml-0oQK6tifc7w'
 COGNITO_ID = "EdisonApp"
 def lambda_handler(event, context):
-    kinesis = '{}'.format(event["Records"][0]["Data"]['dow (S)']+
-    event["Records"][0]["Data"]['NinetySixArrive (S)']+
-    event["Records"][0]["Data"]['routeId (S)'])
+    kinesis = '{}'.format(event["Records"][0]["kinesis"]["data"])
+    kinesis = base64.b64decode(kinesis)
+    kinesis = json.loads(kinesis)
     client = getClient('machinelearning','us-east-1')
-    r=predict(kinesis[7:-1],kinesis[:7],kinesis[-1],client)
+    r = predict(kinesis["NinetySixArrive (S)"],kinesis["dow (S)"],kinesis["routeId (S)"],client)
     dynamodb = getResource('dynamodb', 'us-east-1')
     table = dynamodb.Table("mta2")
     table.update_item(
                         Key={
-                            'NinetySixArrive':kinesis[7:-1]
+                            'NinetySixArrive':kinesis["NinetySixArrive (S)"]
                             },
                         UpdateExpression=
                             "set predictedValue=:a",
@@ -45,19 +25,10 @@ def lambda_handler(event, context):
                             ':a':str(r['Prediction']['predictedValue'])
                          })
          
-    
-def create_endpoint(client):
-	try:
-		response = client.create_realtime_endpoint(
-			MLModelId=MODEL_ID
-		)
-		END_URL = response['RealtimeEndpointInfo']['EndpointUrl']
-		return END_URL
-	except KeyboardInterrupt:
-		exit
+
 		
 def predict(num,mpm,dow,client):
-	END_URL = create_endpoint(client)
+	END_URL = "https://realtime.machinelearning.us-east-1.amazonaws.com"
 	response = client.predict(
 	    MLModelId=MODEL_ID,
 	    Record={
@@ -100,3 +71,14 @@ def getResource(resourceName,region):
 	        aws_secret_access_key=credentials['SecretAccessKey'],
 	        aws_session_token=credentials['SessionToken'])
 	return resource
+	
+def create_endpoint(client):
+	try:
+		response = client.create_realtime_endpoint(
+			MLModelId=MODEL_ID
+		)
+		
+		END_URL = response['RealtimeEndpointInfo']['EndpointUrl']
+		return END_URL
+	except KeyboardInterrupt:
+		exit

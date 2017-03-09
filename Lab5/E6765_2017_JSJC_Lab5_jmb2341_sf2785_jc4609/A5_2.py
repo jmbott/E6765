@@ -98,7 +98,7 @@ def create_endpoint():
 			MLModelId=MODEL_ID
 		)
 		r = str(response)
-		END_URL = r[215:271]
+		END_URL = r[214:270]
 		return END_URL
 	except KeyboardInterrupt:
 		exit
@@ -127,11 +127,16 @@ def predict(speed,mpm,dow):
 def switch():
 	try:
 		create_ml()
-		ts = int(time.time()) - 18000
-		hour = int(datetime.fromtimestamp(int(ts)).strftime('%H'))
-		minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
-		# Timestamp in minutes past midnight
-		mpm = hour*60 + minute
+		source=raw_input("now or at mpm? ")
+		source = str(source)
+		if source == 'now':
+			mpm = int(source)
+		else:
+			ts = int(time.time()) - 18000
+			hour = int(datetime.fromtimestamp(int(ts)).strftime('%H'))
+			minute = int(datetime.fromtimestamp(int(ts)).strftime('%M'))
+			# Timestamp in minutes past midnight
+			mpm = hour*60 + minute
 		today = date.fromtimestamp(ts)
 		dow = date.weekday(today)
 		if dow == 5 or dow == 6:

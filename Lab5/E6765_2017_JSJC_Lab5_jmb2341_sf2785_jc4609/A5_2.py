@@ -1,7 +1,7 @@
 #
 # 1. Based on the data collected in part 1, you may choose what input factors
 # you think are critical to this choice of "switching" or not. For example,
-# you may consider number of people at the station as a correlation metric for
+# you may consider ber of people at the station as a correlation metric for
 # the performance of the trains. Perhaps, time of day may be a factor in
 # evaluating whether waiting or switching is beneficial etc.
 #
@@ -22,7 +22,7 @@ from utils import S3
 # upload data from csv in repo to S3
 def uploadData():
 	try:
-		S3.S3('finalData.csv').uploadData()
+		S3.S3('finalData1.csv').uploadData()
 		return True
 	except KeyboardInterrupt:
 		exit
@@ -30,7 +30,7 @@ def uploadData():
 		print "Data Upload Error"
 
 # Factors that are important for deciding whether or not to switch at 96th:
-# number of people at the station, time of day,
+# ber of people at the station, time of day,
 #
 # Predict  ArriveTimesSquare based on categorical dow, catagorical route_id
 # and NinetySixArrive time. Can estimate arrival at 96th based on
@@ -45,13 +45,13 @@ from datetime import datetime, date
 
 TIMESTAMP  =  time.strftime('%Y-%m-%d-%H-%M-%S')
 S3_BUCKET_NAME = "mtaedisondata2341"
-S3_FILE_NAME = 'finalData.csv'
+S3_FILE_NAME = 'finalData1.csv'
 S3_URI = "s3://{0}/{1}".format(S3_BUCKET_NAME, S3_FILE_NAME)
-DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
-SOURCE_ID = 'ds_id347' #+ str(random.randint(0,1000))
-MODEL_ID = 'ml_id347' #+ str(random.randint(0,1000))
+DATA_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"},{"attributeName":"travelTime","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
+SOURCE_ID = 'ds_id350' #+ str(random.randint(0,1000))
+MODEL_ID = 'ml_id350' #+ str(random.randint(0,1000))
 EVAL_ID = 'ev_id'
-EVAL_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
+EVAL_SCHEMA = '{"version":"1.0","rowId":null,"rowWeight":null,"targetAttributeName":"TimesSquareArrive (S)","dataFormat":"CSV","dataFileContainsHeader":true,"attributes":[{"attributeName":"tripId (S)","attributeType":"NUMERIC"},{"attributeName":"NinetySixArrive (S)","attributeType":"NUMERIC"},{"attributeName":"TimesSquareArrive (S)","attributeType":"NUMERIC"},{"attributeName":"dow (S)","attributeType":"CATEGORICAL"},{"attributeName":"routeId (S)","attributeType":"CATEGORICAL"},{"attributeName":"ts (N)","attributeType":"NUMERIC"},{"attributeName":"travelTime","attributeType":"NUMERIC"}],"excludedAttributeNames":[]}'
 
 
 client = aws.getClient('machinelearning','us-east-1')
@@ -111,14 +111,14 @@ def create_evaluation():
 	    EvaluationDataSourceId='string'
 	)
 
-def predict(num,mpm,dow):
+def predict(speed,mpm,dow):
 	END_URL = create_endpoint()
 	response = client.predict(
 	    MLModelId=MODEL_ID,
 	    Record={
 	        'NinetySixArrive (S)': str(mpm),
 			'dow (S)': str(dow),
-			'routeId (S)': str(num)
+			'routeId (S)': str(speed)
 	    },
 	    PredictEndpoint=END_URL
 	)
@@ -138,27 +138,21 @@ def switch():
 			dow = "weekend"
 		else:
 			dow = "weekday"
-		r_1 = predict('1',mpm,dow)
-		r_2 = predict('2',mpm,dow)
-		r_3 = predict('3',mpm,dow)
+		r_1 = predict('local',mpm,dow)
+		r_2 = predict('express',mpm,dow)
 		r_1 = str(r_1)
 		r_2 = str(r_2)
-		r_3 = str(r_3)
 		a_1 = int(float(r_1[36:49]))
 		a_2 = int(float(r_2[36:49]))
-		a_3 = int(float(r_3[36:49]))
-		if a_1 >= a_2 and a_1 >= a_3:
+		if a_1 <= a_2:
 			o = a_1
 			m = "Stay on local"
-		elif a_2 >= a_3:
-			o = a_3
-			m = "Switch to express"
 		else:
 			o = a_2
 			m = "Switch to express"
 		print "Current minutes past midnight(mpm): %d" % (mpm)
-		print "Estimated arrival at 42nd in mpm: %d" % (o)
-		out = o - mpm
+		print "Estimated travel time: %d" % (o)
+		out = o + mpm
 		print ""
 		print "Estimated number of minutes from 96th to 42nd: %d" % (out)
 		print ""

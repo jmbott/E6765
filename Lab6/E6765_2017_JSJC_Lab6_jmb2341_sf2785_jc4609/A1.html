@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/evanplaice/jquery-csv/master/src/jquery.csv.js"></script>
+    <script type="text/javascript">
+
+      // load the visualization library from Google and set a listener
+      google.charts.load("visualization", "1", {packages:["corechart"]});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+          // grab the CSV
+          $.get("http://localhost:8888/repos/E6765/Lab6/E6765_2017_JSJC_Lab6_jmb2341_sf2785_jc4609/out.csv", function(csvString) {
+            // transform the CSV string into a 2-dimensional array
+            var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+            // this new DataTable object holds all the data
+            var data = new google.visualization.arrayToDataTable(arrayData);
+
+             // set chart options
+             var options = {
+                title: "Edison Temp Reading",
+                'height':500,
+                hAxis: {title: 'timestamp', minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
+                vAxis: {title: 'temperature', minValue: data.getColumnRange(1).min, maxValue: data.getColumnRange(1).max},
+                legend: 'none'
+             };
+
+             // create the chart object and draw it
+             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+             chart.draw(data, options);
+           });
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>

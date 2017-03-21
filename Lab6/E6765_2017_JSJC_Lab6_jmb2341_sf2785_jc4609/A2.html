@@ -30,9 +30,9 @@ for the purpose of this exercise, you are expected to work with Django.
         } else if (s.value == 'no') {
             var source = {lat: 30.0215694, lng: -90.022554};
         } else if (s.value == 'bs') {
-            var source = {lat: 45.2552179, lng: -111.5462925};
+            var source = {lat: 45.2597015, lng: -111.3141066};
         } else if (s.value == 'sf') {
-            var source = {lat: 37.7578885, lng: -122.577683};
+            var source = {lat: 37.788337, lng: -122.4959122};
         } else {
             document.write('<p>Select Something</p>');
         }
@@ -41,12 +41,14 @@ for the purpose of this exercise, you are expected to work with Django.
         } else if (d.value == 'no') {
             var dest = {lat: 30.0215694, lng: -90.022554};
         } else if (d.value == 'bs') {
-            var dest = {lat: 45.2552179, lng: -111.5462925};
+            var dest = {lat: 45.2597015, lng: -111.3141066};
         } else if (d.value == 'sf') {
-            var dest = {lat: 37.7578885, lng: -122.577683};
+            var dest = {lat: 37.788337, lng: -122.4959122};
         } else {
             document.write('<p>Select Something</p>');
         }
+        //console.log(source);
+        //console.log(dest);
         var pointA = new google.maps.LatLng(source), // New York
             pointB = new google.maps.LatLng(dest), // New Orleans
             myOptions = {
@@ -72,8 +74,8 @@ for the purpose of this exercise, you are expected to work with Django.
                     map: map
             });
 
-            // get route from A to B
-            calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
+        // get route from A to B
+        calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
       }
       function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
           directionsService.route({

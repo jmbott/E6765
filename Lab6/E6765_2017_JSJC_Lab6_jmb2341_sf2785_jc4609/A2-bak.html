@@ -20,54 +20,56 @@ for the purpose of this exercise, you are expected to work with Django.
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-
-      function initMap() {
-        var pointA = new google.maps.LatLng(40.705565,-74.1180859), // New York
-            pointB = new google.maps.LatLng(30.0215694,-90.022554), // New Orleans
-            myOptions = {
-                zoom: 7,
-                center: pointA
-            },
-            map = new google.maps.Map(document.getElementById('map'), myOptions),
-            // Instantiate a directions service.
-            directionsService = new google.maps.DirectionsService,
-            directionsDisplay = new google.maps.DirectionsRenderer({
-                map: map
-            }),
-            markerA = new google.maps.Marker({
-                position: pointA,
-                title: "point A",
-                label: "A",
-                map: map
-            }),
-            markerB = new google.maps.Marker({
+        function initMap() {
+            var pointA = new google.maps.LatLng(51.7519, -1.2578),
+                pointB = new google.maps.LatLng(50.8429, -0.1313),
+                myOptions = {
+                    zoom: 7,
+                    center: pointA
+                },
+                map = new google.maps.Map(document.getElementById('map-canvas'), myOptions),
+                // Instantiate a directions service.
+                directionsService = new google.maps.DirectionsService,
+                directionsDisplay = new google.maps.DirectionsRenderer({
+                    map: map
+                }),
+                markerA = new google.maps.Marker({
+                    position: pointA,
+                    title: "point A",
+                    label: "A",
+                    map: map
+                }),
+                markerB = new google.maps.Marker({
                     position: pointB,
                     title: "point B",
                     label: "B",
                     map: map
-            });
+                });
 
             // get route from A to B
             calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
-      }
-      function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
-          directionsService.route({
-              origin: pointA,
-              destination: pointB,
-              avoidTolls: true,
-              avoidHighways: false,
-              travelMode: google.maps.TravelMode.DRIVING
-          }, function (response, status) {
-              if (status == google.maps.DirectionsStatus.OK) {
-                  directionsDisplay.setDirections(response);
-              } else {
-                  window.alert('Directions request failed due to ' + status);
-              }
-          });
-      }
 
+        }
+
+        function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
+            directionsService.route({
+                origin: pointA,
+                destination: pointB,
+                avoidTolls: true,
+                avoidHighways: false,
+                travelMode: google.maps.TravelMode.DRIVING
+            }, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+
+        initMap();
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbMoxSzeGC4-hsFAclI6bgEKzfpnEuatA&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbMoxSzeGC4-hsFAclI6bgEKzfpnEuatA&callback=cinitMap"></script>
 </head>
 <body>
     <div class="pad">Pick a city:</div>
@@ -99,8 +101,7 @@ for the purpose of this exercise, you are expected to work with Django.
         <option value="sf"><a href="cities/sf.html">San Francisco, CA</a></option>
     </select>
     </div>
-    <div class="pad"><br><br></div>
-    <div id="map"></div>
+    <div id="map-canvas"></div>
     <div class="footer"></div>
 </body>
 </html>

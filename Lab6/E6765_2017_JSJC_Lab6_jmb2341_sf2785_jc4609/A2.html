@@ -20,10 +20,35 @@ for the purpose of this exercise, you are expected to work with Django.
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-
-      function initMap() {
-        var pointA = new google.maps.LatLng(40.705565,-74.1180859), // New York
-            pointB = new google.maps.LatLng(30.0215694,-90.022554), // New Orleans
+      var render_map = function initMap() {
+        var s = document.getElementById('source');
+        var d = document.getElementById('dest');
+        //document.write(s.value);
+        //document.write(d.value);
+        if (s.value == 'ny') {
+            var source = {lat: 40.705565, lng: -74.1180859};
+        } else if (s.value == 'no') {
+            var source = {lat: 30.0215694, lng: -90.022554};
+        } else if (s.value == 'bs') {
+            var source = {lat: 45.2552179, lng: -111.5462925};
+        } else if (s.value == 'sf') {
+            var source = {lat: 37.7578885, lng: -122.577683};
+        } else {
+            document.write('<p>Select Something</p>');
+        }
+        if (d.value == 'ny') {
+            var dest = {lat: 40.705565, lng: -74.1180859};
+        } else if (d.value == 'no') {
+            var dest = {lat: 30.0215694, lng: -90.022554};
+        } else if (d.value == 'bs') {
+            var dest = {lat: 45.2552179, lng: -111.5462925};
+        } else if (d.value == 'sf') {
+            var dest = {lat: 37.7578885, lng: -122.577683};
+        } else {
+            document.write('<p>Select Something</p>');
+        }
+        var pointA = new google.maps.LatLng(source), // New York
+            pointB = new google.maps.LatLng(dest), // New Orleans
             myOptions = {
                 zoom: 7,
                 center: pointA
@@ -65,9 +90,8 @@ for the purpose of this exercise, you are expected to work with Django.
               }
           });
       }
-
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbMoxSzeGC4-hsFAclI6bgEKzfpnEuatA&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbMoxSzeGC4-hsFAclI6bgEKzfpnEuatA"></script>
 </head>
 <body>
     <div class="pad">Pick a city:</div>
@@ -82,8 +106,8 @@ for the purpose of this exercise, you are expected to work with Django.
     <div class="pad"><br><br></div>
     <div class="pad">Or plan a trip:</div>
     <div class="dropdown">
-    <div>Select Source City</div>
-    <select>
+    <select id="source">
+        <option>Select Source City</option>
         <option value="ny"><a href="cities/ny.html">New York, NY</a></option>
         <option value="no"><a href="cities/no.html">New Orleans, LA</a></option>
         <option value="bs"><a href="cities/bs.html">Big Sky, MT</a></option>
@@ -91,16 +115,23 @@ for the purpose of this exercise, you are expected to work with Django.
     </select>
     </div>
     <div class="dropdown">
-    <div>Select Destination City</div>
-    <select>
+    <select id="dest">
+        <option>Select Destination City</option>
         <option value="ny"><a href="cities/ny.html">New York, NY</a></option>
         <option value="no"><a href="cities/no.html">New Orleans, LA</a></option>
         <option value="bs"><a href="cities/bs.html">Big Sky, MT</a></option>
         <option value="sf"><a href="cities/sf.html">San Francisco, CA</a></option>
     </select>
     </div>
+    <div class="submit"><input id="btn" type="button" value="Submit"></div>
     <div class="pad"><br><br></div>
     <div id="map"></div>
     <div class="footer"></div>
+    <script type="text/javascript">
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', function(e) {
+            render_map();
+        });
+    </script>
 </body>
 </html>

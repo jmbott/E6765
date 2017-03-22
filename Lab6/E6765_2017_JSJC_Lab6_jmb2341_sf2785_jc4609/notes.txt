@@ -9,9 +9,24 @@
 
 from django.http import HttpResponse
 from .models import C, F
+from django.template import loader
+
+#def index(request):
+#    return HttpResponse("Hello, world.")
 
 def index(request):
-    return HttpResponse("Hello, world.")
+    template = loader.get_template('/home/ubuntu/Lab6/a2/templates/A2-index.html')
+    return HttpResponse(template.render(request))
+
+def trip(request, source_id, dest_id):
+    latest_source_temp = C.objects.filter(city=source_id).order_by('-pub_date')[:1]
+    latest_dest_temp = C.objects.filter(city=dest_id).order_by('-pub_date')[:1]
+    template = loader.get_template('/home/ubuntu/Lab6/a2/templates/A2-trip.html')
+    context = {
+        'latest_source_temp': latest_source_temp,
+        'latest_dest_temp': latest_dest_temp,
+    }
+    return HttpResponse(template.render(context, request))
 
 #def city(request, city_id):
 #    city = Cities.objects.filter(id=city_id)

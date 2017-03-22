@@ -39,6 +39,17 @@ for the purpose of this exercise, you are expected to work with Django.
           float: left;
       }
 
+      .t1 {
+          padding: 30px;
+          float: left;
+      }
+
+      .t2 {
+          padding: 30px;
+          padding-left: 170px;
+          float: left;
+      }
+
       .submit {
           padding: 30px;
           float: left;
@@ -165,7 +176,28 @@ for the purpose of this exercise, you are expected to work with Django.
     </select>
     </div>
     <div class="submit"><input id="btn" type="button" value="Submit"></div>
-    <div class="pad"><br><br></div>
+    <div class="pad"></div>
+
+    {% if latest_source_temp %}
+        <div class="t1">
+        {% for temp in latest_source_temp %}
+            <a href="/a2/{{ temp.id }}/">{{ temp.temp_c }}</a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>No temperature readings are available.</p>
+    {% endif %}
+
+    {% if latest_dest_temp %}
+        <div class="t2">
+        {% for temp in latest_dest_temp %}
+            <a href="/a2/{{ temp.id }}/">{{ temp.temp_c }}</a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>No temperature readings are available.</p>
+    {% endif %}
+
     <div id="map"></div>
     <div class="footer"></div>
     <script type="text/javascript">

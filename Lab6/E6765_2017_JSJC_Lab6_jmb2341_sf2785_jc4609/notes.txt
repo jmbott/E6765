@@ -137,5 +137,16 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+##############################  a2/templates/index.py ###############################
+
+{% if latest_temp %}
+    <ul>
+    {% for temp in latest_temp %}
+        <li><a href="/a2/{{ temp.id }}/">{{ temp.temp_c }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No temperature readings are available.</p>
+{% endif %}
 
 #############################################################################

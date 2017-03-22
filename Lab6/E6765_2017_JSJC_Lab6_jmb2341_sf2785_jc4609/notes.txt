@@ -54,11 +54,11 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^(?P<source_id>[1-4]+)/(?P<dest_id>[1-4]+)/$', views.trip, name='trip'),
     #url(r'^(?P<city_id>[0-9]+)/$', views.city, name='city'),
     url(r'^(?P<city_id>[1-4]+)/celsius/$', views.celsius, name='celsius'),
     url(r'^(?P<city_id>[1-4]+)/fahrenheit/$', views.fahrenheit, name='fahrenheit'),
 ]
-
 ############################## a2/models.py ###############################
 
 # Create your models here.
@@ -81,7 +81,6 @@ class F(models.Model):
     pub_date = models.DateTimeField('date published')
     def __str__(self):
         return str(self.temp_f)
-
 
 ############################## mange.py shell ###############################
 

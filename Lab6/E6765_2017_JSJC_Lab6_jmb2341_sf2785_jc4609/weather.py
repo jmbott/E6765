@@ -1,6 +1,8 @@
 #
 # Populates database with values from python-weather-api
 #
+# Must be placed in ~/Lab6 (our django instance)
+#
 
 import pywapi
 import time
